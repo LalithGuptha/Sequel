@@ -1,0 +1,48 @@
+package project;
+
+public class Event {
+
+	public static String eventName;
+	private String manager;
+	private double budget;
+	
+	
+	public Event(String manager, double budget) {
+		this.manager = manager;
+		this.budget = budget;
+	}
+
+
+	public static String getEventName() {
+		return eventName;
+	}
+
+
+	public static void setEventName(String eventName) {
+		Event.eventName = eventName;
+	}
+
+
+	public String getManager() {
+		return manager;
+	}
+
+
+	public void setManager(String manager) {
+		this.manager = manager;
+	}
+
+
+	public double getBudget() {
+		return budget;
+	}
+
+
+	public void setBudget(double budget) {
+		this.budget = budget;
+	}
+	
+	// Add email func def 
+	
+	
+}
