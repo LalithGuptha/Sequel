@@ -108,6 +108,7 @@ public class AllRounder extends Player implements Salary{
 
     @Override
     public void calcSalary() {
+        System.out.println("Salary is ");
 
     }
 }
