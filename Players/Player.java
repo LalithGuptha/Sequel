@@ -15,6 +15,10 @@ public class Player {
         setSalary(salary);
     }
 
+    public Player() {
+
+    }
+
     public String getPlayerName() {
         return playerName;
     }

@@ -1,9 +1,10 @@
+import Players.Player;
+
 import java.io.File;
 import java.io.IOException;
 import java.text.MessageFormat;
 import java.time.LocalDate;
 import java.util.Scanner;
-
 public class TestDriver {
     public static void main(String[] args) throws IOException {
         String d1, d2;
@@ -18,7 +19,7 @@ public class TestDriver {
             // TODO: handle exception
             System.out.println(MessageFormat.format("Exception arrised {0}", e));
         }
-        
+     Player a = new Player();
     }
 }
 
