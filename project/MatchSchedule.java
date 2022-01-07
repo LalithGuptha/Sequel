@@ -1,18 +1,22 @@
 package project;
 
+import Simu.Match;
+import Simu.Team;
+
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.Collection;
+import java.util.Queue;
 
 public class MatchSchedule {
 	
 	private int noOfTeams;
-	private Date startdate = new Date();
-	private Date enddate = new Date();
-	public List <Team> teams = new List <Team>;
-	public Queue <Match> schedule ;
+	private Date startdate;
+	private Date enddate;
+	 private ArrayList <Team> teams;
+	private Queue<Match> schedule ;
 
 
-	public MatchSchedule(int noOfTeams, Date startdate, Date enddate, List<Team> teams, Queue<Match> schedule) {
+	public MatchSchedule(int noOfTeams, Date startdate, Date enddate, ArrayList<Team> teams, Queue<Match> schedule) {
 		super();
 		this.noOfTeams = noOfTeams;
 		this.startdate = startdate;
@@ -52,12 +56,12 @@ public class MatchSchedule {
 	}
 
 
-	public List<Team> getTeams() {
+	public ArrayList<Team> getTeams() {
 		return teams;
 	}
 
 
-	public void setTeams(List<Team> teams) {
+	public void setTeams(ArrayList<Team> teams) {
 		this.teams = teams;
 	}
 
