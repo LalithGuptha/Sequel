@@ -1,18 +1,19 @@
 package Simu;
 import project.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Match {
 
 		private int matchNumber;
-		private Date date = new Date() ;
-		public List<Team> teams = new ArrayList[2]<Team>;
+		private Date date;
+		private ArrayList<Team> teams;
 		private Venue venue;
 
 
 
-		public Match(int matchNumber, Date date, List<Team> teams, Venue venue) {
+		public Match(int matchNumber, Date date, ArrayList<Team> teams, Venue venue) {
 			super();
 			this.matchNumber = matchNumber;
 			this.date = date;
@@ -46,13 +47,13 @@ public class Match {
 
 
 
-		public List<Team> getTeams() {
+		public ArrayList<Team> getTeams() {
 			return teams;
 		}
 
 
 
-		public void setTeams(List<Team> teams) {
+		public void setTeams(ArrayList<Team> teams) {
 			this.teams = teams;
 		}
 
@@ -74,4 +75,3 @@ public class Match {
 		
 	}
 
-}
