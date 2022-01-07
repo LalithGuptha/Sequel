@@ -8,7 +8,7 @@ public class MatchSchedule {
 	private int noOfTeams;
 	private Date startdate = new Date();
 	private Date enddate = new Date();
-	public List <Team> teams = new LinkedList <Team>;
+	public List <Team> teams = new List <Team>;
 	public Queue <Match> schedule ;
 
 
