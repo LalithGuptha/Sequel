@@ -2,7 +2,7 @@ package Players;
 
 import java.util.ArrayList;
 
-public class Bowler extends Player {
+public class Bowler extends Player implements Salary{
     private int runsconceded, ballsbowled, wicketstaken, oversbowled, economy, maiden;
     public Bowler(String playerName, String teamName, String role, ArrayList<Integer> salary, int runsconceded, int ballsbowled, int wicketstaken, int oversbowled, int economy, int maiden) {
         super(playerName, teamName, role, salary);
@@ -63,4 +63,8 @@ public class Bowler extends Player {
         this.maiden = maiden;
     }
 
+    @Override
+    public void calcSalary() {
+
+    }
 }
