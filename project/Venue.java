@@ -8,7 +8,6 @@ public class Venue {
 	
 	
 	public Venue(String venueName, int capacity, String location) {
-		super();
 		this.venueName = venueName;
 		this.capacity = capacity;
 		this.location = location;

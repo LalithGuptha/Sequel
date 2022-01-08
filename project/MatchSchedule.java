@@ -12,17 +12,16 @@ public class MatchSchedule {
 	private int noOfTeams;
 	private Date startdate;
 	private Date enddate;
-	 private ArrayList <Team> teams;
+	private ArrayList <Team> teams;
 	private Queue<Match> schedule ;
 
 
-	public MatchSchedule(int noOfTeams, Date startdate, Date enddate, ArrayList<Team> teams, Queue<Match> schedule) {
+	public MatchSchedule(int noOfTeams, Date startdate, Date enddate, ArrayList<Team> teams) {
 		super();
 		this.noOfTeams = noOfTeams;
 		this.startdate = startdate;
 		this.enddate = enddate;
 		this.teams = teams;
-		this.schedule = schedule;
 	}
 
 

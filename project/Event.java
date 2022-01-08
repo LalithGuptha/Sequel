@@ -7,7 +7,8 @@ public class Event {
 	private double budget;
 	
 	
-	public Event(String manager, double budget) {
+	public Event(String eventName, String manager, double budget) {
+		this.eventName = eventName;
 		this.manager = manager;
 		this.budget = budget;
 	}

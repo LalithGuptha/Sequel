@@ -7,10 +7,9 @@ import java.util.ArrayList;
 
 public class Team {
     private String teamName;
-    private boolean result;
     private Venue venue;
     private ArrayList<Player> players;
-    public Team(String teamName, boolean result, Venue venue, ArrayList<Player>players){
+    public Team(String teamName, Venue venue){
 
     }
 
@@ -22,13 +21,6 @@ public class Team {
         this.teamName = teamName;
     }
 
-    public boolean isResult() {
-        return result;
-    }
-
-    public void setResult(boolean result) {
-        this.result = result;
-    }
 
     public Venue getVenue() {
         return venue;
