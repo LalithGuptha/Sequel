@@ -10,7 +10,8 @@ public class Team {
     private Venue venue;
     private ArrayList<Player> players;
     public Team(String teamName, Venue venue){
-
+        this.setTeamName(teamName);
+        this.setVenue(venue);
     }
 
     public String getTeamName() {
