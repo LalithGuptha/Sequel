@@ -1,13 +1,8 @@
 package Players;
 
-import java.util.ArrayList;
-
 public class Batsman extends Player implements Salary{
 
     private int runsscored, inningsplayed, notout, ballsfaced, noof4, noof6;
-    public Batsman(String playerName, String teamName, String role, ArrayList<Integer> salary, int runsscored, int inningsplayed, int notout, int ballsfaced, int noof4, int noof6) {
-        super(playerName, teamName, role, salary);
-    }
 
     public int getRunsscored() {
         return runsscored;

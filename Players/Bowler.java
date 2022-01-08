@@ -1,19 +1,8 @@
 package Players;
 
-import java.util.ArrayList;
-
 public class Bowler extends Player implements Salary{
     private int runsconceded, ballsbowled, wicketstaken, oversbowled, economy, maiden;
-    public Bowler(String playerName, String teamName, String role, ArrayList<Integer> salary, int runsconceded, int ballsbowled, int wicketstaken, int oversbowled, int economy, int maiden) {
-        super(playerName, teamName, role, salary);
-        setRunsconceded(runsconceded);
-        setBallsbowled(ballsbowled);
-        setWicketstaken(wicketstaken);
-        setOversbowled(oversbowled);
-        setEconomy(economy);
-        setMaiden(maiden);
 
-    }
 
     public int getRunsconceded() {
         return runsconceded;

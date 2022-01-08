@@ -2,7 +2,6 @@ import Players.Player;
 import Simu.Team;
 import project.Event;
 import project.Venue;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -59,7 +58,10 @@ public class TestDriver {
         s1= new Scanner(new File("ExcelFiles//player.csv"));
         ArrayList<Player> players = new ArrayList<Player>();
         while(s1.hasNext()){
+
             dummy = (s1.nextLine()).split(",", 0);
+
+
             if (dummy[2]=="Chennai Super Kings"){
                 players.add(new Player(dummy[0], dummy[1], csk));
             }
@@ -84,6 +86,8 @@ public class TestDriver {
             else if(dummy[2]=="Delhi Daredevils"){
                 players.add(new Player(dummy[0], dummy[1], dd));
             }
+
+            System.out.println(players.size());
         }
     }
 }

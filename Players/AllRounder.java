@@ -1,17 +1,10 @@
 package Players;
 
-import java.util.ArrayList;
-
 public class AllRounder extends Player implements Salary{
 
     private int runsconceded, ballsbowled, wicketstaken, oversbowled, economy, maiden;
     private int runsscored, inningsplayed, notout, ballsfaced, noof4, noof6;
-    public AllRounder(String playerName, String teamName, String role, ArrayList<Integer> salary,
-                      int runsscored, int inningsplayed, int notout, int ballsfaced, int noof4, int noof6,
-                      int runsconceded, int ballsbowled, int wicketstaken, int oversbowled, int economy, int maiden) {
-        super(playerName, teamName, role, salary);
 
-    }
     public int getRunsconceded() {
         return runsconceded;
     }
