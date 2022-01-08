@@ -1,9 +1,11 @@
+import Players.Player;
 import Simu.Team;
 import project.Event;
 import project.Venue;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 public class TestDriver {
     public static void main(String[] args) throws IOException {
@@ -53,6 +55,36 @@ public class TestDriver {
         kkr = new Team(s1.nextLine(), kolkata);
         kxip = new Team(s1.nextLine(), chandigarh);
         dd = new Team(s1.nextLine(), delhi);
+
+        s1= new Scanner(new File("ExcelFiles//player.csv"));
+        ArrayList<Player> players = new ArrayList<Player>();
+        while(s1.hasNext()){
+            dummy = (s1.nextLine()).split(",", 0);
+            if (dummy[2]=="Chennai Super Kings"){
+                players.add(new Player(dummy[0], dummy[1], csk));
+            }
+            else if(dummy[2]=="Mumbai Indians"){
+                players.add(new Player(dummy[0], dummy[1], mi));
+            }
+            else if(dummy[2]=="Royal Challengers Bangalore"){
+                players.add(new Player(dummy[0], dummy[1], rcb));
+            }
+            else if(dummy[2]=="Sunrisers Hyderabad"){
+                players.add(new Player(dummy[0], dummy[1], srh));
+            }
+            else if(dummy[2]=="Rajasthan Royals"){
+                players.add(new Player(dummy[0], dummy[1], rr));
+            }
+            else if(dummy[2]=="Kolkata Knight Riders"){
+                players.add(new Player(dummy[0], dummy[1], kkr));
+            }
+            else if(dummy[2]=="Kings XI Punjab"){
+                players.add(new Player(dummy[0], dummy[1], kxip));
+            }
+            else if(dummy[2]=="Delhi Daredevils"){
+                players.add(new Player(dummy[0], dummy[1], dd));
+            }
+        }
     }
 }
 

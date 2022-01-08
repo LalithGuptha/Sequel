@@ -1,18 +1,19 @@
 package Players;
 
+import Simu.Team;
+
 import java.util.ArrayList;
 
 public class Player {
     private String playerName;
-    private String teamName;
+    private Team teamName;
     private String role;
     private ArrayList<Integer> salary;
 
-    public Player(String playerName, String teamName, String role, ArrayList<Integer> salary) {
+    public Player(String playerName, String role, Team teamName) {
         setPlayerName(playerName);
         setTeamName(teamName);
         setRole(role);
-        setSalary(salary);
     }
 
     public Player() {
@@ -27,11 +28,11 @@ public class Player {
         this.playerName = playerName;
     }
 
-    public String getTeamName() {
+    public Team getTeamName() {
         return teamName;
     }
 
-    public void setTeamName(String teamName) {
+    public void setTeamName(Team teamName) {
         this.teamName = teamName;
     }
 
