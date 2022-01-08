@@ -1,8 +1,7 @@
 import project.Event;
+import project.Venue;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.text.MessageFormat;
 import java.time.LocalDate;
@@ -31,16 +30,30 @@ public class TestDriver {
             manager = s1.nextLine();
             budget = s1.nextLong();
             Event e1 = new Event(eventname, manager, budget);
+            s1.close();
         }catch (Exception e){
             System.out.println(MessageFormat.format("Exception arrised {0}", e));
         }
-        String venuename, location;
-        long capacity;
         try{
-            BufferedReader f = new BufferedReader(new FileReader("D:\\Semester3\\OOPS\\codes\\PeriodicTable\\src\\codes\\periodensystem.csv"));
-
+            String i;
+            Scanner s1= new Scanner(new File("ExcelFiles//Venue.csv"));
+            String[] dummy = new String[3];
+            dummy = (s1.nextLine()).split(",", 0);
+            Venue chennai = new Venue(dummy[2], Integer.parseInt(dummy[1]), dummy[0]);
+            dummy = (s1.nextLine()).split(",", 0);
+            Venue mumbai = new Venue(dummy[2], Integer.parseInt(dummy[1]), dummy[0]);
+            dummy = (s1.nextLine()).split(",", 0);
+            Venue hyderabad = new Venue(dummy[2], Integer.parseInt(dummy[1]), dummy[0]);
+            dummy = (s1.nextLine()).split(",", 0);
+            Venue jaipur = new Venue(dummy[2], Integer.parseInt(dummy[1]), dummy[0]);
+            dummy = (s1.nextLine()).split(",", 0);
+            Venue kolkatta = new Venue(dummy[2], Integer.parseInt(dummy[1]), dummy[0]);
+            dummy = (s1.nextLine()).split(",", 0);
+            Venue  chandigarh = new Venue(dummy[2], Integer.parseInt(dummy[1]), dummy[0]);
+            dummy = (s1.nextLine()).split(",", 0);
+            Venue Delhi = new Venue(dummy[2], Integer.parseInt(dummy[1]), dummy[0]);
         }catch (Exception e){
-
+            System.out.println(MessageFormat.format("Exception arrised {0}", e));
         }
 
     }
