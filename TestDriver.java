@@ -8,8 +8,8 @@ import java.util.Scanner;
 public class TestDriver {
     public static void main(String[] args) throws IOException {
         Event e1;
-        Venue chennai, mumbai,hyderabad, jaipur, kolkata, chandigarh, delhi;
-        Team csk, mi, srh, rr, kkr, kxip, dd;
+        Venue chennai, mumbai,bengaluru, hyderabad, jaipur, kolkata, chandigarh, delhi;
+        Team csk, mi, rcb, srh, rr, kkr, kxip, dd;
         /*String d1, d2, ;
         LocalDate start, end;
         try{
@@ -24,33 +24,35 @@ public class TestDriver {
             System.out.println(MessageFormat.format("Exception arrised {0}", e));
         }
 */
-            Scanner s1 = new Scanner(new File("ExcelFiles//dates.txt"));
-            e1 = new Event(s1.nextLine(), s1.nextLine(), s1.nextLong());
-            s1= new Scanner(new File("ExcelFiles//Venue.csv"));
-            String[] dummy;
-            dummy = (s1.nextLine()).split(",", 0);
-            chennai = new Venue(dummy[2], Integer.parseInt(dummy[1]), dummy[0]);
-            dummy = (s1.nextLine()).split(",", 0);
-            mumbai = new Venue(dummy[2], Integer.parseInt(dummy[1]), dummy[0]);
-            dummy = (s1.nextLine()).split(",", 0);
-            hyderabad = new Venue(dummy[2], Integer.parseInt(dummy[1]), dummy[0]);
-            dummy = (s1.nextLine()).split(",", 0);
-            jaipur = new Venue(dummy[2], Integer.parseInt(dummy[1]), dummy[0]);
-            dummy = (s1.nextLine()).split(",", 0);
-            kolkata = new Venue(dummy[2], Integer.parseInt(dummy[1]), dummy[0]);
-            dummy = (s1.nextLine()).split(",", 0);
-            chandigarh = new Venue(dummy[2], Integer.parseInt(dummy[1]), dummy[0]);
-            dummy = (s1.nextLine()).split(",", 0);
-            delhi = new Venue(dummy[2], Integer.parseInt(dummy[1]), dummy[0]);
-            s1= new Scanner(new File("ExcelFiles//Venue.csv"));
-            csk = new Team(s1.nextLine(), chennai);
-            mi = new Team(s1.nextLine(), mumbai);
-            srh = new Team(s1.nextLine(), hyderabad);
-            rr = new Team(s1.nextLine(), jaipur);
-            kkr = new Team(s1.nextLine(), kolkata);
-            kxip = new Team(s1.nextLine(), chandigarh);
-            dd = new Team(s1.nextLine(), delhi);
 
+        Scanner s1= new Scanner(new File("ExcelFiles//Venue.csv"));
+        String[] dummy;
+        dummy = (s1.nextLine()).split(",", 0);
+        chennai = new Venue(dummy[2], Integer.parseInt(dummy[1]), dummy[0]);
+        dummy = (s1.nextLine()).split(",", 0);
+        mumbai = new Venue(dummy[2], Integer.parseInt(dummy[1]), dummy[0]);
+        dummy = (s1.nextLine()).split(",", 0);
+        bengaluru = new Venue(dummy[2], Integer.parseInt(dummy[1]), dummy[0]);
+        dummy = (s1.nextLine()).split(",", 0);
+        hyderabad = new Venue(dummy[2], Integer.parseInt(dummy[1]), dummy[0]);
+        dummy = (s1.nextLine()).split(",", 0);
+        jaipur = new Venue(dummy[2], Integer.parseInt(dummy[1]), dummy[0]);
+        dummy = (s1.nextLine()).split(",", 0);
+        kolkata = new Venue(dummy[2], Integer.parseInt(dummy[1]), dummy[0]);
+        dummy = (s1.nextLine()).split(",", 0);
+        chandigarh= new Venue(dummy[2], Integer.parseInt(dummy[1]), dummy[0]);
+        dummy = (s1.nextLine()).split(",", 0);
+        delhi = new Venue(dummy[2], Integer.parseInt(dummy[1]), dummy[0]);
+
+        s1= new Scanner(new File("ExcelFiles//team.csv"));
+        csk = new Team(s1.nextLine(), chennai);
+        mi = new Team(s1.nextLine(), mumbai);
+        rcb = new Team(s1.nextLine(), bengaluru);
+        srh = new Team(s1.nextLine(), hyderabad);
+        rr = new Team(s1.nextLine(), jaipur);
+        kkr = new Team(s1.nextLine(), kolkata);
+        kxip = new Team(s1.nextLine(), chandigarh);
+        dd = new Team(s1.nextLine(), delhi);
     }
 }
 
