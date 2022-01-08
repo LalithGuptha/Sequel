@@ -56,39 +56,40 @@ public class TestDriver {
         dd = new Team(s1.nextLine(), delhi);
 
         s1= new Scanner(new File("ExcelFiles//player.csv"));
-        ArrayList<Player> players = new ArrayList<Player>();
+        ArrayList<Player> players = new ArrayList<>();
+        int i=0;
         while(s1.hasNext()){
-
             dummy = (s1.nextLine()).split(",", 0);
+            switch (dummy[2]) {
+                case "Chennai Super Kings":
+                    players.add(new Player(dummy[0], dummy[1], csk));
+                    break;
+                case "Mumbai Indians":
+                    Player p = new Player(dummy[0], dummy[1], mi);
+                    players.add(p);
+                    break;
+                case "Royal Challengers Bangalore":
+                    players.add(new Player(dummy[0], dummy[1], rcb));
+                    break;
+                case "Sunrisers Hyderabad":
+                    players.add(new Player(dummy[0], dummy[1], srh));
+                    break;
+                case "Rajasthan Royals":
+                    players.add(new Player(dummy[0], dummy[1], rr));
+                    break;
+                case "Kolkata Knight Riders":
+                    players.add(new Player(dummy[0], dummy[1], kkr));
+                    break;
+                case "Kings XI Punjab":
+                    players.add(new Player(dummy[0], dummy[1], kxip));
+                    break;
+                case "Delhi Daredevils":
+                    players.add(new Player(dummy[0], dummy[1], dd));
+                    break;
+            }
 
-
-            if (dummy[2]=="Chennai Super Kings"){
-                players.add(new Player(dummy[0], dummy[1], csk));
-            }
-            else if(dummy[2]=="Mumbai Indians"){
-                players.add(new Player(dummy[0], dummy[1], mi));
-            }
-            else if(dummy[2]=="Royal Challengers Bangalore"){
-                players.add(new Player(dummy[0], dummy[1], rcb));
-            }
-            else if(dummy[2]=="Sunrisers Hyderabad"){
-                players.add(new Player(dummy[0], dummy[1], srh));
-            }
-            else if(dummy[2]=="Rajasthan Royals"){
-                players.add(new Player(dummy[0], dummy[1], rr));
-            }
-            else if(dummy[2]=="Kolkata Knight Riders"){
-                players.add(new Player(dummy[0], dummy[1], kkr));
-            }
-            else if(dummy[2]=="Kings XI Punjab"){
-                players.add(new Player(dummy[0], dummy[1], kxip));
-            }
-            else if(dummy[2]=="Delhi Daredevils"){
-                players.add(new Player(dummy[0], dummy[1], dd));
-            }
-
-            System.out.println(players.size());
         }
+        System.out.println(players.get(106).getRole());
     }
 }
 
