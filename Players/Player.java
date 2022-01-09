@@ -21,18 +21,22 @@ public class Player {
     }
 
     public String getPlayerName() {
+
         return playerName;
     }
 
     public void setPlayerName(String playerName) {
+
         this.playerName = playerName;
     }
 
     public Team getTeamName() {
+
         return teamName;
     }
 
     public void setTeamName(Team teamName) {
+
         this.teamName = teamName;
     }
 
@@ -41,24 +45,18 @@ public class Player {
     }
 
     public void setRole(String role) {
+
         this.role = role;
     }
 
     public ArrayList<Integer> getSalary() {
+
         return salary;
     }
 
     public void setSalary(ArrayList<Integer> salary) {
+
         this.salary = salary;
     }
 
-    @Override
-    public String toString() {
-        return "Player{" +
-                "playerName='" + playerName + '\'' +
-                ", teamName=" + teamName +
-                ", role='" + role + '\'' +
-                ", salary=" + salary +
-                '}';
-    }
 }
