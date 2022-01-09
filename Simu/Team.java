@@ -38,4 +38,13 @@ public class Team {
     public void setPlayers(ArrayList<Player> players) {
         this.players = players;
     }
+
+    @Override
+    public String toString() {
+        return "Team{" +
+                "teamName='" + teamName + '\'' +
+              //  ", venue=" + venue +
+                ", players=" + players +
+                '}';
+    }
 }

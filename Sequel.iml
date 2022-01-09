@@ -12,5 +12,30 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Downloads/google-api-client-assembly-1.32.1-1.32.1.zip!/google-api-java-client" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="jar://$USER_HOME$/Downloads/google-api-client-assembly-1.32.1-1.32.1.zip!/google-api-java-client" recursive="false" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Downloads/gdata-client.jar.zip!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="jar://$USER_HOME$/Downloads/gdata-client.jar.zip!/" recursive="false" />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" exported="" name="gdata-client.jar" level="project" />
+    <orderEntry type="library" name="gdata-client.jar" level="application" />
+    <orderEntry type="library" exported="" name="appengine-api-1.0-sdk-1.3.1.jar" level="project" />
+    <orderEntry type="library" name="appengine-api-1.0-sdk-1.3.1.jar1" level="project" />
+    <orderEntry type="library" name="appengine-api-1.0-sdk-1.3.1.jar" level="application" />
   </component>
 </module>

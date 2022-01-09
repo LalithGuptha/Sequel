@@ -42,8 +42,14 @@ public class Venue {
 	public void setLocation(String location) {
 		this.location = location;
 	}
-	
-	
-	
-	
+
+
+	@Override
+	public String toString() {
+		return "Venue{" +
+				"venueName='" + venueName + '\'' +
+				", capacity=" + capacity +
+				", location='" + location + '\'' +
+				'}';
+	}
 }

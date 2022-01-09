@@ -1,6 +1,8 @@
 import Players.Player;
 import Simu.Team;
-import project.*;
+import project.Event;
+import project.MatchSchedule;
+import project.Venue;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,7 +17,7 @@ public class TestDriver {
         Venue chennai, mumbai,bengaluru, hyderabad, jaipur, kolkata, chandigarh, delhi;
         Team csk, mi, rcb, srh, rr, kkr, kxip, dd;
 
-        Scanner s1= new Scanner(new File("ExcelFiles//event.csv"));
+        Scanner s1= new Scanner(new File("ExcelFiles//event.txt"));
         Event e1 = new Event(s1.nextLine(), s1.nextLine(), s1.nextLong());
 
         s1= new Scanner(new File("ExcelFiles//Venue.csv"));
@@ -104,7 +106,6 @@ public class TestDriver {
         start = LocalDate.parse(s1.nextLine());
         end = LocalDate.parse(s1.nextLine());
         MatchSchedule matchSchedule = new MatchSchedule(teams.size(), start, end, teams, venues);
-
 
         }
     }

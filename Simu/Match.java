@@ -1,19 +1,20 @@
 package Simu;
-import project.*;
 
+import project.Venue;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Match {
 
 		private int matchNumber;
-		private Date date;
+		private LocalDate date;
 		private ArrayList<Team> teams;
 		private Venue venue;
 
 
 
-		public Match(int matchNumber, Date date, ArrayList<Team> teams, Venue venue) {
+		public Match(int matchNumber, LocalDate date, ArrayList<Team> teams, Venue venue) {
 			super();
 			this.matchNumber = matchNumber;
 			this.date = date;
@@ -21,6 +22,10 @@ public class Match {
 			this.venue = venue;
 		}
 
+		public Match()
+		{
+
+		}
 
 
 		public int getMatchNumber() {
@@ -35,13 +40,13 @@ public class Match {
 
 
 
-		public Date getDate() {
+		public LocalDate getDate() {
 			return date;
 		}
 
 
 
-		public void setDate(Date date) {
+		public void setDate(LocalDate date) {
 			this.date = date;
 		}
 
@@ -53,8 +58,9 @@ public class Match {
 
 
 
-		public void setTeams(ArrayList<Team> teams) {
-			this.teams = teams;
+		public void setTeams(Team a, Team b) {
+			this.teams.set(0,a);
+			this.teams.set(1,b);
 		}
 
 
@@ -68,8 +74,18 @@ public class Match {
 		public void setVenue(Venue venue) {
 			this.venue = venue;
 		}
-		
-		// playmatch(); - func for renga
+
+	@Override
+	public String toString() {
+		return "Match{" +
+				"matchNumber=" + matchNumber +
+				", date=" + date +
+				", teams=" + teams +
+				", venue=" + venue +
+				'}';
+	}
+
+	// playmatch(); - func for renga
 		// sendmail()
 		
 		

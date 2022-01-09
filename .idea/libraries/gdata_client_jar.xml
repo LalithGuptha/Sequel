@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="gdata-client.jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/gdata-client.jar.zip!/" />
+      <root url="jar://$PROJECT_DIR$/../Downloads/google-api-client-assembly-1.32.1-1.32.1.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="jar://$PROJECT_DIR$/../Downloads/google-api-client-assembly-1.32.1-1.32.1.zip!/" recursive="false" />
+    <jarDirectory url="jar://$PROJECT_DIR$/gdata-client.jar.zip!/" recursive="false" />
+  </library>
+</component>
