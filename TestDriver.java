@@ -1,11 +1,9 @@
 import Players.Player;
 import Simu.Team;
-import project.Event;
-import project.Venue;
+import project.*;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.MessageFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -22,22 +20,31 @@ public class TestDriver {
 
         s1= new Scanner(new File("ExcelFiles//Venue.csv"));
         String[] dummy;
+        ArrayList<Venue> venues = new ArrayList<>();
         dummy = (s1.nextLine()).split(",", 0);
         chennai = new Venue(dummy[2], Integer.parseInt(dummy[1]), dummy[0]);
+        venues.add(chennai);
         dummy = (s1.nextLine()).split(",", 0);
         mumbai = new Venue(dummy[2], Integer.parseInt(dummy[1]), dummy[0]);
+        venues.add(mumbai);
         dummy = (s1.nextLine()).split(",", 0);
         bengaluru = new Venue(dummy[2], Integer.parseInt(dummy[1]), dummy[0]);
+        venues.add(bengaluru);
         dummy = (s1.nextLine()).split(",", 0);
         hyderabad = new Venue(dummy[2], Integer.parseInt(dummy[1]), dummy[0]);
+        venues.add(hyderabad);
         dummy = (s1.nextLine()).split(",", 0);
         jaipur = new Venue(dummy[2], Integer.parseInt(dummy[1]), dummy[0]);
+        venues.add(jaipur);
         dummy = (s1.nextLine()).split(",", 0);
         kolkata = new Venue(dummy[2], Integer.parseInt(dummy[1]), dummy[0]);
+        venues.add(kolkata);
         dummy = (s1.nextLine()).split(",", 0);
         chandigarh= new Venue(dummy[2], Integer.parseInt(dummy[1]), dummy[0]);
+        venues.add(chandigarh);
         dummy = (s1.nextLine()).split(",", 0);
         delhi = new Venue(dummy[2], Integer.parseInt(dummy[1]), dummy[0]);
+        venues.add(delhi);
 
         s1= new Scanner(new File("ExcelFiles//team.csv"));
         csk = new Team(s1.nextLine(), chennai);
@@ -48,10 +55,18 @@ public class TestDriver {
         kkr = new Team(s1.nextLine(), kolkata);
         kxip = new Team(s1.nextLine(), chandigarh);
         dd = new Team(s1.nextLine(), delhi);
+        ArrayList<Team> teams = new ArrayList<>();
+        teams.add(csk);
+        teams.add(mi);
+        teams.add(rcb);
+        teams.add(srh);
+        teams.add(rr);
+        teams.add(kkr);
+        teams.add(kxip);
+        teams.add(dd);
 
         s1= new Scanner(new File("ExcelFiles//player.csv"));
         ArrayList<Player> players = new ArrayList<>();
-        int i=0;
         while(s1.hasNext()){
             dummy = (s1.nextLine()).split(",", 0);
             switch (dummy[2]) {
@@ -85,17 +100,12 @@ public class TestDriver {
         }
         String d1, d2;
         LocalDate start, end;
-        try{
-            Scanner s = new Scanner(new File("ExcelFiles//dates.txt"));
-            d1 = s.nextLine();
-            d2 = s.nextLine();
-            start = LocalDate.parse(d1);
-            end = LocalDate.parse(d2);
-            s.close();
-        } catch (Exception e) {
-            // TODO: handle exception
-            System.out.println(MessageFormat.format("Exception arrised {0}", e));
+        s1 = new Scanner(new File("ExcelFiles//dates.txt"));
+        start = LocalDate.parse(s1.nextLine());
+        end = LocalDate.parse(s1.nextLine());
+        MatchSchedule matchSchedule = new MatchSchedule(teams.size(), start, end, teams, venues);
+
+
         }
     }
-}
 

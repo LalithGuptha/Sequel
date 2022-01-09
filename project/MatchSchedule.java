@@ -4,24 +4,25 @@ import Simu.Match;
 import Simu.Team;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Queue;
 
 public class MatchSchedule {
 	
 	private int noOfTeams;
-	private Date startdate;
-	private Date enddate;
+	private LocalDate startdate;
+	private LocalDate enddate;
 	private ArrayList <Team> teams;
+	private ArrayList<Venue> venues;
 	private Queue<Match> schedule ;
 
 
-	public MatchSchedule(int noOfTeams, Date startdate, Date enddate, ArrayList<Team> teams) {
-		super();
+	public MatchSchedule(int noOfTeams, LocalDate startdate, LocalDate enddate, ArrayList<Team> teams, ArrayList<Venue> venues) {
 		this.noOfTeams = noOfTeams;
 		this.startdate = startdate;
 		this.enddate = enddate;
 		this.teams = teams;
+		this.venues = venues;
 	}
 
 
@@ -35,22 +36,22 @@ public class MatchSchedule {
 	}
 
 
-	public Date getStartdate() {
+	public LocalDate getStartdate() {
 		return startdate;
 	}
 
 
-	public void setStartdate(Date startdate) {
+	public void setStartdate(LocalDate startdate) {
 		this.startdate = startdate;
 	}
 
 
-	public Date getEnddate() {
+	public LocalDate getEnddate() {
 		return enddate;
 	}
 
 
-	public void setEnddate(Date enddate) {
+	public void setEnddate(LocalDate enddate) {
 		this.enddate = enddate;
 	}
 
@@ -73,8 +74,14 @@ public class MatchSchedule {
 	public void setSchedule(Queue<Match> schedule) {
 		this.schedule = schedule;
 	}
-	
-	
+
+	public ArrayList<Venue> getVenues() {
+		return venues;
+	}
+
+	public void setVenues(ArrayList<Venue> venues) {
+		this.venues = venues;
+	}
 	// schedule() - func
 	// reschedule() - func
 	// reschedule(,) - func
