@@ -51,4 +51,14 @@ public class Player {
     public void setSalary(ArrayList<Integer> salary) {
         this.salary = salary;
     }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "playerName='" + playerName + '\'' +
+                ", teamName=" + teamName +
+                ", role='" + role + '\'' +
+                ", salary=" + salary +
+                '}';
+    }
 }
