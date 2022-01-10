@@ -3,8 +3,12 @@ package project;
 import Simu.Match;
 import Simu.Team;
 
+import java.io.FileNotFoundException;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class MatchSchedule {
 	
@@ -85,7 +89,7 @@ public class MatchSchedule {
 
 
 
-	public void schedule() {
+	public void schedule() throws FileNotFoundException {
 		// matches = new Match();
 		int matchCount = 1;
 		long add=0;
@@ -152,8 +156,7 @@ public class MatchSchedule {
 		System.out.println(schedule.toString());
 		System.out.println(schedule.size());
 
-
-	}
+		}
 
 
 
