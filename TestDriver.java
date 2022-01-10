@@ -119,6 +119,7 @@ public class TestDriver {
         MatchSchedule matchSchedule = new MatchSchedule(teams.size(), start, end, teams, venues);
         matchSchedule.schedule();
         matchSchedule.write();
+        matchSchedule.sendMail();
 
 
 

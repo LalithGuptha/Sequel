@@ -3,6 +3,11 @@ package project;
 import Simu.Match;
 import Simu.Team;
 
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
+import javax.mail.*;
+import javax.mail.internet.*;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -10,7 +15,7 @@ import java.time.LocalDate;
 import java.util.*;
 
 
-public class MatchSchedule {
+public class MatchSchedule implements sendEmail{
 
 	private int noOfTeams;
 	private LocalDate startdate;
@@ -29,6 +34,7 @@ public class MatchSchedule {
 	}
 
 	public int getNoOfTeams() {
+
 		return noOfTeams;
 	}
 
@@ -169,8 +175,7 @@ public class MatchSchedule {
 	final String NEWLINE = "\n";
 	final String FILE_HEADER = "MatchNumber,Date,Team1,Team2,Venue";
 	FileWriter filewriter = null;
-	public void write()
-	{
+	public void write(){
 
 		try{
 			filewriter = new FileWriter("trial.txt");
@@ -188,6 +193,52 @@ public class MatchSchedule {
 
 
 	}
+	public void sendMail(){
+		Properties prop = new Properties();
+		prop.put("mail.smtp.host", "smtp.gmail.com");
+		prop.put("mail.smtp.port", "587");
+		prop.put("mail.smtp.auth", "true");
+		prop.put("mail.smtp.starttls.enable", "true"); //TLS
+		Session session = Session.getInstance(prop,
+				new javax.mail.Authenticator() {
+					protected PasswordAuthentication getPasswordAuthentication() {
+						return new PasswordAuthentication(username, password);
+					}
+				});
+		try {
+
+			Message message = new MimeMessage(session);
+			message.setFrom(new InternetAddress("prrelationsequel@gmail.com"));
+			message.setRecipients(
+					Message.RecipientType.TO,
+					InternetAddress.parse("rvpspran@gmail.com, bmeghadharsan@gmail.com")
+			);
+			message.setSubject("Match Schedule");
+			BodyPart bp = new MimeBodyPart();
+			BodyPart bp1 = new MimeBodyPart();
+			bp1.setText("Checking email");
+			String filename = "C:\\Users\\Rengaraj\\IdeaProjects\\Sequel\\trial.txt";
+			DataSource src = new FileDataSource(filename);
+			bp.setDataHandler(new DataHandler(src));
+			bp.setFileName(filename);
+			Multipart mp = new MimeMultipart();
+			mp.addBodyPart(bp);
+			mp.addBodyPart(bp1);
+			message.setContent(mp);
+			Transport.send(message);
+			System.out.println("Done");
+
+		} catch (AddressException e) {
+			e.printStackTrace();
+		} catch (MessagingException e) {
+			e.printStackTrace();
+		}
+	}
+
+
+	}
+
+
 
 
 
@@ -199,7 +250,7 @@ public class MatchSchedule {
 	
 	
 
-}
+
 	
 	
 	
