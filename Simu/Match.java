@@ -9,16 +9,17 @@ public class Match {
 
 		private int matchNumber;
 		private LocalDate date;
-		private ArrayList<Team> teams;
+		private ArrayList<Team> teams = new ArrayList<>(2);
 		private Venue venue;
 
 
 
-		public Match(int matchNumber, LocalDate date, ArrayList<Team> teams, Venue venue) {
+		public Match(int matchNumber, LocalDate date, Team team1,Team team2, Venue venue) {
 			super();
 			this.matchNumber = matchNumber;
 			this.date = date;
-			this.teams = teams;
+			this.teams.add(0,team1);
+			this.teams.add(1,team2);
 			this.venue = venue;
 		}
 
@@ -58,9 +59,9 @@ public class Match {
 
 
 
-		public void setTeams(Team a, Team b) {
-			this.teams.set(0,a);
-			this.teams.set(1,b);
+		public void setTeamsofmatch(Team a, Team b) {
+			this.teams.add(a);
+			this.teams.add(b);
 		}
 
 

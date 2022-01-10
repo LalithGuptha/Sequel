@@ -88,8 +88,10 @@ public class MatchSchedule {
 
 
 	public void schedule() {
-		Match m1 = new Match(), m2, m3, m4 = new Match();
+		// matches = new Match();
 		int matchCount = 1;
+		long add=0;
+
 
 
 		//i tried
@@ -97,16 +99,21 @@ public class MatchSchedule {
 		String sch = new String();
 		int t1, t2;
 
-		m1.setMatchNumber(matchCount);
-		m1.setDate(startdate);
-		//m1.setTeams(teams.get(0),teams.get(1));
-		m1.setVenue(venues.get(arr[0][1]));
-		schedule.add(m1);
 
-		//for (int i = 0; i < 4; i++) {
+		//m1.setMatchNumber(matchCount);
+		//m1.setDate(startdate);
+		//m1.setTeamsofmatch(this.teams.get(arr[0][0]),this.teams.get(arr[1][0]));
+		//m1.setVenue(venues.get(arr[0][1]));
 
-		//}
-		sch = sch + "..";
+		//schedule.add(m1);
+
+
+		for (int i = 0; i < 4; i++) {
+			schedule.add(new Match(matchCount,this.startdate.plusDays(add),this.teams.get(arr[0][i]),this.teams.get(arr[1][i]),this.venues.get(arr[0][i])));
+			matchCount++;
+			add++;
+		}
+		//sch = sch + "..";
 		for (int i = 0; i < 6; i++) {
 			t1 = arr[0][3];
 			t2 = arr[1][0];
@@ -120,13 +127,17 @@ public class MatchSchedule {
 			arr[1][3] = t1;
 			arr[0][1] = t2;
 			for (int k = 0; k < 4; k++) {
-				sch = sch + "(" + arr[0][k] + "," + arr[1][k] + ")";
+				//sch = sch + "(" + arr[0][k] + "," + arr[1][k] + ")";
+				schedule.add(new Match(matchCount,this.startdate.plusDays(add),this.teams.get(arr[0][k]),this.teams.get(arr[1][k]),this.venues.get(arr[0][k])));
+				matchCount++;
+				add++;
 			}
-			sch = sch + "..";
+			//sch = sch + "..";
 		}
 
 
 		System.out.println(schedule.toString());
+		System.out.println(schedule.size());
 
 
 	}
