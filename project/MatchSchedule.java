@@ -4,19 +4,20 @@ import Simu.Match;
 import Simu.Team;
 
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.*;
 
 
 public class MatchSchedule {
-	
+
 	private int noOfTeams;
 	private LocalDate startdate;
 	private LocalDate enddate;
-	private ArrayList <Team> teams;
+	private ArrayList<Team> teams;
 	private ArrayList<Venue> venues;
 	private Queue<Match> schedule = new LinkedList<>();
-
 
 
 	public MatchSchedule(int noOfTeams, LocalDate startdate, LocalDate enddate, ArrayList<Team> teams, ArrayList<Venue> venues) {
@@ -26,7 +27,6 @@ public class MatchSchedule {
 		this.teams = teams;
 		this.venues = venues;
 	}
-
 
 	public int getNoOfTeams() {
 		return noOfTeams;
@@ -86,12 +86,10 @@ public class MatchSchedule {
 	}
 
 
-
 	public void schedule() throws FileNotFoundException {
 		// matches = new Match();
 		int matchCount = 1;
-		long add=0;
-
+		long add = 0;
 
 
 		//i tried
@@ -108,19 +106,17 @@ public class MatchSchedule {
 		//schedule.add(m1);
 
 
-		for( int loop=0;loop<2;loop++)
-		{
-			Random random= new Random();
-			if(loop==1) {
+		for (int loop = 0; loop < 2; loop++) {
+			Random random = new Random();
+			if (loop == 1) {
 				int x = random.nextInt(5);
 				Collections.swap(teams, 0, x);
 			}
 
 			for (int i = 0; i < 4; i++) {
-				if(loop%2==0)
-					schedule.add(new Match(matchCount,this.startdate.plusDays(add),this.teams.get(arr[0][i]),this.teams.get(arr[1][i]),this.venues.get(arr[0][i])));
-				else
-				{
+				if (loop % 2 == 0)
+					schedule.add(new Match(matchCount, this.startdate.plusDays(add), this.teams.get(arr[0][i]), this.teams.get(arr[1][i]), this.venues.get(arr[0][i])));
+				else {
 					schedule.add(new Match(matchCount, this.startdate.plusDays(add), this.teams.get(arr[0][i]), this.teams.get(arr[1][i]), this.venues.get(arr[1][i])));
 				}
 
@@ -142,10 +138,10 @@ public class MatchSchedule {
 				arr[0][1] = t2;
 				for (int k = 0; k < 4; k++) {
 					//sch = sch + "(" + arr[0][k] + "," + arr[1][k] + ")";
-					if(loop%2==0)
-						schedule.add(new Match(matchCount,this.startdate.plusDays(add),this.teams.get(arr[0][k]),this.teams.get(arr[1][k]),this.venues.get(arr[0][k])));
+					if (loop % 2 == 0)
+						schedule.add(new Match(matchCount, this.startdate.plusDays(add), this.teams.get(arr[0][k]), this.teams.get(arr[1][k]), this.venues.get(arr[0][k])));
 					else
-						schedule.add(new Match(matchCount,this.startdate.plusDays(add),this.teams.get(arr[0][k]),this.teams.get(arr[1][k]),this.venues.get(arr[1][k])));
+						schedule.add(new Match(matchCount, this.startdate.plusDays(add), this.teams.get(arr[0][k]), this.teams.get(arr[1][k]), this.venues.get(arr[1][k])));
 
 					matchCount++;
 					add++;
@@ -155,20 +151,49 @@ public class MatchSchedule {
 			}
 		}
 
-		for(int i=0;i<4;i++)
-		{
-			schedule.add(new Match(matchCount,this.startdate.plusDays(add),null,null,null));
+		for (int i = 0; i < 4; i++) {
+			schedule.add(new Match(matchCount, this.startdate.plusDays(add), null, null, null));
 			matchCount++;
 			add++;
 		}
 		System.out.println(schedule.toString());
 		System.out.println(schedule.size());
 
+
+
+
+
+	}
+	//Files
+	final String COMMA_DELIMITER = ",";
+	final String NEWLINE = "\n";
+	final String FILE_HEADER = "MatchNumber,Date,Team1,Team2,Venue";
+	FileWriter filewriter = null;
+	public void write()
+	{
+
+		try{
+			filewriter = new FileWriter("trial.csv");
+			filewriter.append(FILE_HEADER.toString());
+			filewriter.append(NEWLINE);
+
+			for (Match a: schedule){
+				filewriter.append(String.valueOf(schedule.element().getMatchNumber()));
+				filewriter.append(COMMA_DELIMITER);
+				filewriter.append(String.valueOf(schedule.element().toString()));
+				filewriter.append(COMMA_DELIMITER);
+				filewriter.append(String.valueOf(schedule.element().getTeams()));
+				filewriter.append(COMMA_DELIMITER);
+				filewriter.append(String.valueOf(schedule.element().getVenue()));
+				filewriter.append(COMMA_DELIMITER);
+				filewriter.append(NEWLINE);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 
 
-
-
+	}
 
 
 
@@ -179,11 +204,11 @@ public class MatchSchedule {
 
 	
 	
-	
-	
+
+}
 	
 	
 	
 	
 
-}
+

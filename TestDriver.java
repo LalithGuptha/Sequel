@@ -120,6 +120,7 @@ public class TestDriver {
 
 
         matchSchedule.schedule();
+        matchSchedule.write();
 
 
 

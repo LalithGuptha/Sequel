@@ -58,7 +58,6 @@ public class Match {
 		}
 
 
-
 		public void setTeamsofmatch(Team a, Team b) {
 			this.teams.add(a);
 			this.teams.add(b);
