@@ -173,21 +173,15 @@ public class MatchSchedule {
 	{
 
 		try{
-			filewriter = new FileWriter("trial.csv");
+			filewriter = new FileWriter("trial.txt");
 			filewriter.append(FILE_HEADER.toString());
 			filewriter.append(NEWLINE);
-
-			for (Match a: schedule){
-				filewriter.append(String.valueOf(schedule.element().getMatchNumber()));
-				filewriter.append(COMMA_DELIMITER);
-				filewriter.append(String.valueOf(schedule.element().toString()));
-				filewriter.append(COMMA_DELIMITER);
-				filewriter.append(String.valueOf(schedule.element().getTeams()));
-				filewriter.append(COMMA_DELIMITER);
-				filewriter.append(String.valueOf(schedule.element().getVenue()));
-				filewriter.append(COMMA_DELIMITER);
+			ListIterator new_list = (ListIterator) schedule.iterator();
+			while(new_list.hasNext()){
+				filewriter.append(String.valueOf(new_list.next()));
 				filewriter.append(NEWLINE);
 			}
+			filewriter.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

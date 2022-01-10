@@ -117,8 +117,6 @@ public class TestDriver {
         start = LocalDate.parse(s1.nextLine());
         end = LocalDate.parse(s1.nextLine());
         MatchSchedule matchSchedule = new MatchSchedule(teams.size(), start, end, teams, venues);
-
-
         matchSchedule.schedule();
         matchSchedule.write();
 
