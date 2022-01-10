@@ -4,9 +4,7 @@ import Simu.Match;
 import Simu.Team;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class MatchSchedule {
 	
@@ -108,31 +106,46 @@ public class MatchSchedule {
 		//schedule.add(m1);
 
 
-		for (int i = 0; i < 4; i++) {
-			schedule.add(new Match(matchCount,this.startdate.plusDays(add),this.teams.get(arr[0][i]),this.teams.get(arr[1][i]),this.venues.get(arr[0][i])));
-			matchCount++;
-			add++;
-		}
-		//sch = sch + "..";
-		for (int i = 0; i < 6; i++) {
-			t1 = arr[0][3];
-			t2 = arr[1][0];
-			for (int j = 3; j > 1; j--) {
-				arr[0][j] = arr[0][j - 1];
+		for( int loop=0;loop<2;loop++)
+		{
+			for (int i = 0; i < 4; i++) {
+				if(loop%2==0)
+					schedule.add(new Match(matchCount,this.startdate.plusDays(add),this.teams.get(arr[0][i]),this.teams.get(arr[1][i]),this.venues.get(arr[0][i])));
+				else
+				{
+					Collections.swap(teams,3,4);
+					Collections.swap(teams,0,5);
+					schedule.add(new Match(matchCount, this.startdate.plusDays(add), this.teams.get(arr[0][i]), this.teams.get(arr[1][i]), this.venues.get(arr[1][i])));
+				}
 
-			}
-			for (int n = 0; n < 3; n++) {
-				arr[1][n] = arr[1][n + 1];
-			}
-			arr[1][3] = t1;
-			arr[0][1] = t2;
-			for (int k = 0; k < 4; k++) {
-				//sch = sch + "(" + arr[0][k] + "," + arr[1][k] + ")";
-				schedule.add(new Match(matchCount,this.startdate.plusDays(add),this.teams.get(arr[0][k]),this.teams.get(arr[1][k]),this.venues.get(arr[0][k])));
 				matchCount++;
 				add++;
 			}
 			//sch = sch + "..";
+			for (int i = 0; i < 6; i++) {
+				t1 = arr[0][3];
+				t2 = arr[1][0];
+				for (int j = 3; j > 1; j--) {
+					arr[0][j] = arr[0][j - 1];
+
+				}
+				for (int n = 0; n < 3; n++) {
+					arr[1][n] = arr[1][n + 1];
+				}
+				arr[1][3] = t1;
+				arr[0][1] = t2;
+				for (int k = 0; k < 4; k++) {
+					//sch = sch + "(" + arr[0][k] + "," + arr[1][k] + ")";
+					if(loop%2==0)
+						schedule.add(new Match(matchCount,this.startdate.plusDays(add),this.teams.get(arr[0][k]),this.teams.get(arr[1][k]),this.venues.get(arr[0][k])));
+					else
+						schedule.add(new Match(matchCount,this.startdate.plusDays(add),this.teams.get(arr[0][k]),this.teams.get(arr[1][k]),this.venues.get(arr[1][k])));
+
+					matchCount++;
+					add++;
+				}
+				//sch = sch + "..";
+			}
 		}
 
 
