@@ -126,10 +126,7 @@ public class TestDriver {
         int i=0;
         while(new_list.hasNext()){
             Simulation simulation = new Simulation(matchSchedule.getSchedule().peek().getTeams().get(i), matchSchedule.getSchedule().peek().getTeams().get(i+1));
-            simulation.setTeam1batsman();
-            simulation.setTeam2batsman();
-            simulation.setTeam1bowler();
-            simulation.setTeam2bowler();
+
         }
     }
 }

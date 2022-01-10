@@ -23,6 +23,10 @@ public class Simulation {
         this.wickets.set(1, (short) 0);
         this.ballsbowled.set(0, (short) 0);
         this.ballsbowled.set(1, (short) 0);
+        setTeam1batsman();
+        setTeam1bowler();
+        setTeam2batsman();
+        setTeam2bowler();
     }
 
     public void setTeam1batsman() {
@@ -58,9 +62,11 @@ public class Simulation {
     public short getTeam1Score() {
         return score.get(0);
     }
+
     public short getTeam2Score() {
         return score.get(1);
     }
+
     public void setTeam1Score(short a){
         score.set(0, (short) (getTeam1Score()+a));
     }
@@ -68,12 +74,15 @@ public class Simulation {
     public void setTeam2Score(short a){
         score.set(1, (short) (getTeam2Score()+a));
     }
+
     public short getTeam1wickets() {
         return wickets.get(0);
     }
+
     public short getTeam2Wickets() {
         return wickets.get(1);
     }
+
     public void setTeam1Wickets(short a){
         score.set(0, (short) (getTeam1Score()+a));
     }
@@ -81,6 +90,4 @@ public class Simulation {
     public void setTeam2Wickets(short a){
         score.set(1, (short) (getTeam2Score()+a));
     }
-
-
 }
