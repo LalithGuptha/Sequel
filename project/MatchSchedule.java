@@ -5,10 +5,8 @@ import Simu.Team;
 
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
+
 
 public class MatchSchedule {
 	
@@ -112,13 +110,17 @@ public class MatchSchedule {
 
 		for( int loop=0;loop<2;loop++)
 		{
+			Random random= new Random();
+			if(loop==1) {
+				int x = random.nextInt(5);
+				Collections.swap(teams, 0, x);
+			}
+
 			for (int i = 0; i < 4; i++) {
 				if(loop%2==0)
 					schedule.add(new Match(matchCount,this.startdate.plusDays(add),this.teams.get(arr[0][i]),this.teams.get(arr[1][i]),this.venues.get(arr[0][i])));
 				else
 				{
-					Collections.swap(teams,3,4);
-					Collections.swap(teams,0,5);
 					schedule.add(new Match(matchCount, this.startdate.plusDays(add), this.teams.get(arr[0][i]), this.teams.get(arr[1][i]), this.venues.get(arr[1][i])));
 				}
 
@@ -148,11 +150,17 @@ public class MatchSchedule {
 					matchCount++;
 					add++;
 				}
-				//sch = sch + "..";
+
+
 			}
 		}
 
-
+		for(int i=0;i<4;i++)
+		{
+			schedule.add(new Match(matchCount,this.startdate.plusDays(add),null,null,null));
+			matchCount++;
+			add++;
+		}
 		System.out.println(schedule.toString());
 		System.out.println(schedule.size());
 
