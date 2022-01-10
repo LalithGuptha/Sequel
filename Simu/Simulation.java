@@ -90,4 +90,16 @@ public class Simulation {
     public void setTeam2Wickets(short a){
         score.set(1, (short) (getTeam2Score()+a));
     }
+    public void bat(){
+
+    }
+    public void bowl(){
+
+    }
+    public void write(){
+
+    }
+    public void play(){
+
+    }
 }
