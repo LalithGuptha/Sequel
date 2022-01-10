@@ -23,7 +23,7 @@ public class Match {
 			this.venue = venue;
 		}
 
-		public Match()
+		public Match(Match peek)
 		{
 
 		}

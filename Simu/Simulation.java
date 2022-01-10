@@ -7,73 +7,80 @@ import java.util.List;
 import java.util.Queue;
 
 public class Simulation {
-    Queue<Player> team1batsman, team2batsman;
-    List<Player> team1bowler, team2bowler;
-    ArrayList<Short> score, wickets, ballsbowled;
+    private Team t1, t2;
+    private Queue<Player> team1batsman, team2batsman;
+    private List<Player> team1bowler, team2bowler;
+    private ArrayList<Short> score = new ArrayList<>(2);
+    private ArrayList<Short> wickets = new ArrayList<>(2);
+    private ArrayList<Short> ballsbowled = new ArrayList<>(2);
 
-    public Simulation(Queue<Player> team1batsman, Queue<Player> team2batsman, List<Player> team1bowler, List<Player> team2bowler, ArrayList<Short> score, ArrayList<Short> wickets, ArrayList<Short> ballsbowled) {
-        this.team1batsman = team1batsman;
-        this.team2batsman = team2batsman;
-        this.team1bowler = team1bowler;
-        this.team2bowler = team2bowler;
-        this.score = score;
-        this.wickets = wickets;
-        this.ballsbowled = ballsbowled;
+    public Simulation(Team t1, Team t2) {
+        this.t1 = t1;
+        this.t2 = t2;
+        this.score.set(0, (short) 0);
+        this.score.set(1, (short) 0);
+        this.wickets.set(0, (short) 0);
+        this.wickets.set(1, (short) 0);
+        this.ballsbowled.set(0, (short) 0);
+        this.ballsbowled.set(1, (short) 0);
     }
 
-    public Queue<Player> getTeam1batsman() {
-        return team1batsman;
+    public void setTeam1batsman() {
+        int i=0;
+        while ((t1.getPlayers().get(i).getRole().equals("Batsmen")||t1.getPlayers().get(i).getRole().equals("Captain"))&&i<t1.getPlayers().size()){
+            team1batsman.add(t1.getPlayers().get(i));
+        }
+        i++;
+    }
+    public void setTeam1bowler() {
+        int i=0;
+        while ((t1.getPlayers().get(i).getRole().equals("Bowler")||t1.getPlayers().get(i).getRole().equals("All-Rounder"))&&i<t1.getPlayers().size()){
+            team1bowler.add(t1.getPlayers().get(i));
+        }
+        i++;
+    }
+    public void setTeam2batsman() {
+        int i=0;
+        while ((t2.getPlayers().get(i).getRole().equals("Batsmen")||t2.getPlayers().get(i).getRole().equals("Captain"))&&i<t2.getPlayers().size()){
+            team2batsman.add(t2.getPlayers().get(i));
+        }
+        i++;
+    }
+    public void setTeam2bowler() {
+        int i=0;
+        while ((t2.getPlayers().get(i).getRole().equals("Bowler")||t2.getPlayers().get(i).getRole().equals("All-Rounder"))&&i<t2.getPlayers().size()){
+            team2bowler.add(t2.getPlayers().get(i));
+        }
+        i++;
     }
 
-    public void setTeam1batsman(Queue<Player> team1batsman) {
-        this.team1batsman = team1batsman;
+
+    public short getTeam1Score() {
+        return score.get(0);
+    }
+    public short getTeam2Score() {
+        return score.get(1);
+    }
+    public void setTeam1Score(short a){
+        score.set(0, (short) (getTeam1Score()+a));
     }
 
-    public Queue<Player> getTeam2batsman() {
-        return team2batsman;
+    public void setTeam2Score(short a){
+        score.set(1, (short) (getTeam2Score()+a));
+    }
+    public short getTeam1wickets() {
+        return wickets.get(0);
+    }
+    public short getTeam2Wickets() {
+        return wickets.get(1);
+    }
+    public void setTeam1Wickets(short a){
+        score.set(0, (short) (getTeam1Score()+a));
     }
 
-    public void setTeam2batsman(Queue<Player> team2batsman) {
-        this.team2batsman = team2batsman;
+    public void setTeam2Wickets(short a){
+        score.set(1, (short) (getTeam2Score()+a));
     }
 
-    public List<Player> getTeam1bowler() {
-        return team1bowler;
-    }
 
-    public void setTeam1bowler(List<Player> team1bowler) {
-        this.team1bowler = team1bowler;
-    }
-
-    public List<Player> getTeam2bowler() {
-        return team2bowler;
-    }
-
-    public void setTeam2bowler(List<Player> team2bowler) {
-        this.team2bowler = team2bowler;
-    }
-
-    public ArrayList<Short> getScore() {
-        return score;
-    }
-
-    public void setScore(ArrayList<Short> score) {
-        this.score = score;
-    }
-
-    public ArrayList<Short> getWickets() {
-        return wickets;
-    }
-
-    public void setWickets(ArrayList<Short> wickets) {
-        this.wickets = wickets;
-    }
-
-    public ArrayList<Short> getBallsbowled() {
-        return ballsbowled;
-    }
-
-    public void setBallsbowled(ArrayList<Short> ballsbowled) {
-        this.ballsbowled = ballsbowled;
-    }
 }
