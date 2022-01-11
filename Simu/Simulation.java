@@ -165,26 +165,23 @@ public class Simulation {
     public void setTeam2Wickets(short a){
         score.set(1, (short) (getTeam2Score()+a));
     }
-    public void bat(){
-
+    public int bat(){
+        return r.nextInt(7);
     }
-    public void bowl(){
-
+    public int bowl(){
+       return  r.nextInt(7);
     }
     public void write(){
 
     }
     public void play(){
+        Toss toss  = new Toss(t1, t2);
+        Team winning = toss.coinFlip();
+        if(toss.getChoice().equals("Batting")){
 
-        int cs = r.nextInt(2);
-        Toss toss;
-        if(cs==0){
-            toss = new Toss(t1, t2);
         }
-        else if(cs==1){
-            toss = new Toss(t2, t1);
+        else if(toss.getChoice().equals("Bowling"){
+
         }
-
-
     }
 }
