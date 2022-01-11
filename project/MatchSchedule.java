@@ -162,9 +162,6 @@ public class MatchSchedule implements sendEmail{
 			matchCount++;
 			add++;
 		}
-		System.out.println(schedule.toString());
-		System.out.println(schedule.size());
-
 
 
 

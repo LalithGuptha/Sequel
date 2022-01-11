@@ -3,61 +3,137 @@ package Simu;
 import Players.Player;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
 public class Simulation {
     private Team t1, t2;
-    private Queue<Player> team1batsman, team2batsman;
-    private List<Player> team1bowler, team2bowler;
-    private ArrayList<Short> score = new ArrayList<>(2);
-    private ArrayList<Short> wickets = new ArrayList<>(2);
-    private ArrayList<Short> ballsbowled = new ArrayList<>(2);
+    private Queue<Player> team1batsman = new LinkedList<>();
+    private Queue<Player> team2batsman = new LinkedList<>();
+    private List<Player> team1bowler = new ArrayList<>();
+    private List<Player> team2bowler = new ArrayList<>();
+    private ArrayList<Short> score = new ArrayList<>();
+    private ArrayList<Short> wickets = new ArrayList<>();
+    private ArrayList<Short> ballsbowled = new ArrayList<>();
 
     public Simulation(Team t1, Team t2) {
         this.t1 = t1;
         this.t2 = t2;
-        this.score.set(0, (short) 0);
-        this.score.set(1, (short) 0);
-        this.wickets.set(0, (short) 0);
-        this.wickets.set(1, (short) 0);
-        this.ballsbowled.set(0, (short) 0);
-        this.ballsbowled.set(1, (short) 0);
+        this.score.add(0,(short)0);
+        this.score.add(1,(short)0);
+        this.wickets.add(0, (short) 0);
+        this.wickets.add(1, (short) 0);
+        this.ballsbowled.add(0, (short) 0);
+        this.ballsbowled.add(1, (short) 0);
         setTeam1batsman();
         setTeam1bowler();
         setTeam2batsman();
-        setTeam2bowler();
+        //setTeam2bowler();
     }
+    public Simulation(Match match){
+        this.t1 = match.getTeams().get(0);
+        this.t2 = match.getTeams().get(1);
+        this.score.add(0, (short) 0);
+        this.score.add(1, (short) 0);
+        this.wickets.add(0, (short) 0);
+        this.wickets.add(1, (short) 0);
+        this.ballsbowled.add(0, (short) 0);
+        this.ballsbowled.add(1, (short) 0);
+        setTeam1batsman();
+        setTeam1bowler();
+        setTeam2batsman();
+        //setTeam2bowler();
+    }
+
 
     public void setTeam1batsman() {
         int i=0;
-        while ((t1.getPlayers().get(i).getRole().equals("Batsmen")||t1.getPlayers().get(i).getRole().equals("Captain"))&&i<t1.getPlayers().size()){
-            team1batsman.add(t1.getPlayers().get(i));
+        while(i<t1.getPlayers().size()){
+            if(t1.getPlayers().get(i).getRole().equals("Batsmen")||t1.getPlayers().get(i).getRole().equals("Captain")){
+                team1batsman.add(t1.getPlayers().get(i));
+                i++;
+            }
+            else{
+                i++;
+            }
         }
-        i++;
-    }
-    public void setTeam1bowler() {
-        int i=0;
-        while ((t1.getPlayers().get(i).getRole().equals("Bowler")||t1.getPlayers().get(i).getRole().equals("All-Rounder"))&&i<t1.getPlayers().size()){
-            team1bowler.add(t1.getPlayers().get(i));
-        }
-        i++;
     }
     public void setTeam2batsman() {
         int i=0;
-        while ((t2.getPlayers().get(i).getRole().equals("Batsmen")||t2.getPlayers().get(i).getRole().equals("Captain"))&&i<t2.getPlayers().size()){
-            team2batsman.add(t2.getPlayers().get(i));
+        while(i<t2.getPlayers().size()){
+            if(t2.getPlayers().get(i).getRole().equals("Batsmen")||t2.getPlayers().get(i).getRole().equals("Captain")){
+                team2batsman.add(t2.getPlayers().get(i));
+                i++;
+            }
+            else{
+                i++;
+            }
         }
-        i++;
-    }
-    public void setTeam2bowler() {
-        int i=0;
-        while ((t2.getPlayers().get(i).getRole().equals("Bowler")||t2.getPlayers().get(i).getRole().equals("All-Rounder"))&&i<t2.getPlayers().size()){
-            team2bowler.add(t2.getPlayers().get(i));
-        }
-        i++;
     }
 
+    public void setTeam1bowler() {
+        int i=0;
+        while(i<t1.getPlayers().size()){
+            if(t1.getPlayers().get(i).getRole().equals("Bowler")||t1.getPlayers().get(i).getRole().equals("All-Rounder")){
+                team1bowler.add(t1.getPlayers().get(i));
+                i++;
+            }
+            else{
+                i++;
+            }
+        }
+    }
+
+    public void setTeam2bowler() {
+        int i=0;
+        while(i<t2.getPlayers().size()){
+            if(t2.getPlayers().get(i).getRole().equals("Bowler")||t2.getPlayers().get(i).getRole().equals("All-Rounder")){
+                team2bowler.add(t2.getPlayers().get(i));
+                i++;
+            }
+            else{
+                i++;
+            }
+        }
+    }
+
+
+    public Team getT1() {
+        return t1;
+    }
+
+    public Team getT2() {
+        return t2;
+    }
+
+    public Queue<Player> getTeam1batsman() {
+        return team1batsman;
+    }
+
+    public Queue<Player> getTeam2batsman() {
+        return team2batsman;
+    }
+
+    public List<Player> getTeam1bowler() {
+        return team1bowler;
+    }
+
+    public List<Player> getTeam2bowler() {
+        return team2bowler;
+    }
+
+    public ArrayList<Short> getScore() {
+        return score;
+    }
+
+    public ArrayList<Short> getWickets() {
+        return wickets;
+    }
+
+    public ArrayList<Short> getBallsbowled() {
+        return ballsbowled;
+    }
 
     public short getTeam1Score() {
         return score.get(0);

@@ -5,9 +5,9 @@ import java.util.Random;
 public class Toss {
     private Team callBy, wonBy, other;
 
-    public Toss(Team callBy, Team wonBy, Team other){
+    public Toss(Team callBy, Team other){
         setCallBy(callBy);
-        setWonBy(wonBy);
+        setOther(other);
     }
     public Team getCallBy() {
         return callBy;
