@@ -1,7 +1,6 @@
 import Players.Player;
 import Simu.Simulation;
 import Simu.Team;
-import Simu.Toss;
 import project.Event;
 import project.MatchSchedule;
 import project.Venue;
@@ -10,7 +9,6 @@ import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
 
 
@@ -126,10 +124,6 @@ public class TestDriver {
        // matchSchedule.sendMail();
 
         Simulation simulation1 = new Simulation(matchSchedule.getSchedule().peek());
-        Random r = new Random();
-        int i = r.nextInt(2);
-        Toss toss = new Toss(matchSchedule.getSchedule().peek().getTeams().get(i), matchSchedule.getSchedule().peek().getTeams().get(1-i));
-        System.out.println(toss.coinFlip().getTeamName());
 
     }
 }

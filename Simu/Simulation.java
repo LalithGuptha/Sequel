@@ -2,10 +2,7 @@ package Simu;
 
 import Players.Player;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class Simulation {
     private Team t1, t2;
@@ -16,6 +13,8 @@ public class Simulation {
     private ArrayList<Short> score = new ArrayList<>();
     private ArrayList<Short> wickets = new ArrayList<>();
     private ArrayList<Short> ballsbowled = new ArrayList<>();
+
+    Random r = new Random();
 
     public Simulation(Team t1, Team t2) {
         this.t1 = t1;
@@ -176,6 +175,16 @@ public class Simulation {
 
     }
     public void play(){
+
+        int cs = r.nextInt(2);
+        Toss toss;
+        if(cs==0){
+            toss = new Toss(t1, t2);
+        }
+        else if(cs==1){
+            toss = new Toss(t2, t1);
+        }
+
 
     }
 }
