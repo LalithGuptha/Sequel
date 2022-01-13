@@ -1,5 +1,8 @@
-import PitchAnalysis.Pitch;
+import OptimalityCalculator.Equipment;
+import OptimalityCalculator.PRRelation;
+import OptimalityCalculator.Sponsor;
 import Players.Player;
+import Simu.Simulation;
 import Simu.Team;
 import project.Event;
 import project.MatchSchedule;
@@ -13,7 +16,7 @@ import java.util.Scanner;
 
 
 public class TestDriver {
-    public static void main(String[] args) throws IOException, NumberFormatException{
+    public static void main(String[] args) throws IOException {
 
         Venue chennai, mumbai, bengaluru, hyderabad, jaipur, kolkata, chandigarh, delhi;
         Team csk, mi, rcb, srh, rr, kkr, kxip, dd;
@@ -48,14 +51,7 @@ public class TestDriver {
         dummy = (s1.nextLine()).split(",", 0);
         delhi = new Venue(dummy[2], Integer.parseInt(dummy[1]), dummy[0]);
         venues.add(delhi);
-        s1 = new Scanner(new File("ExcelFiles//pitch.csv"));
-        dummy = (s1.nextLine()).split(",", 0);
-        Double a, b, c;
-        a = (double)Float.parseFloat(dummy[0]);
-        b = Double.parseDouble(dummy[3]);
-        c = Double.parseDouble(dummy[4]);
-        Pitch pitch = new Pitch(a, dummy[1], dummy[2], b, c);
-        System.out.println(pitch.getCracks());
+
         s1 = new Scanner(new File("ExcelFiles//team.csv"));
         csk = new Team(s1.nextLine(), chennai);
         mi = new Team(s1.nextLine(), mumbai);
@@ -117,19 +113,79 @@ public class TestDriver {
             }
 
         }
+        // File for Pitch
+     /* ArrayList<Pitch> pitches = new ArrayList<Pitch>();
+        s1 = new Scanner(new File("ExcelFiles\\pitch.csv"));
+
+        while(s1.hasNext())
+        {
+            dummy = (s1.nextLine()).split(",", 0);
+            pitches.add(new Pitch(Double.parseDouble(dummy[0]),dummy[1],dummy[2],Double.parseDouble(dummy[3]),Double.parseDouble(dummy[4])));
+        }*/
+
+        //File for Equipment
+        ArrayList<Equipment> eq = new ArrayList<Equipment>();
+        s1 = new Scanner(new File("ExcelFiles\\Equipment.csv"));
+
+        while(s1.hasNext())
+        {
+            dummy = (s1.nextLine()).split(",", 0);
+            eq.add(new Equipment(dummy[0],dummy[1],dummy[2],Integer.parseInt(dummy[3]),Integer.parseInt(dummy[4])));
+        }
+        //File for Sponsor
+        ArrayList<Sponsor> sp = new ArrayList<Sponsor>();
+        s1 = new Scanner(new File("ExcelFiles\\sponsors.csv"));
+
+        while(s1.hasNext())
+        {
+            dummy = (s1.nextLine()).split(",", 0);
+            sp.add(new Sponsor(dummy[0],Double.parseDouble(dummy[1]),Integer.parseInt(dummy[2])));
+        }
+
+        //File for PR Relation
+        ArrayList<PRRelation> pr = new ArrayList<PRRelation>();
+        s1 = new Scanner(new File("ExcelFiles\\PRRelation.csv"));
+
+        while(s1.hasNext())
+        {
+            dummy = (s1.nextLine()).split(",", 0);
+            pr.add(new PRRelation(dummy[0],dummy[1],Integer.parseInt(dummy[2]),Double.parseDouble(dummy[3])));
+        }
+
+        //File for Pace
+      /*  ArrayList<Pace> pace = new ArrayList<Pace>();
+        s1 = new Scanner(new File("ExcelFiles\\Pace.csv"));
+
+        while(s1.hasNext())
+        {
+            dummy = (s1.nextLine()).split(",", 0);
+            pace.add(new Pace(Double.parseDouble(dummy[0]),Double.parseDouble(dummy[1])));
+        }*/
+
+
+
+
+
+        // System.out.println(pitches.get(1));
+        // System.out.println(pr.get(2));
+        //System.out.println(pace.get(4));
+
+        System.out.println(dd.getPlayers().get(10).getPlayerName());
+        System.out.println(teams);
         String d1, d2;
         LocalDate start, end;
         s1 = new Scanner(new File("ExcelFiles//dates.txt"));
+
         start = LocalDate.parse(s1.nextLine());
         end = LocalDate.parse(s1.nextLine());
+
         MatchSchedule matchSchedule = new MatchSchedule(teams.size(), start, end, teams, venues);
         matchSchedule.schedule();
         matchSchedule.write();
-        //matchSchedule.sendMail();
+        System.out.println(matchSchedule.getSchedule().size());
+        // matchSchedule.sendMail();
 
         //Simulation simulation1 = new Simulation(matchSchedule.getSchedule().peek());
-
-        //simulation1.play();
 
     }
 }
