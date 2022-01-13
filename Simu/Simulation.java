@@ -191,7 +191,7 @@ public class Simulation {
                     ballsbowled.set(0, (short) (ballsbowled.get(0)+1));
                 }
                 System.out.println(ballsbowled.get(0)+" "+wickets.get(0)+" "+score.get(0));
-                while(ballsbowled.get(1)<120&&wickets.get(1)<10){
+                while(ballsbowled.get(1)<120&&wickets.get(1)<10&&score.get(1)<=score.get(0)){
                     int a =bat();
                     int b = bowl();
                     if(a==b){
