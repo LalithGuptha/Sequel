@@ -4,7 +4,7 @@ public class PRRelation {
     private String name;
     private String firm;
     public int a;      //rating argument in int...so as of now
-    public Rating r = new Rating(a);
+    public Rating r ;
     private double experience;
 
     public String getName() {
@@ -37,5 +37,12 @@ public class PRRelation {
 
     public void setR(Rating r) {
         this.r = r;
+    }
+
+    public PRRelation(String name, String firm, int r, double experience) {
+        this.name = name;
+        this.firm = firm;
+        this.r = new Rating(a);
+        this.experience = experience;
     }
 }

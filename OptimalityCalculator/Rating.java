@@ -24,6 +24,10 @@ import java.io.Serializable;
             return this.rating;
         }
 
+        public void setRating(int rating) {
+            this.rating = rating;
+        }
+
         public boolean equals(Object o) {
             if (this == o) {
                 return true;
