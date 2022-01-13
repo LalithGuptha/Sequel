@@ -40,10 +40,6 @@ public class Simulation {
         this.wickets.add(1, (short) 0);
         this.ballsbowled.add(0, (short) 0);
         this.ballsbowled.add(1, (short) 0);
-        setTeam1batsman();
-        setTeam1bowler();
-        setTeam2batsman();
-        //setTeam2bowler();
     }
 
 
@@ -186,7 +182,10 @@ public class Simulation {
                     int b = bowl();
                     if(a==b){
                         wickets.set(0, (short) (wickets.get(0)+1));
-                        team1batsman.remove();
+                        if(!team1batsman.isEmpty()){
+                            team1batsman.remove();
+                        }
+
                     }
                     else{
                         team1batsman.peek().setRunsscored(team1batsman.peek().getRunsscored()+a);
