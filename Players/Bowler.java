@@ -3,6 +3,15 @@ package Players;
 public class Bowler extends Player implements Salary{
     private int runsconceded, ballsbowled, wicketstaken, oversbowled, economy, maiden;
 
+    public Bowler(Player player) {
+        super(player.getPlayerName(), player.getRole(), player.getTeamName());
+        setBallsbowled(0);
+        setEconomy(0);
+        setMaiden(0);
+        setRunsconceded(0);
+        setWicketstaken(0);
+    }
+
 
     public int getRunsconceded() {
         return runsconceded;

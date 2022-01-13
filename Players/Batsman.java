@@ -4,6 +4,16 @@ public class Batsman extends Player implements Salary{
 
     private int runsscored, inningsplayed, notout, ballsfaced, noof4, noof6;
 
+    public Batsman(Player player) {
+        super(player.getPlayerName(), player.getRole(), player.getTeamName());
+        setRunsscored(0);
+        setBallsfaced(0);
+        setInningsplayed(2);
+        setNotout(0);
+        setNoof4(0);
+        setNoof6(6);
+    }
+
     public int getRunsscored() {
         return runsscored;
     }

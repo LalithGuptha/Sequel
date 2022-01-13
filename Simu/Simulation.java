@@ -1,15 +1,16 @@
 package Simu;
 
-import Players.Player;
+import Players.Batsman;
+import Players.Bowler;
 
 import java.util.*;
 
 public class Simulation {
     private Team t1, t2;
-    private Queue<Player> team1batsman = new LinkedList<>();
-    private Queue<Player> team2batsman = new LinkedList<>();
-    private List<Player> team1bowler = new ArrayList<>();
-    private List<Player> team2bowler = new ArrayList<>();
+    private Queue<Batsman> team1batsman = new LinkedList<>();
+    private Queue<Batsman> team2batsman = new LinkedList<>();
+    private List<Bowler> team1bowler = new ArrayList<>();
+    private List<Bowler> team2bowler = new ArrayList<>();
     private ArrayList<Short> score = new ArrayList<>();
     private ArrayList<Short> wickets = new ArrayList<>();
     private ArrayList<Short> ballsbowled = new ArrayList<>();
@@ -50,7 +51,7 @@ public class Simulation {
         int i=0;
         while(i<t1.getPlayers().size()){
             if(t1.getPlayers().get(i).getRole().equals("Batsmen")||t1.getPlayers().get(i).getRole().equals("Captain")){
-                team1batsman.add(t1.getPlayers().get(i));
+                team1batsman.add(new Batsman(t1.getPlayers().get(i)));
                 i++;
             }
             else{
@@ -62,7 +63,7 @@ public class Simulation {
         int i=0;
         while(i<t2.getPlayers().size()){
             if(t2.getPlayers().get(i).getRole().equals("Batsmen")||t2.getPlayers().get(i).getRole().equals("Captain")){
-                team2batsman.add(t2.getPlayers().get(i));
+                team2batsman.add(new Batsman(t2.getPlayers().get(i)));
                 i++;
             }
             else{
@@ -75,7 +76,8 @@ public class Simulation {
         int i=0;
         while(i<t1.getPlayers().size()){
             if(t1.getPlayers().get(i).getRole().equals("Bowler")||t1.getPlayers().get(i).getRole().equals("All-Rounder")){
-                team1bowler.add(t1.getPlayers().get(i));
+                team1bowler.add(new Bowler(t1.getPlayers().get(i)));
+
                 i++;
             }
             else{
@@ -88,7 +90,7 @@ public class Simulation {
         int i=0;
         while(i<t2.getPlayers().size()){
             if(t2.getPlayers().get(i).getRole().equals("Bowler")||t2.getPlayers().get(i).getRole().equals("All-Rounder")){
-                team2bowler.add(t2.getPlayers().get(i));
+                team2bowler.add(new Bowler(t2.getPlayers().get(i)));
                 i++;
             }
             else{
@@ -106,19 +108,19 @@ public class Simulation {
         return t2;
     }
 
-    public Queue<Player> getTeam1batsman() {
+    public Queue<Batsman> getTeam1batsman() {
         return team1batsman;
     }
 
-    public Queue<Player> getTeam2batsman() {
+    public Queue<Batsman> getTeam2batsman() {
         return team2batsman;
     }
 
-    public List<Player> getTeam1bowler() {
+    public List <Bowler> getTeam1bowler() {
         return team1bowler;
     }
 
-    public List<Player> getTeam2bowler() {
+    public List<Bowler> getTeam2bowler() {
         return team2bowler;
     }
 
@@ -184,8 +186,10 @@ public class Simulation {
                     int b = bowl();
                     if(a==b){
                         wickets.set(0, (short) (wickets.get(0)+1));
+                        team1batsman.remove();
                     }
                     else{
+                        team1batsman.peek().setRunsscored(team1batsman.peek().getRunsscored()+a);
                         setTeam1Score((short)a);
                     }
                     ballsbowled.set(0, (short) (ballsbowled.get(0)+1));

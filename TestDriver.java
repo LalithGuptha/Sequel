@@ -1,5 +1,5 @@
+import PitchAnalysis.Pitch;
 import Players.Player;
-import Simu.Simulation;
 import Simu.Team;
 import project.Event;
 import project.MatchSchedule;
@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 
 public class TestDriver {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, NumberFormatException{
 
         Venue chennai, mumbai, bengaluru, hyderabad, jaipur, kolkata, chandigarh, delhi;
         Team csk, mi, rcb, srh, rr, kkr, kxip, dd;
@@ -48,7 +48,14 @@ public class TestDriver {
         dummy = (s1.nextLine()).split(",", 0);
         delhi = new Venue(dummy[2], Integer.parseInt(dummy[1]), dummy[0]);
         venues.add(delhi);
-
+        s1 = new Scanner(new File("ExcelFiles//pitch.csv"));
+        dummy = (s1.nextLine()).split(",", 0);
+        Double a, b, c;
+        a = (double)Float.parseFloat(dummy[0]);
+        b = Double.parseDouble(dummy[3]);
+        c = Double.parseDouble(dummy[4]);
+        Pitch pitch = new Pitch(a, dummy[1], dummy[2], b, c);
+        System.out.println(pitch.getCracks());
         s1 = new Scanner(new File("ExcelFiles//team.csv"));
         csk = new Team(s1.nextLine(), chennai);
         mi = new Team(s1.nextLine(), mumbai);
@@ -118,10 +125,10 @@ public class TestDriver {
         MatchSchedule matchSchedule = new MatchSchedule(teams.size(), start, end, teams, venues);
         matchSchedule.schedule();
         matchSchedule.write();
-       // matchSchedule.sendMail();
+        //matchSchedule.sendMail();
 
-        Simulation simulation1 = new Simulation(matchSchedule.getSchedule().peek());
-        simulation1.play();
+        //Simulation simulation1 = new Simulation(matchSchedule.getSchedule().peek());
+        //simulation1.play();
     }
 }
 
