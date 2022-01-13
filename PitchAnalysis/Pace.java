@@ -4,11 +4,10 @@ public class Pace {
 
 	private double friction;
 	private double restitution;
-	
-	
-	
+
+
+
 	public Pace(double friction, double restitution) {
-		super();
 		this.friction = friction;
 		this.restitution = restitution;
 	}
@@ -36,7 +35,13 @@ public class Pace {
 	public void setRestitution(double restitution) {
 		this.restitution = restitution;
 	}
-	
+
 	// find() - func def
-	
+
+
+	@Override
+	public String toString() {
+		return "Friction:" + friction +
+				", Restitution:" + restitution;
+	}
 }

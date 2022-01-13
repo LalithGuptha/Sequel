@@ -25,6 +25,7 @@ public class MatchSchedule implements sendEmail {
 	private Queue<Match> schedule = new LinkedList<>();
 
 
+
 	public MatchSchedule(int noOfTeams, LocalDate startdate, LocalDate enddate, ArrayList<Team> teams, ArrayList<Venue> venues) {
 		this.noOfTeams = noOfTeams;
 		this.startdate = startdate;
@@ -93,25 +94,11 @@ public class MatchSchedule implements sendEmail {
 
 
 	public void schedule() throws FileNotFoundException {
-		// matches = new Match();
 		int matchCount = 1;
 		long add = 0;
-
-
-		//i tried
 		int[][] arr = {{0, 1, 2, 3}, {4, 5, 6, 7}};
 		String sch = new String();
 		int t1, t2;
-
-
-		//m1.setMatchNumber(matchCount);
-		//m1.setDate(startdate);
-		//m1.setTeamsofmatch(this.teams.get(arr[0][0]),this.teams.get(arr[1][0]));
-		//m1.setVenue(venues.get(arr[0][1]));
-
-		//schedule.add(m1);
-
-
 		for (int loop = 0; loop < 2; loop++) {
 			Random random = new Random();
 			if (loop == 1) {
@@ -157,11 +144,11 @@ public class MatchSchedule implements sendEmail {
 			}
 		}
 
-		for (int i = 0; i < 4; i++) {
-			schedule.add(new Match(matchCount, this.startdate.plusDays(add), null, null, null));
+		/*for (int i = 0; i < 4; i++) {
+			schedule.add(new Match(matchCount, this.startdate.plusDays(add), , null, null));
 			matchCount++;
 			add++;
-		}
+		}*/
 
 
 	}
@@ -240,19 +227,16 @@ public class MatchSchedule implements sendEmail {
 
 
 
-
-	// reschedule() - func
-	// reschedule(,) - func
-	// sendMail();
-	// organiseeliminators() - ask renga
-
-	
-	
+// sendMail();
+// organiseeliminators() - ask renga
 
 
-	
-	
-	
-	
+
+
+
+
+
+
+
 
 

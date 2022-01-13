@@ -5,8 +5,8 @@ public class Venue {
 	private String venueName;
 	private int capacity;
 	private String location;
-	
-	
+
+
 	public Venue(String venueName, int capacity, String location) {
 		this.venueName = venueName;
 		this.capacity = capacity;
@@ -15,7 +15,11 @@ public class Venue {
 
 
 	public String getVenueName() {
-		return venueName;
+		if(venueName.equals(null))
+			return "null";
+		else {
+			return venueName;
+		}
 	}
 
 
