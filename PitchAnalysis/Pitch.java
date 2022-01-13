@@ -1,7 +1,5 @@
 package PitchAnalysis;
 
-import project.*;
-
 public class Pitch {
 
 	private double moisture;
@@ -13,14 +11,16 @@ public class Pitch {
 	
 	
 	public Pitch(double moisture, String grass, String weather, double temperature, double cracks) {
-		super();
 		this.moisture = moisture;
 		this.grass = grass;
 		this.weather = weather;
 		this.temperature = temperature;
 		this.cracks = cracks;
 	}
+	public Pitch()
+	{
 
+	}
 
 	public double getMoisture() {
 		return moisture;

@@ -15,7 +15,7 @@ import java.time.LocalDate;
 import java.util.*;
 
 
-public class MatchSchedule implements sendEmail{
+public class MatchSchedule implements sendEmail {
 
 	private int noOfTeams;
 	private LocalDate startdate;
@@ -164,22 +164,22 @@ public class MatchSchedule implements sendEmail{
 		}
 
 
-
-
 	}
+
 	//Files
 	final String COMMA_DELIMITER = ",";
 	final String NEWLINE = "\n";
 	final String FILE_HEADER = "MatchNumber,Date,Team1,Team2,Venue";
 	FileWriter filewriter = null;
-	public void write(){
 
-		try{
+	public void write() {
+
+		try {
 			filewriter = new FileWriter("trial.txt");
 			filewriter.append(FILE_HEADER.toString());
 			filewriter.append(NEWLINE);
 			ListIterator new_list = (ListIterator) schedule.iterator();
-			while(new_list.hasNext()){
+			while (new_list.hasNext()) {
 				filewriter.append(String.valueOf(new_list.next()));
 				filewriter.append(NEWLINE);
 			}
@@ -190,6 +190,7 @@ public class MatchSchedule implements sendEmail{
 
 
 	}
+
 	public void sendMail(){
 		Properties prop = new Properties();
 		prop.put("mail.smtp.host", "smtp.gmail.com");
@@ -214,7 +215,7 @@ public class MatchSchedule implements sendEmail{
 			BodyPart bp = new MimeBodyPart();
 			BodyPart bp1 = new MimeBodyPart();
 			bp1.setText("Checking email");
-			String filename = "C:\\Users\\Rengaraj\\IdeaProjects\\Sequel\\trial.txt";
+			String filename = "C:\\Users\\ADMIN\\Sequel\\trial.txt";
 			DataSource src = new FileDataSource(filename);
 			bp.setDataHandler(new DataHandler(src));
 			bp.setFileName(filename);
@@ -231,6 +232,7 @@ public class MatchSchedule implements sendEmail{
 			e.printStackTrace();
 		}
 	}
+
 
 
 }
