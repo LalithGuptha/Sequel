@@ -2,7 +2,6 @@ import OptimalityCalculator.Equipment;
 import OptimalityCalculator.PRRelation;
 import OptimalityCalculator.Sponsor;
 import Players.Player;
-import Simu.Simulation;
 import Simu.Team;
 import project.Event;
 import project.MatchSchedule;
@@ -178,6 +177,7 @@ public class TestDriver {
 
         start = LocalDate.parse(s1.nextLine());
         end = LocalDate.parse(s1.nextLine());
+
 
         MatchSchedule matchSchedule = new MatchSchedule(teams.size(), start, end, teams, venues);
         matchSchedule.schedule();

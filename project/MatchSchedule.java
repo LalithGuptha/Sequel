@@ -11,28 +11,34 @@ import javax.mail.internet.*;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.util.*;
-
 
 
 public class MatchSchedule implements sendEmail {
 
 	private int noOfTeams;
-	private LocalDate startdate;
-	private LocalDate enddate;
+	private LocalDate startdate ;
+	private LocalDate enddate ;
 	private ArrayList<Team> teams;
 	private ArrayList<Venue> venues;
 	private Queue<Match> schedule = new LinkedList<>();
-	private long totaldaysbetween;
+
+
+
 
 	public MatchSchedule(int noOfTeams, LocalDate startdate, LocalDate enddate, ArrayList<Team> teams, ArrayList<Venue> venues) {
 		this.noOfTeams = noOfTeams;
 		this.startdate = startdate;
+		System.out.println(startdate);
+		System.out.println(enddate);
 		this.enddate = enddate;
 		this.teams = teams;
 		this.venues = venues;
+
 	}
+
 
 	public int getNoOfTeams() {
 
@@ -95,6 +101,13 @@ public class MatchSchedule implements sendEmail {
 
 
 		public void schedule () throws FileNotFoundException {
+			Duration diff = Duration.between(startdate.atStartOfDay(),enddate.atStartOfDay());
+			long diffdays = diff.toDays();
+			double perday =  Math.ceil(56/10);
+			System.out.println(perday);
+			if(perday==0)
+				perday++;
+
 			int matchCount = 1;
 			long add = 0;
 			int[][] arr = {{0, 1, 2, 3}, {4, 5, 6, 7}};
@@ -115,6 +128,7 @@ public class MatchSchedule implements sendEmail {
 					}
 
 					matchCount++;
+					if(matchCount%perday==0)
 					add++;
 				}
 				//sch = sch + "..";
@@ -138,13 +152,14 @@ public class MatchSchedule implements sendEmail {
 							schedule.add(new Match(matchCount, this.startdate.plusDays(add), this.teams.get(arr[0][k]), this.teams.get(arr[1][k]), this.venues.get(arr[1][k])));
 
 						matchCount++;
-						add++;
+						if( matchCount%perday==0)
+							add++;
 					}
 
 
 				}
 			}
-
+			System.out.println(diffdays);
 		/*for (int i = 0; i < 4; i++) {
 			schedule.add(new Match(matchCount, this.startdate.plusDays(add), , null, null));
 			matchCount++;
