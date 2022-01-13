@@ -110,8 +110,6 @@ public class TestDriver {
             }
 
         }
-        System.out.println(dd.getPlayers().get(10).getPlayerName());
-        System.out.println(teams);
         String d1, d2;
         LocalDate start, end;
         s1 = new Scanner(new File("ExcelFiles//dates.txt"));
@@ -120,11 +118,10 @@ public class TestDriver {
         MatchSchedule matchSchedule = new MatchSchedule(teams.size(), start, end, teams, venues);
         matchSchedule.schedule();
         matchSchedule.write();
-        System.out.println(matchSchedule.getSchedule().size());
        // matchSchedule.sendMail();
 
         Simulation simulation1 = new Simulation(matchSchedule.getSchedule().peek());
-
+        simulation1.play();
     }
 }
 

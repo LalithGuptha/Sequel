@@ -150,7 +150,7 @@ public class Simulation {
         score.set(1, (short) (getTeam2Score()+a));
     }
 
-    public short getTeam1wickets() {
+    public short getTeam1Wickets() {
         return wickets.get(0);
     }
 
@@ -159,11 +159,11 @@ public class Simulation {
     }
 
     public void setTeam1Wickets(short a){
-        score.set(0, (short) (getTeam1Score()+a));
+        score.set(0, (short) (getTeam1Wickets()+a));
     }
 
     public void setTeam2Wickets(short a){
-        score.set(1, (short) (getTeam2Score()+a));
+        score.set(1, (short) (getTeam2Wickets()+a));
     }
     public int bat(){
         return r.nextInt(7);
@@ -174,14 +174,51 @@ public class Simulation {
     public void write(){
 
     }
-    public void play(){
-        Toss toss  = new Toss(t1, t2);
+    public void play() {
+        Toss toss = new Toss(t1, t2);
         Team winning = toss.coinFlip();
-        if(toss.getChoice().equals("Batting")){
+        if (winning == t1) {
+            if(toss.getChoice().equals("Batting")){
+                while(ballsbowled.get(0)<120&&wickets.get(0)<10){
+                    int a = bat();
+                    int b = bowl();
+                    if(a==b){
+                        wickets.set(0, (short) (wickets.get(0)+1));
+                    }
+                    else{
+                        setTeam1Score((short)a);
+                    }
+                    ballsbowled.set(0, (short) (ballsbowled.get(0)+1));
+                }
+                System.out.println(ballsbowled.get(0)+" "+wickets.get(0)+" "+score.get(0));
+                while(ballsbowled.get(1)<120&&wickets.get(1)<10){
+                    int a =bat();
+                    int b = bowl();
+                    if(a==b){
+                        wickets.set(0, (short) (wickets.get(0)+1));
+                    }
+                    else{
+                        setTeam2Score((short)a);
+                    }
+                    ballsbowled.set(1, (short) (ballsbowled.get(1)+1));
+                }
+                System.out.println(ballsbowled.get(1)+" "+wickets.get(1)+" "+score.get(1));
+            }
+            else if(toss.getChoice().equals("Bowling")){
+                int a = bat();
+                int b = bowl();
+                if(a==b){
 
+                }
+            }
         }
-        else if(toss.getChoice().equals("Bowling"){
+        else if(winning==t2){
+            if(toss.getChoice().equals("Batting")){
 
+            }
+            else if(toss.getChoice().equals("Bowling")){
+
+            }
         }
     }
 }
