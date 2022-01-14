@@ -280,12 +280,101 @@ public class Simulation {
 
                 }
                 System.out.println("Team1 score is "+ getTeam1Score());
+                setTeam1batsman();
+                setTeam1bowler();
+                setTeam2bowler();
+                while(ballsbowled.get(0)<120 && wickets.get(1)<10 && getTeam2Score()<=getTeam1Score()){
+                    int a = bat();
+                    int b = bowl();
+                    if(a==b){
+                        if((ballsbowled.get(0)<6)||(ballsbowled.get(0)<=30&&ballsbowled.get(0)>=35)||(ballsbowled.get(0)<=60&&ballsbowled.get(0)>=65)||(ballsbowled.get(0)<=90&&ballsbowled.get(0)>=95)){
+                            team1bowler.get(0).setWicketstaken (team1bowler.get(0).getWicketstaken()+1);
+                            if(!team2batsman.isEmpty()){
+                                team2batsman.remove();
+                            }
+                        }
+                        else if(((ballsbowled.get(0) <= 6) && (ballsbowled.get(0) >= 11)) || ((ballsbowled.get(0) <= 36) && (ballsbowled.get(0) >= 41)) || ((ballsbowled.get(0) <= 66) && (ballsbowled.get(0) >= 71)) || ((ballsbowled.get(0) <= 96) && (ballsbowled.get(0) >= 101)))
+                        {
+
+                            team1bowler.get(1).setWicketstaken (team1bowler.get(1).getWicketstaken()+1);
+                            if(!team2batsman.isEmpty()){
+                                team2batsman.remove();
+                            }
+
+                        }
+                        else if((ballsbowled.get(0)<=12&&ballsbowled.get(0)>=17)||(ballsbowled.get(0)<=42&&ballsbowled.get(0)>=47)||(ballsbowled.get(0)<=72&&ballsbowled.get(0)>=77)||(ballsbowled.get(0)<=102&&ballsbowled.get(0)>=107)){
+
+                            team1bowler.get(2).setWicketstaken (team1bowler.get(2).getWicketstaken()+1);
+                            if(!team2batsman.isEmpty()){
+                                team2batsman.remove();
+                            }
+
+                        }
+
+                        else if((ballsbowled.get(0)<=18&&ballsbowled.get(0)>=23)||(ballsbowled.get(0)<=48&&ballsbowled.get(0)>=53)||(ballsbowled.get(0)<=78&&ballsbowled.get(0)>=83)||(ballsbowled.get(0)<=108&&ballsbowled.get(0)>=113)){
+
+                            team1bowler.get(3).setWicketstaken (team1bowler.get(3).getWicketstaken()+1);
+                            if(!team2batsman.isEmpty()){
+                                team2batsman.remove();
+                            }
+                        }
+
+                        else if((ballsbowled.get(0)<=24&&ballsbowled.get(0)>=29)||(ballsbowled.get(0)<=54&&ballsbowled.get(0)>=59)||(ballsbowled.get(0)<=84&&ballsbowled.get(0)>=89)||(ballsbowled.get(0)<=114&&ballsbowled.get(0)>=119)) {
+
+                            team1bowler.get(4).setWicketstaken(team1bowler.get(4).getWicketstaken() + 1);
+                            if (!team2batsman.isEmpty()) {
+                                team2batsman.remove();
+                            }
+                        }
+                        wickets.set(1, (short) (wickets.get(1)+1));
+                    }
+                    else if(a!=b){
+                        score.add(1, (short) (score.get(1)+a));
+                        if (!team2batsman.isEmpty())
+                            team2batsman.peek().setRunsscored(team2batsman.peek().getRunsscored()+a);
+                        if(a==6){
+                            if (!team2batsman.isEmpty())
+                                team2batsman.peek().setNoof6(team2batsman.peek().getNoof6()+1);
+                        }
+                        else if(a==4){
+                            if (!team2batsman.isEmpty())
+                                team2batsman.peek().setNoof4(team2batsman.peek().getNoof4()+1);
+
+                        }
+                        if((ballsbowled.get(0)<6)||(ballsbowled.get(0)<=30&&ballsbowled.get(0)>=35)||(ballsbowled.get(0)<=60&&ballsbowled.get(0)>=65)||(ballsbowled.get(0)<=90&&ballsbowled.get(0)>=95)){
+                            team1bowler.get(0).setRunsconceded(team1bowler.get(0).getRunsconceded()+a);
+                        }
+                        else if(((ballsbowled.get(0) <= 6) && (ballsbowled.get(0) >= 11)) || ((ballsbowled.get(0) <= 36) && (ballsbowled.get(0) >= 41)) || ((ballsbowled.get(0) <= 66) && (ballsbowled.get(0) >= 71)) || ((ballsbowled.get(0) <= 96) && (ballsbowled.get(0) >= 101)))
+                        {
+                            team1bowler.get(1).setRunsconceded(team1bowler.get(1).getRunsconceded()+a);
+                        }
+
+
+                        else if((ballsbowled.get(0)<=12&&ballsbowled.get(0)>=17)||(ballsbowled.get(0)<=42&&ballsbowled.get(0)>=47)||(ballsbowled.get(0)<=72&&ballsbowled.get(0)>=77)||(ballsbowled.get(0)<=102&&ballsbowled.get(0)>=107)){
+
+                               team1bowler.get(2).setRunsconceded(team1bowler.get(2).getRunsconceded()+a);
+                        }
+
+                        else if((ballsbowled.get(0)<=18&&ballsbowled.get(0)>=23)||(ballsbowled.get(0)<=48&&ballsbowled.get(0)>=53)||(ballsbowled.get(0)<=78&&ballsbowled.get(0)>=83)||(ballsbowled.get(0)<=108&&ballsbowled.get(0)>=113)){
+
+                            team1bowler.get(3).setRunsconceded(team1bowler.get(3).getRunsconceded()+a);
+                        }
+
+                        else if((ballsbowled.get(0)<=24&&ballsbowled.get(0)>=29)||(ballsbowled.get(0)<=54&&ballsbowled.get(0)>=59)||(ballsbowled.get(0)<=84&&ballsbowled.get(0)>=89)||(ballsbowled.get(0)<=114&&ballsbowled.get(0)>=119)){
+
+                            team1bowler.get(4).setRunsconceded(team1bowler.get(4).getRunsconceded()+a);
+                        }
+
+                    }
+                    ballsbowled.set(0, (short) (ballsbowled.get(0)+1));
+
+                }
             }
+            System.out.println("Team 2 score is " +getTeam2Score());
             if(toss.getChoice().equals("Bowling")){
 
-
             }
         }
         }
-    }
+}
 
