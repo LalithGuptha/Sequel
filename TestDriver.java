@@ -212,13 +212,15 @@ public class TestDriver {
         e.opCalc(eq);
         Equipment f =new Equipment();
         f.opCalc(eqb);
-
-
-
-        // matchSchedule.sendMail();
-
-        Simulation simulation1 = new Simulation(csk, mi);
-        simulation1.play();
+        Simulation simulation;
+        int i =1;
+        while(!matchSchedule.getSchedule().isEmpty())
+        {
+            System.out.println(i++);
+            simulation = new Simulation(matchSchedule.getSchedule().peek());
+            System.out.println(simulation.play().getTeamName());
+            matchSchedule.getSchedule().remove();
+        }
 
     }
 }

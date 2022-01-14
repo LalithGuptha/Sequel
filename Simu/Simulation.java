@@ -184,7 +184,7 @@ public class Simulation {
         }
     }
 
-    public void play() throws IOException {
+    public Team play() {
         Toss toss = new Toss(t1, t2);
         Team winning = toss.coinFlip();
         System.out.println(winning.getTeamName() + " " + toss.getChoice());
@@ -197,7 +197,6 @@ public class Simulation {
                     int a = bat();
                     int b = bowl();
                     if (a == b) {
-                        System.out.println("hello");
                         if ((ballsbowled.get(1) < 6) || (ballsbowled.get(1) <= 30 && ballsbowled.get(1) >= 35) || (ballsbowled.get(1) <= 60 && ballsbowled.get(1) >= 65) || (ballsbowled.get(1) <= 90 && ballsbowled.get(1) >= 95)) {
                             team2bowler.get(0).setWicketstaken(team2bowler.get(0).getWicketstaken() + 1);
                             if (!team1batsman.isEmpty()) {
@@ -269,7 +268,7 @@ public class Simulation {
                     int a = bat();
                     int b = bowl();
                     if (a == b) {
-                        System.out.println("Hi");
+
                         if ((ballsbowled.get(0) < 6) || (ballsbowled.get(0) <= 30 && ballsbowled.get(0) >= 35) || (ballsbowled.get(0) <= 60 && ballsbowled.get(0) >= 65) || (ballsbowled.get(0) <= 90 && ballsbowled.get(0) >= 95)) {
                             team1bowler.get(0).setWicketstaken(team1bowler.get(0).getWicketstaken() + 1);
                             if (!team2batsman.isEmpty()) {
@@ -343,7 +342,6 @@ public class Simulation {
                     int a = bat();
                     int b = bowl();
                     if (a == b) {
-                        System.out.println("Hi");
                         if ((ballsbowled.get(0) < 6) || (ballsbowled.get(0) <= 30 && ballsbowled.get(0) >= 35) || (ballsbowled.get(0) <= 60 && ballsbowled.get(0) >= 65) || (ballsbowled.get(0) <= 90 && ballsbowled.get(0) >= 95)) {
                             team1bowler.get(0).setWicketstaken(team1bowler.get(0).getWicketstaken() + 1);
                             if (!team2batsman.isEmpty()) {
@@ -414,7 +412,7 @@ public class Simulation {
                     int a = bat();
                     int b = bowl();
                     if (a == b) {
-                        System.out.println("hello");
+
                         if ((ballsbowled.get(1) < 6) || (ballsbowled.get(1) <= 30 && ballsbowled.get(1) >= 35) || (ballsbowled.get(1) <= 60 && ballsbowled.get(1) >= 65) || (ballsbowled.get(1) <= 90 && ballsbowled.get(1) >= 95)) {
                             team2bowler.get(0).setWicketstaken(team2bowler.get(0).getWicketstaken() + 1);
                             if (!team1batsman.isEmpty()) {
@@ -489,7 +487,7 @@ public class Simulation {
                     int a = bat();
                     int b = bowl();
                     if (a == b) {
-                        System.out.println("Hi");
+
                         if ((ballsbowled.get(0) < 6) || (ballsbowled.get(0) <= 30 && ballsbowled.get(0) >= 35) || (ballsbowled.get(0) <= 60 && ballsbowled.get(0) >= 65) || (ballsbowled.get(0) <= 90 && ballsbowled.get(0) >= 95)) {
                             team1bowler.get(0).setWicketstaken(team1bowler.get(0).getWicketstaken() + 1);
                             if (!team2batsman.isEmpty()) {
@@ -560,7 +558,7 @@ public class Simulation {
                     int a = bat();
                     int b = bowl();
                     if (a == b) {
-                        System.out.println("hello");
+
                         if ((ballsbowled.get(1) < 6) || (ballsbowled.get(1) <= 30 && ballsbowled.get(1) >= 35) || (ballsbowled.get(1) <= 60 && ballsbowled.get(1) >= 65) || (ballsbowled.get(1) <= 90 && ballsbowled.get(1) >= 95)) {
                             team2bowler.get(0).setWicketstaken(team2bowler.get(0).getWicketstaken() + 1);
                             if (!team1batsman.isEmpty()) {
@@ -634,7 +632,6 @@ public class Simulation {
                     int a = bat();
                     int b = bowl();
                     if (a == b) {
-                        System.out.println("hello");
                         if ((ballsbowled.get(1) < 6) || (ballsbowled.get(1) <= 30 && ballsbowled.get(1) >= 35) || (ballsbowled.get(1) <= 60 && ballsbowled.get(1) >= 65) || (ballsbowled.get(1) <= 90 && ballsbowled.get(1) >= 95)) {
                             team2bowler.get(0).setWicketstaken(team2bowler.get(0).getWicketstaken() + 1);
                             if (!team1batsman.isEmpty()) {
@@ -706,7 +703,7 @@ public class Simulation {
                     int a = bat();
                     int b = bowl();
                     if (a == b) {
-                        System.out.println("Hi");
+
                         if ((ballsbowled.get(0) < 6) || (ballsbowled.get(0) <= 30 && ballsbowled.get(0) >= 35) || (ballsbowled.get(0) <= 60 && ballsbowled.get(0) >= 65) || (ballsbowled.get(0) <= 90 && ballsbowled.get(0) >= 95)) {
                             team1bowler.get(0).setWicketstaken(team1bowler.get(0).getWicketstaken() + 1);
                             if (!team2batsman.isEmpty()) {
@@ -772,6 +769,13 @@ public class Simulation {
                 System.out.println(t2.getTeamName() + " score is " + score.get(1));
             }
         }
+    if(score.get(0)> score.get(1)){
+        return t1;
+    }
+    else if(score.get(1)> score.get(0)){
+        return t2;
+    }
+       return null;
     }
 }
 
