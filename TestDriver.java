@@ -187,7 +187,7 @@ public class TestDriver {
 
 
 
-        System.out.println(pitches.get(1));
+        System.out.println(pitches.get(1).toString());
         // System.out.println(pr.get(2));
         //System.out.println(pace.get(4));
 
@@ -217,7 +217,7 @@ public class TestDriver {
 
         // matchSchedule.sendMail();
 
-        Simulation simulation1 = new Simulation(matchSchedule.getSchedule().peek());
+        Simulation simulation1 = new Simulation(csk, mi);
         simulation1.play();
 
     }
