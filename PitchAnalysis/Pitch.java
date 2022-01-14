@@ -1,6 +1,6 @@
 package PitchAnalysis;
 
-public class Pitch {
+public class Pitch implements Runnable{
 
 	private double moisture;
 	private String grass;
@@ -70,8 +70,41 @@ public class Pitch {
 	public void setCracks(double cracks) {
 		this.cracks = cracks;
 	}
-	
-	// find() - func def
 
+	public void run()
+	{
+		find();
+	}
+	public void find() {
+		double pitchavg;
+		pitchavg = this.moisture + this.cracks / (double) (2);
+		if (pitchavg <= 50) {
+			if (this.grass.equals("straw") && (this.weather.equals("Rainy") || this.weather.equals("Cloudy"))) {
+				this.type = "Dead Pitch";
+			}
+		} else {
+			if (this.grass.equals("couch") && this.temperature >= 20 && (this.weather.equals("Sunny") || this.weather.equals("Cloudy"))) {
+				this.type = "Dusty Pitch";
+			} else {
+				if (pitchavg >= 30 && this.grass.equals("green") && this.temperature >= 20 && (this.weather.equals("Sunny") || this.weather.equals("Cloudy"))) {
+					this.type = "Green Pitch";
+				}
+				else {
+					if(this.grass.equals("green"))
+						this.type = "Green Pitch";
+
+
+					else
+					{
+						this.type = "Dusty Pitch";
+					}
+				}
+			}
+		}
+
+
+
+		System.out.println(this.type);
+	}
 
 }

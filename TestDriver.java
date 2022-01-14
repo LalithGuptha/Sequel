@@ -5,7 +5,6 @@ import PitchAnalysis.Pace;
 import PitchAnalysis.Pitch;
 import PitchAnalysis.Rebound;
 import Players.Player;
-import Simu.PointsTable;
 import Simu.Simulation;
 import Simu.Team;
 import project.Event;
@@ -16,11 +15,10 @@ import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Scanner;
 
 
-public class TestDriver {
+public class TestDriver extends Thread {
     public static void main(String[] args) throws IOException {
 
         Venue chennai, mumbai, bengaluru, hyderabad, jaipur, kolkata, chandigarh, delhi;
@@ -94,60 +92,49 @@ public class TestDriver {
         for (Player player : players) {
             if (csk.equals(player.getTeamName())) {
                 csk.setPlayer(player);
-            }
-            else if (mi.equals(player.getTeamName())) {
+            } else if (mi.equals(player.getTeamName())) {
                 mi.setPlayer(player);
-            }
-            else if (rcb.equals(player.getTeamName())) {
+            } else if (rcb.equals(player.getTeamName())) {
                 rcb.setPlayer(player);
-            }
-            else if (srh.equals(player.getTeamName())) {
+            } else if (srh.equals(player.getTeamName())) {
                 srh.setPlayer(player);
-            }
-            else if (rr.equals(player.getTeamName())) {
+            } else if (rr.equals(player.getTeamName())) {
                 rr.setPlayer(player);
-            }
-            else if (kkr.equals(player.getTeamName())) {
+            } else if (kkr.equals(player.getTeamName())) {
                 kkr.setPlayer(player);
-            }
-            else if (kxip.equals(player.getTeamName())) {
+            } else if (kxip.equals(player.getTeamName())) {
                 kxip.setPlayer(player);
-            }
-            else if (dd.equals(player.getTeamName())) {
+            } else if (dd.equals(player.getTeamName())) {
                 dd.setPlayer(player);
             }
 
         }
         // File for Pitch
-      ArrayList<Pitch> pitches = new ArrayList<Pitch>();
+        ArrayList<Pitch> pitches = new ArrayList<Pitch>();
         s1 = new Scanner(new File("ExcelFiles\\pitch.csv"));
 
-        while(s1.hasNext())
-        {
+        while (s1.hasNext()) {
             dummy = (s1.nextLine()).split(",", 0);
-            pitches.add(new Pitch(Double.parseDouble(dummy[0]),dummy[1],dummy[2],Double.parseDouble(dummy[3]),Double.parseDouble(dummy[4])));
+            pitches.add(new Pitch(Double.parseDouble(dummy[0]), dummy[1], dummy[2], Double.parseDouble(dummy[3]), Double.parseDouble(dummy[4])));
         }
 
         //File for Rebound
         ArrayList<Rebound> rebound = new ArrayList<Rebound>();
         s1 = new Scanner(new File("ExcelFiles\\Rebound.csv"));
+        while (s1.hasNext()) {
+            dummy = (s1.nextLine()).split(",", 0);
+            rebound.add(new Rebound(Double.parseDouble(dummy[0]), Double.parseDouble(dummy[1]), Double.parseDouble(dummy[2]), Double.parseDouble(dummy[3]), Double.parseDouble(dummy[4]), Double.parseDouble(dummy[5]), Double.parseDouble(dummy[6])));
+        }
 
         //File for Pace
         ArrayList<Pace> pace = new ArrayList<Pace>();
         s1 = new Scanner(new File("ExcelFiles\\Pace.csv"));
 
-        while(s1.hasNext())
-        {
+        while (s1.hasNext()) {
             dummy = (s1.nextLine()).split(",", 0);
-            pace.add(new Pace(Double.parseDouble(dummy[0]),Double.parseDouble(dummy[1])));
+            pace.add(new Pace(Double.parseDouble(dummy[0]), Double.parseDouble(dummy[1])));
         }
 
-
-        while(s1.hasNext())
-        {
-            dummy = (s1.nextLine()).split(",", 0);
-            rebound.add(new Rebound(Double.parseDouble(dummy[0]),Double.parseDouble(dummy[1]),Double.parseDouble(dummy[2]),Double.parseDouble(dummy[3]),Double.parseDouble(dummy[4]),Double.parseDouble(dummy[5]),Double.parseDouble(dummy[6])));
-        }
 
         //File for Equipment
 
@@ -156,10 +143,9 @@ public class TestDriver {
 
         s1 = new Scanner(new File("ExcelFiles\\Equipment.csv"));
 
-        while(s1.hasNext())
-        {
+        while (s1.hasNext()) {
             dummy = (s1.nextLine()).split(",", 0);
-            switch(dummy[2]) {
+            switch (dummy[2]) {
                 case "Bat" -> eq.add(new Equipment(dummy[0], dummy[1], dummy[2], Integer.parseInt(dummy[3]), Integer.parseInt(dummy[4])));
                 case "Ball" -> eqb.add(new Equipment(dummy[0], dummy[1], dummy[2], Integer.parseInt(dummy[3]), Integer.parseInt(dummy[4])));
             }
@@ -168,25 +154,19 @@ public class TestDriver {
         ArrayList<Sponsor> sp = new ArrayList<Sponsor>();
         s1 = new Scanner(new File("ExcelFiles\\sponsors.csv"));
 
-        while(s1.hasNext())
-        {
+        while (s1.hasNext()) {
             dummy = (s1.nextLine()).split(",", 0);
-            sp.add(new Sponsor(dummy[0],Double.parseDouble(dummy[1]),Integer.parseInt(dummy[2])));
+            sp.add(new Sponsor(dummy[0], Double.parseDouble(dummy[1]), Integer.parseInt(dummy[2])));
         }
 
         //File for PR Relation
         ArrayList<PRRelation> pr = new ArrayList<PRRelation>();
         s1 = new Scanner(new File("ExcelFiles\\PRRelation.csv"));
 
-        while(s1.hasNext())
-        {
+        while (s1.hasNext()) {
             dummy = (s1.nextLine()).split(",", 0);
-            pr.add(new PRRelation(dummy[0],dummy[1],Integer.parseInt(dummy[2]),Double.parseDouble(dummy[3])));
+            pr.add(new PRRelation(dummy[0], dummy[1], Integer.parseInt(dummy[2]), Double.parseDouble(dummy[3])));
         }
-
-
-
-
 
 
         System.out.println(pitches.get(1).toString());
@@ -212,34 +192,49 @@ public class TestDriver {
         s.opCalc(sp);
         Equipment e = new Equipment();
         e.opCalc(eq);
-        Equipment f =new Equipment();
+        Equipment f = new Equipment();
         f.opCalc(eqb);
         Simulation simulation;
-        int i =1;
-        ArrayList<PointsTable> pointsTables = new ArrayList<PointsTable>();
-        pointsTables.add(new PointsTable(csk));
-        pointsTables.add(new PointsTable(mi));
-        pointsTables.add(new PointsTable(rcb));
-        pointsTables.add(new PointsTable(srh));
-        pointsTables.add(new PointsTable(rr));
-        pointsTables.add(new PointsTable(kkr));
-        pointsTables.add(new PointsTable(kxip));
-        pointsTables.add(new PointsTable(dd));
-        System.out.println(pointsTables.toString());
-
-        while(!matchSchedule.getSchedule().isEmpty())
-        {
+        int i = 1;
+        while (!matchSchedule.getSchedule().isEmpty()) {
             System.out.println(i++);
             simulation = new Simulation(matchSchedule.getSchedule().peek());
-            Team winner = simulation.play();
-            if(!Objects.isNull(winner)){
-                System.out.println(winner.getTeamName());
-            }
-            else if(!Objects.isNull(winner)){
-                System.out.println("Match is draw");
-            }
+            System.out.println(simulation.play().getTeamName());
             matchSchedule.getSchedule().remove();
         }
+
+        Thread t[] = new Thread[rebound.size()];
+        Thread k[] = new Thread[pace.size()];
+        Thread q[] = new Thread[pitches.size()];
+        for (int j = 0; j < rebound.size(); j++) {
+            t[j] = new Thread(rebound.get(j));
+
+
+        }
+        for (int j = 0; j < rebound.size(); j++) {
+            t[j].start();
+        }
+        for (int j = 0; j < pace.size(); j++) {
+            k[j] = new Thread(pace.get(j));
+
+
+        }
+        for (int j = 0; j < pitches.size(); j++) {
+            k[j].start();
+        }
+
+        for (int j = 0; j < pitches.size(); j++) {
+            q[j] = new Thread(pitches.get(j));
+
+
+        }
+        for (int j = 0; j < pitches.size(); j++) {
+            q[j].start();
+        }
+
+
+
+
     }
 }
 

@@ -1,6 +1,6 @@
 package PitchAnalysis;
 
-public class Pace {
+public class Pace implements Runnable{
 
 	private double friction;
 	private double restitution;
@@ -36,8 +36,18 @@ public class Pace {
 		this.restitution = restitution;
 	}
 
-	// find() - func def
 
+	public void run()
+	{
+		find();
+	}
+
+	void find()
+	{
+		double pace = 400*this.friction - (this.friction*10 + Math.pow(Math.E,this.restitution))/ this.friction-this.restitution;
+
+		System.out.println("Pace:"+ pace);
+	}
 
 	@Override
 	public String toString() {

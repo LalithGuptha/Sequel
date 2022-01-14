@@ -1,6 +1,6 @@
 package PitchAnalysis;
 
-public class Rebound {
+public class Rebound implements Runnable{
 
 	private double radius;
 	private double mass;
@@ -21,6 +21,10 @@ public class Rebound {
 		this.verticalVelocityIn = verticalVelocityIn;
 		this.horizontalVelocityOut = horizontalVelocityOut;
 		this.verticalVelocityOut = verticalVelocityOut;
+	}
+	public Rebound()
+	{
+
 	}
 
 
@@ -93,6 +97,21 @@ public class Rebound {
 		this.verticalVelocityOut = verticalVelocityOut;
 	}
 
+	public void find()
+	{
+		double Rebound;
+		Rebound = (double)((this.radius)*(this.mass)*(this.verticalVelocityOut+this.verticalVelocityIn));
+		Rebound= Rebound /  (this.mass*((double)(2)/(double)(5))*this.radius*this.radius);
+		Rebound=Rebound + (this.horizontalVelocityIn+this.verticalVelocityIn);
+
+
+		System.out.println("Rebound value:"+Rebound);
+	}
+
+
+	public void run() {
+		find();
+	}
 
 
 
