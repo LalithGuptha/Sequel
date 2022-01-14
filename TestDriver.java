@@ -3,6 +3,7 @@ import OptimalityCalculator.PRRelation;
 import OptimalityCalculator.Sponsor;
 import PitchAnalysis.Pace;
 import PitchAnalysis.Pitch;
+import PitchAnalysis.Rebound;
 import Players.Player;
 import Simu.Simulation;
 import Simu.Team;
@@ -125,6 +126,27 @@ public class TestDriver {
             pitches.add(new Pitch(Double.parseDouble(dummy[0]),dummy[1],dummy[2],Double.parseDouble(dummy[3]),Double.parseDouble(dummy[4])));
         }
 
+        //File for Rebound
+        ArrayList<Rebound> rebound = new ArrayList<Rebound>();
+        s1 = new Scanner(new File("ExcelFiles\\Rebound.csv"));
+
+        //File for Pace
+        ArrayList<Pace> pace = new ArrayList<Pace>();
+        s1 = new Scanner(new File("ExcelFiles\\Pace.csv"));
+
+        while(s1.hasNext())
+        {
+            dummy = (s1.nextLine()).split(",", 0);
+            pace.add(new Pace(Double.parseDouble(dummy[0]),Double.parseDouble(dummy[1])));
+        }
+
+
+        while(s1.hasNext())
+        {
+            dummy = (s1.nextLine()).split(",", 0);
+            rebound.add(new Rebound(Double.parseDouble(dummy[0]),Double.parseDouble(dummy[1]),Double.parseDouble(dummy[2]),Double.parseDouble(dummy[3]),Double.parseDouble(dummy[4]),Double.parseDouble(dummy[5]),Double.parseDouble(dummy[6])));
+        }
+
         //File for Equipment
 
         ArrayList<Equipment> eq = new ArrayList<Equipment>();
@@ -160,15 +182,6 @@ public class TestDriver {
             pr.add(new PRRelation(dummy[0],dummy[1],Integer.parseInt(dummy[2]),Double.parseDouble(dummy[3])));
         }
 
-        //File for Pace
-       ArrayList<Pace> pace = new ArrayList<Pace>();
-        s1 = new Scanner(new File("ExcelFiles\\Pace.csv"));
-
-        while(s1.hasNext())
-        {
-            dummy = (s1.nextLine()).split(",", 0);
-            pace.add(new Pace(Double.parseDouble(dummy[0]),Double.parseDouble(dummy[1])));
-        }
 
 
 
@@ -199,6 +212,8 @@ public class TestDriver {
         e.opCalc(eq);
         Equipment f =new Equipment();
         f.opCalc(eqb);
+
+
 
         // matchSchedule.sendMail();
 
