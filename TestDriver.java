@@ -1,3 +1,8 @@
+import OptimalityCalculator.Equipment;
+import OptimalityCalculator.PRRelation;
+import OptimalityCalculator.Sponsor;
+import PitchAnalysis.Pace;
+import PitchAnalysis.Pitch;
 import Players.Player;
 import Simu.Simulation;
 import Simu.Team;
@@ -111,17 +116,17 @@ public class TestDriver {
 
         }
         // File for Pitch
-     /* ArrayList<Pitch> pitches = new ArrayList<Pitch>();
+      ArrayList<Pitch> pitches = new ArrayList<Pitch>();
         s1 = new Scanner(new File("ExcelFiles\\pitch.csv"));
 
         while(s1.hasNext())
         {
             dummy = (s1.nextLine()).split(",", 0);
             pitches.add(new Pitch(Double.parseDouble(dummy[0]),dummy[1],dummy[2],Double.parseDouble(dummy[3]),Double.parseDouble(dummy[4])));
-        }*/
+        }
 
         //File for Equipment
-        /*
+
         ArrayList<Equipment> eq = new ArrayList<Equipment>();
         ArrayList<Equipment> eqb = new ArrayList<Equipment>();
 
@@ -163,13 +168,13 @@ public class TestDriver {
         {
             dummy = (s1.nextLine()).split(",", 0);
             pace.add(new Pace(Double.parseDouble(dummy[0]),Double.parseDouble(dummy[1])));
-        }*/
+        }
 
 
 
 
 
-        // System.out.println(pitches.get(1));
+        System.out.println(pitches.get(1));
         // System.out.println(pr.get(2));
         //System.out.println(pace.get(4));
 
@@ -194,7 +199,7 @@ public class TestDriver {
         e.opCalc(eq);
         Equipment f =new Equipment();
         f.opCalc(eqb);
-        
+
         // matchSchedule.sendMail();
 
         Simulation simulation1 = new Simulation(matchSchedule.getSchedule().peek());
