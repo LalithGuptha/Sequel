@@ -1,7 +1,5 @@
-import OptimalityCalculator.Equipment;
-import OptimalityCalculator.PRRelation;
-import OptimalityCalculator.Sponsor;
 import Players.Player;
+import Simu.Simulation;
 import Simu.Team;
 import project.Event;
 import project.MatchSchedule;
@@ -123,6 +121,7 @@ public class TestDriver {
         }*/
 
         //File for Equipment
+        /*
         ArrayList<Equipment> eq = new ArrayList<Equipment>();
         s1 = new Scanner(new File("ExcelFiles\\Equipment.csv"));
 
@@ -152,7 +151,7 @@ public class TestDriver {
         }
 
         //File for Pace
-      /*  ArrayList<Pace> pace = new ArrayList<Pace>();
+       ArrayList<Pace> pace = new ArrayList<Pace>();
         s1 = new Scanner(new File("ExcelFiles\\Pace.csv"));
 
         while(s1.hasNext())
@@ -185,7 +184,8 @@ public class TestDriver {
         System.out.println(matchSchedule.getSchedule().size());
         // matchSchedule.sendMail();
 
-        //Simulation simulation1 = new Simulation(matchSchedule.getSchedule().peek());
+        Simulation simulation1 = new Simulation(matchSchedule.getSchedule().peek());
+        simulation1.play();
 
     }
 }
