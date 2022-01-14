@@ -261,7 +261,7 @@ public class Simulation {
                     }
                     ballsbowled.set(1, (short) (ballsbowled.get(1) + 1));
                 }
-                System.out.println("Team1 score is "+score.get(0));
+                System.out.println(t1.getTeamName() +" score is "+score.get(0));
                 setTeam2batsman();
                 setTeam1bowler();
                 setTeam2bowler();
@@ -350,7 +350,7 @@ public class Simulation {
                     }
                     ballsbowled.set(0, (short) (ballsbowled.get(0)+1));
                 }
-                System.out.println("Team2 score is "+ score.get(1));
+                System.out.println(t2.getTeamName()+ " score is "+ score.get(1));
             }
 
             if(toss.getChoice().equals("Bowling")){
@@ -442,7 +442,7 @@ public class Simulation {
                     }
                     ballsbowled.set(0, (short) (ballsbowled.get(0)+1));
                 }
-                System.out.println("Team2 score is "+ score.get(1));
+                System.out.println(t2.getTeamName()+" score is "+ score.get(1));
                 setTeam1batsman();
                 setTeam1bowler();
                 setTeam2bowler();
@@ -514,11 +514,16 @@ public class Simulation {
                     }
                     ballsbowled.set(1, (short) (ballsbowled.get(1) + 1));
                 }
-                System.out.println("Team1 score is "+score.get(0));
+                System.out.println(t1.getTeamName()+" score is "+score.get(0));
             }
             }
-        else if (winning.getTeamName().equals(t2.getTeamName())){
-            System.out.println("Hi");
+        else if (winning.equals(t2)){
+            if(toss.getChoice().equals("Batting")){
+
+            }
+            else if(toss.getChoice().equals("Bowling")){
+
+            }
         }
         }
 }
