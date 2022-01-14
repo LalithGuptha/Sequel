@@ -5,6 +5,7 @@ import PitchAnalysis.Pace;
 import PitchAnalysis.Pitch;
 import PitchAnalysis.Rebound;
 import Players.Player;
+import Simu.PointsTable;
 import Simu.Simulation;
 import Simu.Team;
 import project.Event;
@@ -215,12 +216,22 @@ public class TestDriver {
         f.opCalc(eqb);
         Simulation simulation;
         int i =1;
+        ArrayList<PointsTable> pointsTables = new ArrayList<PointsTable>();
+        pointsTables.add(new PointsTable(csk));
+        pointsTables.add(new PointsTable(mi));
+        pointsTables.add(new PointsTable(rcb));
+        pointsTables.add(new PointsTable(srh));
+        pointsTables.add(new PointsTable(rr));
+        pointsTables.add(new PointsTable(kkr));
+        pointsTables.add(new PointsTable(kxip));
+        pointsTables.add(new PointsTable(dd));
+        System.out.println(pointsTables.toString());
 
         while(!matchSchedule.getSchedule().isEmpty())
         {
             System.out.println(i++);
             simulation = new Simulation(matchSchedule.getSchedule().peek());
-            Team winner  = simulation.play();
+            Team winner = simulation.play();
             if(!Objects.isNull(winner)){
                 System.out.println(winner.getTeamName());
             }
@@ -229,7 +240,6 @@ public class TestDriver {
             }
             matchSchedule.getSchedule().remove();
         }
-
     }
 }
 
