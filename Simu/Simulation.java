@@ -517,6 +517,9 @@ public class Simulation {
                 System.out.println("Team1 score is "+score.get(0));
             }
             }
+        else if (winning.getTeamName().equals(t2.getTeamName())){
+            System.out.println("Hi");
+        }
         }
 }
 
