@@ -124,12 +124,17 @@ public class TestDriver {
 
         //File for Equipment
         ArrayList<Equipment> eq = new ArrayList<Equipment>();
+        ArrayList<Equipment> eqb = new ArrayList<Equipment>();
+
         s1 = new Scanner(new File("ExcelFiles\\Equipment.csv"));
 
         while(s1.hasNext())
         {
             dummy = (s1.nextLine()).split(",", 0);
-            eq.add(new Equipment(dummy[0],dummy[1],dummy[2],Integer.parseInt(dummy[3]),Integer.parseInt(dummy[4])));
+            switch(dummy[2]) {
+                case "Bat" -> eq.add(new Equipment(dummy[0], dummy[1], dummy[2], Integer.parseInt(dummy[3]), Integer.parseInt(dummy[4])));
+                case "Ball" -> eqb.add(new Equipment(dummy[0], dummy[1], dummy[2], Integer.parseInt(dummy[3]), Integer.parseInt(dummy[4])));
+            }
         }
         //File for Sponsor
         ArrayList<Sponsor> sp = new ArrayList<Sponsor>();
@@ -188,6 +193,9 @@ public class TestDriver {
         s.opCalc(sp);
         Equipment e = new Equipment();
         e.opCalc(eq);
+        Equipment f =new Equipment();
+        f.opCalc(eqb);
+        
         // matchSchedule.sendMail();
 
         //Simulation simulation1 = new Simulation(matchSchedule.getSchedule().peek());

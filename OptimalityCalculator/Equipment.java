@@ -70,6 +70,7 @@ public class Equipment {
     public void opCalc(ArrayList<Equipment> equipment) {
         double cs = 0, cavg = 0;
         double rs = 0, ravg = 0;
+        //
         for (int i = 0; i < equipment.size(); i++) {
             cs = cs + equipment.get(i).getPrice();
             rs = rs + equipment.get(i).getQualityPercent();
@@ -84,8 +85,8 @@ public class Equipment {
             }
         }
 
-        best.sort(Comparator.comparing(Equipment::getPrice).reversed().thenComparing(Equipment::getQualityPercent).reversed());
-        System.out.println(best);
+        best.sort(Comparator.comparing(Equipment::getPrice).thenComparing(Equipment::getQualityPercent));
+        System.out.println(best.get(0));
     };
 
     @Override
