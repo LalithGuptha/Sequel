@@ -4,10 +4,10 @@ import Simu.Match;
 import Simu.Team;
 
 import javax.activation.DataHandler;
-import javax.activation.DataSource;
 import javax.activation.FileDataSource;
 import javax.mail.*;
 import javax.mail.internet.*;
+import javax.sql.DataSource;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -219,8 +219,8 @@ public class MatchSchedule implements sendEmail {
 				BodyPart bp1 = new MimeBodyPart();
 				bp1.setText("Checking email");
 				String filename = "C:\\Users\\ADMIN\\Sequel\\trial.txt";
-				DataSource src = new FileDataSource(filename);
-				bp.setDataHandler(new DataHandler(src));
+				DataSource src = (DataSource) new FileDataSource(filename);
+				bp.setDataHandler(new DataHandler((javax.activation.DataSource) src));
 				bp.setFileName(filename);
 				Multipart mp = new MimeMultipart();
 				mp.addBodyPart(bp);

@@ -5,6 +5,8 @@ import project.Event;
 import project.MatchSchedule;
 import project.Venue;
 
+import OptimalityCalculator.*;
+
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -121,7 +123,7 @@ public class TestDriver {
         }*/
 
         //File for Equipment
-        /*
+
         ArrayList<Equipment> eq = new ArrayList<Equipment>();
         ArrayList<Equipment> eqb = new ArrayList<Equipment>();
 
@@ -155,7 +157,7 @@ public class TestDriver {
             pr.add(new PRRelation(dummy[0],dummy[1],Integer.parseInt(dummy[2]),Double.parseDouble(dummy[3])));
         }
 
-        //File for Pace
+        /*//File for Pace
        ArrayList<Pace> pace = new ArrayList<Pace>();
         s1 = new Scanner(new File("ExcelFiles\\Pace.csv"));
 
@@ -194,7 +196,8 @@ public class TestDriver {
         e.opCalc(eq);
         Equipment f =new Equipment();
         f.opCalc(eqb);
-        
+        PRRelation relation = new PRRelation();
+        relation.opCalc(pr);
         // matchSchedule.sendMail();
 
         Simulation simulation1 = new Simulation(matchSchedule.getSchedule().peek());

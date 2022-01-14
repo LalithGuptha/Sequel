@@ -39,6 +39,12 @@ import java.io.Serializable;
             }
         }
 
+        @Override
+        public String toString() {
+            return
+                    "Rating:" + this.rating;
+        }
+
         public int hashCode() {
             return this.rating;
         }
