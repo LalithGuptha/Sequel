@@ -92,7 +92,10 @@ public class Rebound {
 	public void setVerticalVelocityOut(double verticalVelocityOut) {
 		this.verticalVelocityOut = verticalVelocityOut;
 	}
-	
+
+
+
+
 	// find() - fun def
 	
 }
