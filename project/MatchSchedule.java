@@ -102,8 +102,8 @@ public class MatchSchedule implements sendEmail {
 
 		public void schedule () throws FileNotFoundException {
 			Duration diff = Duration.between(startdate.atStartOfDay(),enddate.atStartOfDay());
-			long diffdays = diff.toDays();
-			double perday =  Math.ceil(56/10);
+			long diffdays = diff.toDays()-6;
+			double perday =  Math.ceil((double)(56) / (double) (diffdays) );
 			System.out.println(perday);
 			if(perday==0)
 				perday++;
@@ -172,7 +172,7 @@ public class MatchSchedule implements sendEmail {
 		//Files
 		final String COMMA_DELIMITER = ",";
 		final String NEWLINE = "\n";
-		final String FILE_HEADER = "MatchNumber,Date,Team1,Team2,Venue";
+		final String FILE_HEADER = "MatchNumber, Date, Team1, Team2, Venue";
 		FileWriter filewriter = null;
 
 		public void write() {
