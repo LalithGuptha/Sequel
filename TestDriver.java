@@ -15,6 +15,7 @@ import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 
@@ -214,11 +215,18 @@ public class TestDriver {
         f.opCalc(eqb);
         Simulation simulation;
         int i =1;
+
         while(!matchSchedule.getSchedule().isEmpty())
         {
             System.out.println(i++);
             simulation = new Simulation(matchSchedule.getSchedule().peek());
-            System.out.println(simulation.play().getTeamName());
+            Team winner  = simulation.play();
+            if(!Objects.isNull(winner)){
+                System.out.println(winner.getTeamName());
+            }
+            else if(!Objects.isNull(winner)){
+                System.out.println("Match is draw");
+            }
             matchSchedule.getSchedule().remove();
         }
 

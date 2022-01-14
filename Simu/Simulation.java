@@ -775,7 +775,9 @@ public class Simulation {
     else if(score.get(1)> score.get(0)){
         return t2;
     }
+    else {
        return null;
+    }
     }
 }
 

@@ -1,49 +1,83 @@
 package Simu;
 
-import java.util.ArrayList;
-
 public class PointsTable {
-    private ArrayList<Team> team;
-    private ArrayList<Integer> position, played, won, lost, netRunRate;
+    private Team team;
+    private int position, points, played, won, lost, netRunRate;
 
-    public PointsTable(ArrayList<Team> team, ArrayList<Integer> position, ArrayList<Integer> played, ArrayList<Integer> won, ArrayList<Integer> lost, ArrayList<Integer> netRunRate) {
-        this.team = team;
-        this.position = position;
-        this.played = played;
-        this.won = won;
-        this.lost = lost;
-        this.netRunRate = netRunRate;
+    public PointsTable(Team team, int position, int points, int played, int won, int lost, int netRunRate) {
+        setTeam(team);
+        setPosition(position);
+        setPlayed(played);
+        setPoints(points);
+        setWon(won);
+        setLost(lost);
+        setNetRunRate(netRunRate);
     }
 
-    public ArrayList<Team> getTeam() {
+    public PointsTable(Team team) {
+        setTeam(team);
+        setPosition(0);
+        setPoints(0);
+        setPlayed(0);
+        setWon(0);
+        setLost(0);
+        setNetRunRate(0);
+    }
+
+    public Team getTeam() {
         return team;
     }
 
-    public void setTeam(ArrayList<Team> team) {
+    public void setTeam(Team team) {
         this.team = team;
     }
 
-    public ArrayList<Integer> getPosition() {
+    public int getPosition() {
         return position;
     }
 
-    public void setPosition(ArrayList<Integer> position) {
+    public void setPosition(int position) {
         this.position = position;
     }
 
-    public ArrayList<Integer> getPlayed() {
+    public int getPlayed() {
         return played;
     }
 
-    public void setPlayed(ArrayList<Integer> played) {
+    public void setPlayed(int played) {
         this.played = played;
     }
 
-    public ArrayList<Integer> getNetRunRate() {
+    public int getWon() {
+        return won;
+    }
+
+    public void setWon(int won) {
+        this.won = won;
+    }
+
+    public int getLost() {
+        return lost;
+    }
+
+    public void setLost(int lost) {
+        this.lost = lost;
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
+    }
+
+    public int getNetRunRate() {
         return netRunRate;
     }
 
-    public void setNetRunRate(ArrayList<Integer> netRunRate) {
+    public void setNetRunRate(int netRunRate) {
         this.netRunRate = netRunRate;
     }
+
 }
