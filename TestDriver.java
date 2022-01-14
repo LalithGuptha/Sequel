@@ -183,6 +183,11 @@ public class TestDriver {
         matchSchedule.schedule();
         matchSchedule.write();
         System.out.println(matchSchedule.getSchedule().size());
+
+        Sponsor s = new Sponsor();
+        s.opCalc(sp);
+        Equipment e = new Equipment();
+        e.opCalc(eq);
         // matchSchedule.sendMail();
 
         //Simulation simulation1 = new Simulation(matchSchedule.getSchedule().peek());
