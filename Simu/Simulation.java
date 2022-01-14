@@ -446,7 +446,7 @@ public class Simulation {
                 setTeam1batsman();
                 setTeam1bowler();
                 setTeam2bowler();
-                while(ballsbowled.get(1)<120 && wickets.get(0)<10) {
+                while(ballsbowled.get(1)<120 && wickets.get(0)<10 && score.get(0)<=score.get(1)) {
                     int a = bat();
                     int b = bowl();
                     if (a == b) {
