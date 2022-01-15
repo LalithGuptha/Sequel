@@ -284,6 +284,32 @@ public class TestDriver extends Thread {
             q[j].start();
         }
 
+        ArrayList<Team> Qualified = new ArrayList<>();
+        for(i=0;i<4;i++)
+        {
+            Qualified.add(i,table.get(i).getTeam());
+        }
+        System.out.println(Qualified);
+        matchSchedule.Qualifierschedule(Qualified);
+        System.out.println(matchSchedule.getSchedule());
+
+        ArrayList<Team> Finalist =new ArrayList<>();
+        int j=1;
+        while (!matchSchedule.getSchedule().isEmpty()) {
+            System.out.println(teams.size()*(teams.size()-1)+j);
+            simulation = new Simulation(matchSchedule.getSchedule().peek());
+            winlose = simulation.play();
+            Finalist.add(winlose.get(0));
+            matchSchedule.getSchedule().remove();
+            j++;
+        }
+
+        matchSchedule.Qualifierschedule(Finalist);
+        simulation =new Simulation(Finalist.get(0),Finalist.get(1));
+        winlose= simulation.play();
+        System.out.println("Final Winner is:"+winlose.get(0).getTeamName());
+
+
 
 
 

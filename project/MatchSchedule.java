@@ -27,6 +27,9 @@ public class MatchSchedule implements sendEmail {
 	private Queue<Match> schedule = new LinkedList<>();
 
 
+	private long nowadd;
+
+
 
 	public MatchSchedule(int noOfTeams, LocalDate startdate, LocalDate enddate, ArrayList<Team> teams, ArrayList<Venue> venues) {
 		this.noOfTeams = noOfTeams;
@@ -155,6 +158,7 @@ public class MatchSchedule implements sendEmail {
 						if( matchCount%perday==0)
 							add++;
 					}
+					nowadd=add;
 
 
 				}
@@ -235,10 +239,20 @@ public class MatchSchedule implements sendEmail {
 				e.printStackTrace();
 			}
 		}
+		int matchnonow=57;
 
+		public void Qualifierschedule(ArrayList<Team> Qualifier)
+		{
+			nowadd=nowadd+2;
+			for(int i=0;i<=Qualifier.size()/2;i=i+2)
+			{
+				schedule.add(new Match(matchnonow,startdate.plusDays(nowadd),Qualifier.get(i),Qualifier.get(i+1),Qualifier.get(i).getVenue()));
+				matchnonow++;
+				nowadd=nowadd+2;
+			}
+		}
 
 // sendMail();
-// organiseeliminators() - ask renga
 
 
 	}

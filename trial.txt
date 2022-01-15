@@ -27,31 +27,31 @@ MatchNumber:25, Date:2021-12-25, Teams:Chennai Super Kings vs Mumbai Indians, Ve
 MatchNumber:26, Date:2021-12-26, Teams:Royal Challengers Bangalore vs Rajasthan Royals, Venue:Bengaluru
 MatchNumber:27, Date:2021-12-26, Teams:Sunrisers Hyderabad vs Kolkata Knight Riders, Venue:Hyderabad
 MatchNumber:28, Date:2021-12-27, Teams:Delhi Daredevils vs Kings XI Punjab, Venue:Delhi
-MatchNumber:29, Date:2021-12-27, Teams:Rajasthan Royals vs Mumbai Indians, Venue:Mumbai
-MatchNumber:30, Date:2021-12-28, Teams:Royal Challengers Bangalore vs Chennai Super Kings, Venue:Jaipur
+MatchNumber:29, Date:2021-12-27, Teams:Mumbai Indians vs Chennai Super Kings, Venue:Mumbai
+MatchNumber:30, Date:2021-12-28, Teams:Royal Challengers Bangalore vs Rajasthan Royals, Venue:Jaipur
 MatchNumber:31, Date:2021-12-28, Teams:Sunrisers Hyderabad vs Kolkata Knight Riders, Venue:Kolkata
 MatchNumber:32, Date:2021-12-29, Teams:Delhi Daredevils vs Kings XI Punjab, Venue:Chandigarh
-MatchNumber:33, Date:2021-12-29, Teams:Rajasthan Royals vs Chennai Super Kings, Venue:Jaipur
-MatchNumber:34, Date:2021-12-30, Teams:Mumbai Indians vs Kolkata Knight Riders, Venue:Kolkata
+MatchNumber:33, Date:2021-12-29, Teams:Mumbai Indians vs Rajasthan Royals, Venue:Jaipur
+MatchNumber:34, Date:2021-12-30, Teams:Chennai Super Kings vs Kolkata Knight Riders, Venue:Kolkata
 MatchNumber:35, Date:2021-12-30, Teams:Royal Challengers Bangalore vs Kings XI Punjab, Venue:Chandigarh
 MatchNumber:36, Date:2021-12-31, Teams:Sunrisers Hyderabad vs Delhi Daredevils, Venue:Delhi
-MatchNumber:37, Date:2021-12-31, Teams:Rajasthan Royals vs Kolkata Knight Riders, Venue:Kolkata
-MatchNumber:38, Date:2022-01-01, Teams:Chennai Super Kings vs Kings XI Punjab, Venue:Chandigarh
-MatchNumber:39, Date:2022-01-01, Teams:Mumbai Indians vs Delhi Daredevils, Venue:Delhi
+MatchNumber:37, Date:2021-12-31, Teams:Mumbai Indians vs Kolkata Knight Riders, Venue:Kolkata
+MatchNumber:38, Date:2022-01-01, Teams:Rajasthan Royals vs Kings XI Punjab, Venue:Chandigarh
+MatchNumber:39, Date:2022-01-01, Teams:Chennai Super Kings vs Delhi Daredevils, Venue:Delhi
 MatchNumber:40, Date:2022-01-02, Teams:Royal Challengers Bangalore vs Sunrisers Hyderabad, Venue:Hyderabad
-MatchNumber:41, Date:2022-01-02, Teams:Rajasthan Royals vs Kings XI Punjab, Venue:Chandigarh
+MatchNumber:41, Date:2022-01-02, Teams:Mumbai Indians vs Kings XI Punjab, Venue:Chandigarh
 MatchNumber:42, Date:2022-01-03, Teams:Kolkata Knight Riders vs Delhi Daredevils, Venue:Delhi
-MatchNumber:43, Date:2022-01-03, Teams:Chennai Super Kings vs Sunrisers Hyderabad, Venue:Hyderabad
-MatchNumber:44, Date:2022-01-04, Teams:Mumbai Indians vs Royal Challengers Bangalore, Venue:Bengaluru
-MatchNumber:45, Date:2022-01-04, Teams:Rajasthan Royals vs Delhi Daredevils, Venue:Delhi
+MatchNumber:43, Date:2022-01-03, Teams:Rajasthan Royals vs Sunrisers Hyderabad, Venue:Hyderabad
+MatchNumber:44, Date:2022-01-04, Teams:Chennai Super Kings vs Royal Challengers Bangalore, Venue:Bengaluru
+MatchNumber:45, Date:2022-01-04, Teams:Mumbai Indians vs Delhi Daredevils, Venue:Delhi
 MatchNumber:46, Date:2022-01-05, Teams:Kings XI Punjab vs Sunrisers Hyderabad, Venue:Hyderabad
 MatchNumber:47, Date:2022-01-05, Teams:Kolkata Knight Riders vs Royal Challengers Bangalore, Venue:Bengaluru
-MatchNumber:48, Date:2022-01-06, Teams:Chennai Super Kings vs Mumbai Indians, Venue:Mumbai
-MatchNumber:49, Date:2022-01-06, Teams:Rajasthan Royals vs Sunrisers Hyderabad, Venue:Hyderabad
+MatchNumber:48, Date:2022-01-06, Teams:Rajasthan Royals vs Chennai Super Kings, Venue:Mumbai
+MatchNumber:49, Date:2022-01-06, Teams:Mumbai Indians vs Sunrisers Hyderabad, Venue:Hyderabad
 MatchNumber:50, Date:2022-01-07, Teams:Delhi Daredevils vs Royal Challengers Bangalore, Venue:Bengaluru
-MatchNumber:51, Date:2022-01-07, Teams:Kings XI Punjab vs Mumbai Indians, Venue:Mumbai
-MatchNumber:52, Date:2022-01-08, Teams:Kolkata Knight Riders vs Chennai Super Kings, Venue:Jaipur
-MatchNumber:53, Date:2022-01-08, Teams:Rajasthan Royals vs Royal Challengers Bangalore, Venue:Bengaluru
-MatchNumber:54, Date:2022-01-09, Teams:Sunrisers Hyderabad vs Mumbai Indians, Venue:Mumbai
-MatchNumber:55, Date:2022-01-09, Teams:Delhi Daredevils vs Chennai Super Kings, Venue:Jaipur
+MatchNumber:51, Date:2022-01-07, Teams:Kings XI Punjab vs Chennai Super Kings, Venue:Mumbai
+MatchNumber:52, Date:2022-01-08, Teams:Kolkata Knight Riders vs Rajasthan Royals, Venue:Jaipur
+MatchNumber:53, Date:2022-01-08, Teams:Mumbai Indians vs Royal Challengers Bangalore, Venue:Bengaluru
+MatchNumber:54, Date:2022-01-09, Teams:Sunrisers Hyderabad vs Chennai Super Kings, Venue:Mumbai
+MatchNumber:55, Date:2022-01-09, Teams:Delhi Daredevils vs Rajasthan Royals, Venue:Jaipur
 MatchNumber:56, Date:2022-01-10, Teams:Kings XI Punjab vs Kolkata Knight Riders, Venue:Kolkata
