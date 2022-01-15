@@ -3,30 +3,28 @@ package OptimalityCalculator;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+
 public class Equipment {
-     private String name;
-     private String brand;
-     private String type;
-     private double price;
-     private double qualityPercent;
+    private String name;
+    private String brand;
+    private String type;
+    private double price;
+    private double qualityPercent;
 
 
+    public Equipment(String name, String brand, String type, double price, double qualityPercent) {
+        this.name = name;
+        this.brand = brand;
+        this.type = type;
+        this.price = price;
+        this.qualityPercent = qualityPercent;
+    }
 
-        public Equipment(String name, String brand, String type,double price, double qualityPercent)
-        {
-            this.name=name;
-            this.brand=brand;
-            this.type=type;
-            this.price=price;
-            this.qualityPercent=qualityPercent;
-        }
+    public Equipment() {
 
-        public Equipment()
-        {
+    }
 
-        }
-
-     public String getName() {
+    public String getName() {
         return name;
     }
 
@@ -66,11 +64,10 @@ public class Equipment {
         this.qualityPercent = qualityPercent;
     }
 
-
     public void opCalc(ArrayList<Equipment> equipment) {
         double cs = 0, cavg = 0;
         double rs = 0, ravg = 0;
-        //
+
         for (int i = 0; i < equipment.size(); i++) {
             cs = cs + equipment.get(i).getPrice();
             rs = rs + equipment.get(i).getQualityPercent();
@@ -87,18 +84,19 @@ public class Equipment {
 
         best.sort(Comparator.comparing(Equipment::getPrice).thenComparing(Equipment::getQualityPercent));
         System.out.println(best.get(0));
-    };
+    }
 
-    @Override
+    ;
+
     public String toString() {
         return
                 "Equipment Name:'" + name + '\'' +
-                ", Brand:'" + brand + '\'' +
-                ", Type:'" + type + '\'' +
-                ", Price:" + price +
-                ", QualityPercent:" + qualityPercent +
-                '}';
+                        ", Brand:'" + brand + '\'' +
+                        ", Type:'" + type + '\'' +
+                        ", Price:" + price +
+                        ", QualityPercent:" + qualityPercent +
+                        '}';
     }
 
-    //call send mail()
+
 }

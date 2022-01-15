@@ -6,13 +6,11 @@ public class Venue {
 	private int capacity;
 	private String location;
 
-
 	public Venue(String venueName, int capacity, String location) {
 		this.venueName = venueName;
 		this.capacity = capacity;
 		this.location = location;
 	}
-
 
 	public String getVenueName() {
 		if(venueName.equals(null))
@@ -22,38 +20,29 @@ public class Venue {
 		}
 	}
 
-
 	public void setVenueName(String venueName) {
 		this.venueName = venueName;
 	}
-
 
 	public int getCapacity() {
 		return capacity;
 	}
 
-
 	public void setCapacity(int capacity) {
 		this.capacity = capacity;
 	}
-
 
 	public String getLocation() {
 		return location;
 	}
 
-
 	public void setLocation(String location) {
 		this.location = location;
 	}
 
-
-	@Override
 	public String toString() {
-		return "Venue{" +
-				"venueName='" + venueName + '\'' +
-				", capacity=" + capacity +
-				", location='" + location + '\'' +
-				'}';
+		return "VenueName:'" + venueName + '\'' +
+				", Capacity:" + capacity +
+				", Location:'" + location + '\'';
 	}
 }

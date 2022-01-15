@@ -7,8 +7,8 @@ public class PRRelation {
     private String name;
     private String firm;
     public int Rating;
-
     private double experience;
+
 
     public String getName() {
         return name;
@@ -48,11 +48,9 @@ public class PRRelation {
         this.Rating = r;
         this.experience = experience;
     }
-    public PRRelation() {
+    public PRRelation() {}
 
-    }
-
-        public void opCalc(ArrayList <PRRelation> pr) {
+    public void opCalc(ArrayList <PRRelation> pr) {
             double cs = 0, cavg = 0;
             int rs = 0, ravg = 0;
             for (int i = 0; i < pr.size(); i++) {
@@ -73,7 +71,7 @@ public class PRRelation {
             System.out.println(best.get(0));
         }
 
-    @Override
+
     public String toString() {
         return
                 "Manager Name:" + name + " " +
