@@ -216,10 +216,8 @@ public class TestDriver extends Thread {
         while (!matchSchedule.getSchedule().isEmpty()) {
             System.out.println(i++);
             simulation = new Simulation(matchSchedule.getSchedule().peek());
-            winlose.add(0,simulation.getT1());
-            winlose.add(1,simulation.getT2());
-            System.out.println(simulation.play().get(0).getTeamName());
-            if(simulation.play().get(0).getTeamName().equals(winlose.get(0).getTeamName()))
+            winlose = simulation.play();
+            if(winlose.get(0).getTeamName().equals(winlose.get(0).getTeamName()))
             {
                 indexlost=1;
                 indexwon1=0;
@@ -230,7 +228,7 @@ public class TestDriver extends Thread {
             }
             for(int m=0;m<table.size();m++)
             {
-                if (simulation.play().get(0).getTeamName().equals(table.get(m).getTeam().getTeamName())) {
+                if (winlose.get(0).getTeamName().equals(table.get(m).getTeam().getTeamName())) {
                     index = m;
                 }
             }
@@ -252,8 +250,6 @@ public class TestDriver extends Thread {
             update.points(table);
             winlose.remove(1);
             winlose.remove(0);
-
-
             matchSchedule.getSchedule().remove();
         }
         System.out.println(table);

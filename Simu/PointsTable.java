@@ -107,12 +107,13 @@ public class PointsTable {
     @Override
     public String toString() {
         return "PointsTable:" +
-                "Team:" + team +
+                "Team:" + team.getTeamName() +
                 ", Position=" + position +
                 ", Points=" + points +
                 ", Played=" + played +
                 ", Won=" + won +
                 ", Lost=" + lost +
-                ", NetRunRate=" + String.format("%.2f",netRunRate);
+                ", NetRunRate=" + String.format("%.2f",netRunRate)
+                + "\n ";
     }
 }
