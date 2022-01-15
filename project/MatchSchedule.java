@@ -120,6 +120,7 @@ public class MatchSchedule implements sendEmail {
 					nowadd=add;
 				}
 			}
+			//Entire Schedule Duration
 			System.out.println(diffdays);
 	}
 	int matchnonow=57;
