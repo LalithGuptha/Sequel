@@ -213,6 +213,8 @@ public class TestDriver extends Thread {
         int i = 1, index = 0,indexlost,indexlost1=-1,indexwon1=-1;
         PointsTable update = new PointsTable();
         ArrayList<Team> winlose = new ArrayList<>();
+
+
         while (!matchSchedule.getSchedule().isEmpty()) {
             System.out.println(i++);
             simulation = new Simulation(matchSchedule.getSchedule().peek());
@@ -305,15 +307,9 @@ public class TestDriver extends Thread {
         }
 
         matchSchedule.Qualifierschedule(Finalist);
-        simulation =new Simulation(Finalist.get(0),Finalist.get(1));
+        simulation =new Simulation(Finalist.get(0),Finalist.get(1), end.toString());
         winlose= simulation.play();
         System.out.println("Final Winner is:"+winlose.get(0).getTeamName());
-
-
-
-
-
-
 
     }
 }

@@ -183,7 +183,7 @@ public class MatchSchedule implements sendEmail {
 
 			try {
 				filewriter = new FileWriter("trial.txt");
-				filewriter.append(FILE_HEADER.toString());
+				filewriter.append(FILE_HEADER);
 				filewriter.append(NEWLINE);
 				ListIterator new_list = (ListIterator) schedule.iterator();
 				while (new_list.hasNext()) {
@@ -222,7 +222,7 @@ public class MatchSchedule implements sendEmail {
 				BodyPart bp = new MimeBodyPart();
 				BodyPart bp1 = new MimeBodyPart();
 				bp1.setText("Checking email");
-				String filename = "C:\\Users\\ADMIN\\Sequel\\trial.txt";
+				String filename = "trial.txt";
 				DataSource src = (DataSource) new FileDataSource(filename);
 				bp.setDataHandler(new DataHandler((javax.activation.DataSource) src));
 				bp.setFileName(filename);

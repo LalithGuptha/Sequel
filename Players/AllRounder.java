@@ -2,8 +2,8 @@ package Players;
 
 public class AllRounder extends Player implements Salary{
 
-    private int runsconceded, ballsbowled, wicketstaken, oversbowled, economy, maiden;
-    private int runsscored, inningsplayed, notout, ballsfaced, noof4, noof6;
+    private int runsconceded, ballsbowled, wicketstaken, oversbowled, economy, maiden, runsscored, inningsplayed, notout, ballsfaced, noof4, noof6;
+
 
     public int getRunsconceded() {
         return runsconceded;
@@ -101,7 +101,6 @@ public class AllRounder extends Player implements Salary{
 
     @Override
     public void calcSalary() {
-        System.out.println("Salary is ");
 
     }
 }
