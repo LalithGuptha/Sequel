@@ -5,6 +5,7 @@ import PitchAnalysis.Pace;
 import PitchAnalysis.Pitch;
 import PitchAnalysis.Rebound;
 import Players.Player;
+import Simu.PointsTable;
 import Simu.Simulation;
 import Simu.Team;
 import project.Event;
@@ -169,12 +170,12 @@ public class TestDriver extends Thread {
         }
 
 
-        System.out.println(pitches.get(1).toString());
+        // System.out.println(pitches.get(1).toString());
         // System.out.println(pr.get(2));
         //System.out.println(pace.get(4));
 
         System.out.println(dd.getPlayers().get(10).getPlayerName());
-        System.out.println(teams);
+        // System.out.println(teams);
         String d1, d2;
         LocalDate start, end;
         s1 = new Scanner(new File("ExcelFiles//dates.txt"));
@@ -195,14 +196,58 @@ public class TestDriver extends Thread {
         Equipment f = new Equipment();
         f.opCalc(eqb);
         Simulation simulation;
-        int i = 1;
+        ArrayList<PointsTable> table = new ArrayList<PointsTable>();
+        table.add(0, new PointsTable(csk));
+        table.add(1, new PointsTable(mi));
+        table.add(2, new PointsTable(rcb));
+        table.add(3, new PointsTable(srh));
+        table.add(4, new PointsTable(rr));
+        table.add(5, new PointsTable(kkr));
+        table.add(6, new PointsTable(kxip));
+        table.add(7, new PointsTable(dd));
+
+
+        System.out.println(table);
+
+
+        int i = 1, index = 0,indexlost=0;
+        ArrayList<Team> winlose = new ArrayList<>();
+        //winlose.add(0,csk);
+        //winlose.add(1,mi);
         while (!matchSchedule.getSchedule().isEmpty()) {
             System.out.println(i++);
             simulation = new Simulation(matchSchedule.getSchedule().peek());
+            winlose.add(0,simulation.getT1());
+            winlose.add(1,simulation.getT2());
             System.out.println(simulation.play().getTeamName());
+            for(int m=0;m<table.size();m++)
+            {
+                if (simulation.play().getTeamName().equals(table.get(m).getTeam().getTeamName())) {
+                    index = m;
+                }
+            }
+            if(simulation.play().getTeamName().equals(winlose.get(0).getTeamName()))
+            {
+                indexlost=1;
+            }
+            else
+                indexlost=0;
+
+            table.get(index).incwon();
+            table.get(index).incpoints();
+            table.get(index).incplayed();
+            table.get(index).incnrr(simulation.getTeam1Score() / simulation.getTeam2Score());
+            table.get(indexlost).inclost();
+            table.get(indexlost).incplayed();
+            table.get(indexlost).decnrr(simulation.getTeam1Score()/simulation.getTeam2Score());
+            winlose.remove(1);
+            winlose.remove(0);
+
             matchSchedule.getSchedule().remove();
         }
-
+        System.out.println(table);
+        /*
+        //Working...but in comments to avoid clash
         Thread t[] = new Thread[rebound.size()];
         Thread k[] = new Thread[pace.size()];
         Thread q[] = new Thread[pitches.size()];
@@ -231,7 +276,7 @@ public class TestDriver extends Thread {
         for (int j = 0; j < pitches.size(); j++) {
             q[j].start();
         }
-
+        */
 
 
 

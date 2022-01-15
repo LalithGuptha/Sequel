@@ -23,6 +23,10 @@ public class PointsTable {
         setLost(0);
         setNetRunRate(0);
     }
+    public PointsTable()
+    {
+
+    }
 
     public Team getTeam() {
         return team;
@@ -80,4 +84,24 @@ public class PointsTable {
         this.netRunRate = netRunRate;
     }
 
+    public void incwon(){ this.won++; }
+    public void inclost(){ this.lost++;}
+    public void incpoints(){ this.points = this.points+2;}
+    public void incplayed(){ this.played++;}
+    public void incnrr(int nrr){ this.netRunRate = this.netRunRate + nrr ;}
+    public void decnrr(int nrr){ this.netRunRate= this.netRunRate- nrr;}
+
+
+    @Override
+    public String toString() {
+        return "PointsTable{" +
+                "team=" + team +
+                ", position=" + position +
+                ", points=" + points +
+                ", played=" + played +
+                ", won=" + won +
+                ", lost=" + lost +
+                ", netRunRate=" + netRunRate +
+                '}';
+    }
 }
