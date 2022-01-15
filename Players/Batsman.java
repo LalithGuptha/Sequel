@@ -1,8 +1,13 @@
 package Players;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class Batsman extends Player implements Salary{
 
     private int runsscored, inningsplayed, ballsfaced, noof4, noof6;
+    private double salary;
 
     public Batsman(Player player) {
         super(player.getPlayerName(), player.getRole(), player.getTeamName());
@@ -46,7 +51,19 @@ public class Batsman extends Player implements Salary{
     public void setNoof6(int noof6) {this.noof6 = noof6;}
 
     @Override
-    public void calcSalary() {
+    public void getSalary() throws IOException {
 
+        salary = BASIC_PAY + getRunsscored()*10 + getNoof6()*6+ getNoof4()*4;
+        write();
+
+    }
+
+    @Override
+    public void write() throws IOException {
+        String s = this.getPlayerName()+".txt";
+        File file = new File(s);
+        FileWriter fileWriter = new FileWriter(file, true);
+        fileWriter.append("Salary of the player is "+ Double.toString(salary)+ "\n");
+        fileWriter.close();
     }
 }

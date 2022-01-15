@@ -2,13 +2,10 @@ package Players;
 
 import Simu.Team;
 
-import java.util.ArrayList;
-
 public class Player {
     private String playerName;
     private Team teamName;
     private String role;
-    private ArrayList<Integer> salary;
 
     public Player(String playerName, String role, Team teamName) {
         setPlayerName(playerName);
@@ -49,14 +46,5 @@ public class Player {
         this.role = role;
     }
 
-    public ArrayList<Integer> getSalary() {
-
-        return salary;
-    }
-
-    public void setSalary(ArrayList<Integer> salary) {
-
-        this.salary = salary;
-    }
 
 }
