@@ -90,7 +90,7 @@ public class PointsTable {
 
     public void incwon(){ this.won++; }
     public void inclost(){ this.lost++;}
-    public void incpoints(){ this.points = this.points+2;}
+    public void incpoints(int a){ this.points = this.points+a;}
     public void incplayed(){ this.played++;}
     public void incnrr(double nrr){ this.netRunRate = this.netRunRate + nrr ;}
     public void decnrr(double nrr){ this.netRunRate= Math.round(this.netRunRate- nrr);}

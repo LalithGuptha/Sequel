@@ -25,9 +25,11 @@ public class TestDriver extends Thread {
         Venue chennai, mumbai, bengaluru, hyderabad, jaipur, kolkata, chandigarh, delhi;
         Team csk, mi, rcb, srh, rr, kkr, kxip, dd;
 
+        // File for Event
         Scanner s1 = new Scanner(new File("ExcelFiles//event.txt"));
         Event e1 = new Event(s1.nextLine(), s1.nextLine(), s1.nextLong());
 
+        // File for Venue
         s1 = new Scanner(new File("ExcelFiles//Venue.csv"));
         String[] dummy;
         ArrayList<Venue> venues = new ArrayList<>();
@@ -56,6 +58,7 @@ public class TestDriver extends Thread {
         delhi = new Venue(dummy[2], Integer.parseInt(dummy[1]), dummy[0]);
         venues.add(delhi);
 
+        // File for Teams
         s1 = new Scanner(new File("ExcelFiles//team.csv"));
         csk = new Team(s1.nextLine(), chennai);
         mi = new Team(s1.nextLine(), mumbai);
@@ -74,6 +77,8 @@ public class TestDriver extends Thread {
         teams.add(kkr);
         teams.add(kxip);
         teams.add(dd);
+
+        // File for Players
         s1 = new Scanner(new File("ExcelFiles//player.csv"));
         ArrayList<Player> players = new ArrayList<>();
         while (s1.hasNext()) {
@@ -110,10 +115,10 @@ public class TestDriver extends Thread {
             }
 
         }
+
         // File for Pitch
         ArrayList<Pitch> pitches = new ArrayList<Pitch>();
         s1 = new Scanner(new File("ExcelFiles\\pitch.csv"));
-
         while (s1.hasNext()) {
             dummy = (s1.nextLine()).split(",", 0);
             pitches.add(new Pitch(Double.parseDouble(dummy[0]), dummy[1], dummy[2], Double.parseDouble(dummy[3]), Double.parseDouble(dummy[4])));
@@ -167,25 +172,21 @@ public class TestDriver extends Thread {
             pr.add(new PRRelation(dummy[0], dummy[1], Integer.parseInt(dummy[2]), Double.parseDouble(dummy[3])));
         }
 
-
-        // System.out.println(pitches.get(1).toString());
-        // System.out.println(pr.get(2));
-        //System.out.println(pace.get(4));
-
-        // System.out.println(dd.getPlayers().get(10).getPlayerName());
-        // System.out.println(teams);
+        // File for Date
         String d1, d2;
         LocalDate start, end;
         s1 = new Scanner(new File("ExcelFiles//dates.txt"));
-
         start = LocalDate.parse(s1.nextLine());
         end = LocalDate.parse(s1.nextLine());
 
+        //Preparing Match Schedule
 
         MatchSchedule matchSchedule = new MatchSchedule(teams.size(), start, end, teams, venues);
         matchSchedule.schedule();
         matchSchedule.write();
         System.out.println(matchSchedule.getSchedule().size());
+
+        //Finding Optimal Sponsor,Equipment,PRRelation
 
         Sponsor s = new Sponsor();
         s.opCalc(sp);
@@ -193,68 +194,9 @@ public class TestDriver extends Thread {
         e.opCalc(eq);
         Equipment f = new Equipment();
         f.opCalc(eqb);
-        Simulation simulation;
-        ArrayList<PointsTable> table = new ArrayList<PointsTable>();
-        table.add(0, new PointsTable(csk));
-        table.add(1, new PointsTable(mi));
-        table.add(2, new PointsTable(rcb));
-        table.add(3, new PointsTable(srh));
-        table.add(4, new PointsTable(rr));
-        table.add(5, new PointsTable(kkr));
-        table.add(6, new PointsTable(kxip));
-        table.add(7, new PointsTable(dd));
 
+        //Pitch Analysis - Pitch Type, Pace, Rebound
 
-        System.out.println(table);
-
-
-        int i = 1, index = 0,indexlost,indexlost1=-1,indexwon1=-1;
-        PointsTable update = new PointsTable();
-        ArrayList<Team> winlose = new ArrayList<>();
-
-
-        while (!matchSchedule.getSchedule().isEmpty()) {
-            System.out.println(i++);
-            simulation = new Simulation(matchSchedule.getSchedule().peek());
-            winlose = simulation.play();
-            if(winlose.get(0).getTeamName().equals(winlose.get(0).getTeamName()))
-            {
-                indexlost=1;
-                indexwon1=0;
-            }
-            else {
-                indexlost = 0;
-                indexwon1 = 1;
-            }
-            for(int m=0;m<table.size();m++)
-            {
-                if (winlose.get(0).getTeamName().equals(table.get(m).getTeam().getTeamName())) {
-                    index = m;
-                }
-            }
-            for(int m=0;m<table.size();m++)
-            {
-                if (winlose.get(indexlost).getTeamName().equals(table.get(m).getTeam().getTeamName())) {
-                    indexlost1 = m;
-                    break;
-                }
-            }
-
-            table.get(index).incwon();
-            table.get(index).incpoints();
-            table.get(index).incplayed();
-            table.get(index).incnrr((double)simulation.getTeam1Score()/(double)simulation.getBallsbowled().get(indexwon1) - (double)simulation.getTeam2Score()/(double)simulation.getBallsbowled().get(indexlost));
-            table.get(indexlost1).inclost();
-            table.get(indexlost1).incplayed();
-            table.get(indexlost1).decnrr((double)simulation.getTeam1Score()/(double)simulation.getBallsbowled().get(indexwon1) - (double)simulation.getTeam2Score()/(double)simulation.getBallsbowled().get(indexlost));
-            update.points(table);
-            winlose.remove(1);
-            winlose.remove(0);
-            matchSchedule.getSchedule().remove();
-        }
-        System.out.println(table);
-
-        //Working...but in comments to avoid clash
         Thread t[] = new Thread[rebound.size()];
         Thread k[] = new Thread[pace.size()];
         Thread q[] = new Thread[pitches.size()];
@@ -284,6 +226,83 @@ public class TestDriver extends Thread {
             q[j].start();
         }
 
+        //Points Table
+        Simulation simulation;
+        ArrayList<PointsTable> table = new ArrayList<PointsTable>();
+        table.add(0, new PointsTable(csk));
+        table.add(1, new PointsTable(mi));
+        table.add(2, new PointsTable(rcb));
+        table.add(3, new PointsTable(srh));
+        table.add(4, new PointsTable(rr));
+        table.add(5, new PointsTable(kkr));
+        table.add(6, new PointsTable(kxip));
+        table.add(7, new PointsTable(dd));
+        System.out.println(table);
+
+
+        //Simulation of Matches
+
+        int i = 1, index = 0,indexlost=0,indexlost1=-1,indexwon1=-1;
+        PointsTable update = new PointsTable();
+        ArrayList<Team> winlose = new ArrayList<>();
+        while (!matchSchedule.getSchedule().isEmpty()) {
+            System.out.println(i++);
+            simulation = new Simulation(matchSchedule.getSchedule().peek());
+            winlose = simulation.play();
+            if(winlose.get(0).getTeamName().equals(matchSchedule.getSchedule().peek().getTeams().get(0).getTeamName()) && !(winlose.get(0).equals(winlose.get(1))))
+            {
+                indexlost=1;
+                indexwon1=0;
+            }
+            else{
+                indexlost = 0;
+                indexwon1 = 1;
+            }
+            for(int m=0;m<table.size();m++)
+            {
+                if (winlose.get(indexwon1).getTeamName().equals(table.get(m).getTeam().getTeamName())) {
+                    index = m;
+                }
+            }
+            for(int m=0;m<table.size();m++)
+            {
+                if (winlose.get(indexlost).getTeamName().equals(table.get(m).getTeam().getTeamName())) {
+                    indexlost1 = m;
+                    break;
+                }
+            }
+
+            if(simulation.getTeam1Score() == simulation.getTeam2Score())
+            {
+                table.get(index).incpoints(1);
+                table.get(index).incplayed();
+                table.get(index).incnrr((double)simulation.getTeam1Score()/(double)simulation.getBallsbowled().get(indexwon1) - (double)simulation.getTeam2Score()/(double)simulation.getBallsbowled().get(indexlost));
+                table.get(indexlost1).incpoints(1);
+                table.get(indexlost1).incplayed();
+                table.get(indexlost1).decnrr((double)simulation.getTeam1Score()/(double)simulation.getBallsbowled().get(indexwon1) - (double)simulation.getTeam2Score()/(double)simulation.getBallsbowled().get(indexlost));
+                update.points(table);
+
+            }
+            //Updating Points Table after every Match
+            else {
+                table.get(index).incwon();
+                table.get(index).incpoints(2);
+                table.get(index).incplayed();
+                table.get(index).incnrr((double) simulation.getTeam1Score() / (double) simulation.getBallsbowled().get(indexwon1) - (double) simulation.getTeam2Score() / (double) simulation.getBallsbowled().get(indexlost));
+                table.get(indexlost1).inclost();
+                table.get(indexlost1).incplayed();
+                table.get(indexlost1).decnrr((double) simulation.getTeam1Score() / (double) simulation.getBallsbowled().get(indexwon1) - (double) simulation.getTeam2Score() / (double) simulation.getBallsbowled().get(indexlost));
+                update.points(table);
+
+            }
+            winlose.remove(1);
+            winlose.remove(0);
+            matchSchedule.getSchedule().remove();
+        }
+        System.out.println(table);
+
+        // Scheduling and Simulating Qualifiers
+
         ArrayList<Team> Qualified = new ArrayList<>();
         for(i=0;i<4;i++)
         {
@@ -292,6 +311,8 @@ public class TestDriver extends Thread {
         System.out.println(Qualified);
         matchSchedule.Qualifierschedule(Qualified);
         System.out.println(matchSchedule.getSchedule());
+
+        // Scheduling and Simulating Finals
 
         ArrayList<Team> Finalist =new ArrayList<>();
         int j=1;
@@ -307,7 +328,7 @@ public class TestDriver extends Thread {
         matchSchedule.Qualifierschedule(Finalist);
         simulation =new Simulation(Finalist.get(0),Finalist.get(1), end.toString());
         winlose= simulation.play();
-        System.out.println("Final Winner is:"+winlose.get(0).getTeamName());
+        System.out.println("Finalist of "+Event.getEventName()+":"+winlose.get(0).getTeamName());
 
     }
 }

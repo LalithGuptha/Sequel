@@ -48,7 +48,7 @@ public class Simulation {
     }
 
 
-    public void setTeam1batsman() {
+    public void setTeam1batsman() throws IOException {
         int i = 0, count =0;
         while (i < t1.getPlayers().size() && count<6) {
             if (t1.getPlayers().get(i).getRole().equals("Batsman") || t1.getPlayers().get(i).getRole().equals("Captain")) {
@@ -62,7 +62,7 @@ public class Simulation {
 
     }
 
-    public void setTeam2batsman() {
+    public void setTeam2batsman() throws IOException {
         int i = 0, count =0;
         while (i < t2.getPlayers().size() && count<6) {
             if (t2.getPlayers().get(i).getRole().equals("Batsman") || t2.getPlayers().get(i).getRole().equals("Captain") || t2.getPlayers().get(i).getRole().equals("All-Rounder") ) {
@@ -207,7 +207,7 @@ public class Simulation {
                         if ((ballsbowled.get(1) < 6) || (ballsbowled.get(1) >= 30 && ballsbowled.get(1) <= 35) || (ballsbowled.get(1) >= 60 && ballsbowled.get(1) <= 65) || (ballsbowled.get(1) >= 90 && ballsbowled.get(1) <= 95)) {
                             team2bowler.get(0).setWicketstaken(team2bowler.get(0).getWicketstaken() + 1);
                             if (!team1batsman.isEmpty()) {
-                                team1batsman.peek().getSalary();
+                                team1batsman.peek().calcSalary();
                                 write(team1batsman.peek().getPlayerName()+" total runs scored is " + team1batsman.peek().getRunsscored());
                                 write(team2bowler.get(0).getPlayerName()+" takes the wicket of "+ team1batsman.peek().getPlayerName());
                                 team1batsman.poll();
@@ -216,7 +216,7 @@ public class Simulation {
 
                             team2bowler.get(1).setWicketstaken(team2bowler.get(1).getWicketstaken() + 1);
                             if (!team1batsman.isEmpty()) {
-                                team1batsman.peek().getSalary();
+                                team1batsman.peek().calcSalary();
                                 write(team1batsman.peek().getPlayerName()+" total runs scored is " + team1batsman.peek().getRunsscored());
                                 write(team2bowler.get(1).getPlayerName()+" takes the wicket of "+ team1batsman.peek().getPlayerName());
                                 team1batsman.poll();
@@ -226,7 +226,7 @@ public class Simulation {
 
                             team2bowler.get(2).setWicketstaken(team2bowler.get(2).getWicketstaken() + 1);
                             if (!team1batsman.isEmpty()) {
-                                team1batsman.peek().getSalary();
+                                team1batsman.peek().calcSalary();
                                 write(team1batsman.peek().getPlayerName()+" total runs scored is " + team1batsman.peek().getRunsscored());
                                 write(team2bowler.get(2).getPlayerName()+" takes the wicket of "+ team1batsman.peek().getPlayerName());
                                 team1batsman.poll();
@@ -236,7 +236,7 @@ public class Simulation {
 
                             team2bowler.get(3).setWicketstaken(team2bowler.get(3).getWicketstaken() + 1);
                             if (!team1batsman.isEmpty()) {
-                                team1batsman.peek().getSalary();
+                                team1batsman.peek().calcSalary();
                                 write(team1batsman.peek().getPlayerName()+" total runs scored is " + team1batsman.peek().getRunsscored());
                                 write(team2bowler.get(3).getPlayerName()+" takes the wicket of "+ team1batsman.peek().getPlayerName());
                                 team1batsman.poll();
@@ -245,7 +245,7 @@ public class Simulation {
 
                             team2bowler.get(4).setWicketstaken(team2bowler.get(4).getWicketstaken() + 1);
                             if (!team1batsman.isEmpty()) {
-                                team1batsman.peek().getSalary();
+                                team1batsman.peek().calcSalary();
                                 write(team1batsman.peek().getPlayerName()+" total runs scored is " + team1batsman.peek().getRunsscored());
                                 write(team2bowler.get(4).getPlayerName()+" takes the wicket of "+ team1batsman.peek().getPlayerName());
                                 team1batsman.poll();
@@ -302,7 +302,7 @@ public class Simulation {
                         if ((ballsbowled.get(0) < 6) || (ballsbowled.get(0) >= 30 && ballsbowled.get(0) <= 35) || (ballsbowled.get(0) >= 60 && ballsbowled.get(0) <= 65) || (ballsbowled.get(0) >= 90 && ballsbowled.get(0) <= 95)) {
                             team1bowler.get(0).setWicketstaken(team1bowler.get(0).getWicketstaken() + 1);
                             if (!team2batsman.isEmpty()) {
-                                team2batsman.peek().getSalary();
+                                team2batsman.peek().calcSalary();
                                 write(team2batsman.peek().getPlayerName()+" total runs scored is " + team2batsman.peek().getRunsscored());
                                 write(team1bowler.get(0).getPlayerName()+" takes the wicket of "+ team2batsman.peek().getPlayerName());
                                 team2batsman.poll();
@@ -311,18 +311,18 @@ public class Simulation {
 
                             team1bowler.get(1).setWicketstaken(team1bowler.get(1).getWicketstaken() + 1);
                             if (!team2batsman.isEmpty()) {
-                                team2batsman.peek().getSalary();
+                                team2batsman.peek().calcSalary();
                                 write(team2batsman.peek().getPlayerName()+" total runs scored is " + team2batsman.peek().getRunsscored());
-                                write(team1bowler.get(0).getPlayerName()+" takes the wicket of "+ team2batsman.peek().getPlayerName());
+                                write(team1bowler.get(1).getPlayerName()+" takes the wicket of "+ team2batsman.peek().getPlayerName());
                                 team2batsman.poll();
                             }
 
                         } else if ((ballsbowled.get(0) >= 12 && ballsbowled.get(0) <= 17) || (ballsbowled.get(0) >= 42 && ballsbowled.get(0) <= 47) || (ballsbowled.get(0) >= 72 && ballsbowled.get(0) <= 77) || (ballsbowled.get(0) >= 102 && ballsbowled.get(0) <= 107)) {
-                            team1bowler.get(2).setWicketstaken(team1bowler.get(1).getWicketstaken() + 1);
+                            team1bowler.get(2).setWicketstaken(team1bowler.get(2).getWicketstaken() + 1);
                             if (!team2batsman.isEmpty()) {
-                                team2batsman.peek().getSalary();
+                                team2batsman.peek().calcSalary();
                                 write(team2batsman.peek().getPlayerName()+" total runs scored is " + team2batsman.peek().getRunsscored());
-                                write(team1bowler.get(0).getPlayerName()+" takes the wicket of "+ team2batsman.peek().getPlayerName());
+                                write(team1bowler.get(2).getPlayerName()+" takes the wicket of "+ team2batsman.peek().getPlayerName());
                                 team2batsman.poll();
                             }
 
@@ -330,18 +330,18 @@ public class Simulation {
 
                             team1bowler.get(3).setWicketstaken(team1bowler.get(3).getWicketstaken() + 1);
                             if (!team2batsman.isEmpty()) {
-                                team2batsman.peek().getSalary();
+                                team2batsman.peek().calcSalary();
                                 write(team2batsman.peek().getPlayerName()+" total runs scored is " + team2batsman.peek().getRunsscored());
-                                write(team1bowler.get(0).getPlayerName()+" takes the wicket of "+ team2batsman.peek().getPlayerName());
+                                write(team1bowler.get(3).getPlayerName()+" takes the wicket of "+ team2batsman.peek().getPlayerName());
                                 team2batsman.poll();
                             }
                         } else if ((ballsbowled.get(0) >= 24 && ballsbowled.get(0) <= 29) || (ballsbowled.get(0) >= 54 && ballsbowled.get(0) <= 59) || (ballsbowled.get(0) >= 84 && ballsbowled.get(0) <= 89) || (ballsbowled.get(0) >= 114 && ballsbowled.get(0) <= 119)) {
 
                             team1bowler.get(4).setWicketstaken(team1bowler.get(4).getWicketstaken() + 1);
                             if (!team2batsman.isEmpty()) {
-                                team2batsman.peek().getSalary();
+                                team2batsman.peek().calcSalary();
                                 write(team2batsman.peek().getPlayerName()+" total runs scored is " + team2batsman.peek().getRunsscored());
-                                write(team1bowler.get(0).getPlayerName()+" takes the wicket of "+ team2batsman.peek().getPlayerName());
+                                write(team1bowler.get(4).getPlayerName()+" takes the wicket of "+ team2batsman.peek().getPlayerName());
                                 team2batsman.poll();
                             }
                         }
@@ -405,7 +405,7 @@ public class Simulation {
                         if ((ballsbowled.get(0) < 6) || (ballsbowled.get(0) >= 30 && ballsbowled.get(0) <= 35) || (ballsbowled.get(0) >= 60 && ballsbowled.get(0) <= 65) || (ballsbowled.get(0) >= 90 && ballsbowled.get(0) <= 95)) {
                             team1bowler.get(0).setWicketstaken(team1bowler.get(0).getWicketstaken() + 1);
                             if (!team2batsman.isEmpty()) {
-                                team2batsman.peek().getSalary();
+                                team2batsman.peek().calcSalary();
                                 write(team2batsman.peek().getPlayerName()+" total runs scored is " + team2batsman.peek().getRunsscored());
                                 write(team1bowler.get(0).getPlayerName()+" takes the wicket of "+ team2batsman.peek().getPlayerName());
                                 team2batsman.poll();
@@ -414,18 +414,18 @@ public class Simulation {
 
                             team1bowler.get(1).setWicketstaken(team1bowler.get(1).getWicketstaken() + 1);
                             if (!team2batsman.isEmpty()) {
-                                team2batsman.peek().getSalary();
+                                team2batsman.peek().calcSalary();
                                 write(team2batsman.peek().getPlayerName()+" total runs scored is " + team2batsman.peek().getRunsscored());
-                                write(team1bowler.get(0).getPlayerName()+" takes the wicket of "+ team2batsman.peek().getPlayerName());
+                                write(team1bowler.get(1).getPlayerName()+" takes the wicket of "+ team2batsman.peek().getPlayerName());
                                 team2batsman.poll();
                             }
 
                         } else if ((ballsbowled.get(0) >= 12 && ballsbowled.get(0) <= 17) || (ballsbowled.get(0) >= 42 && ballsbowled.get(0) <= 47) || (ballsbowled.get(0) >= 72 && ballsbowled.get(0) <= 77) || (ballsbowled.get(0) >= 102 && ballsbowled.get(0) <= 107)) {
-                            team1bowler.get(2).setWicketstaken(team1bowler.get(1).getWicketstaken() + 1);
+                            team1bowler.get(2).setWicketstaken(team1bowler.get(2).getWicketstaken() + 1);
                             if (!team2batsman.isEmpty()) {
-                                team2batsman.peek().getSalary();
+                                team2batsman.peek().calcSalary();
                                 write(team2batsman.peek().getPlayerName()+" total runs scored is " + team2batsman.peek().getRunsscored());
-                                write(team1bowler.get(0).getPlayerName()+" takes the wicket of "+ team2batsman.peek().getPlayerName());
+                                write(team1bowler.get(2).getPlayerName()+" takes the wicket of "+ team2batsman.peek().getPlayerName());
                                 team2batsman.poll();
                             }
 
@@ -433,18 +433,18 @@ public class Simulation {
 
                             team1bowler.get(3).setWicketstaken(team1bowler.get(3).getWicketstaken() + 1);
                             if (!team2batsman.isEmpty()) {
-                                team2batsman.peek().getSalary();
+                                team2batsman.peek().calcSalary();
                                 write(team2batsman.peek().getPlayerName()+" total runs scored is " + team2batsman.peek().getRunsscored());
-                                write(team1bowler.get(0).getPlayerName()+" takes the wicket of "+ team2batsman.peek().getPlayerName());
+                                write(team1bowler.get(3).getPlayerName()+" takes the wicket of "+ team2batsman.peek().getPlayerName());
                                 team2batsman.poll();
                             }
                         } else if ((ballsbowled.get(0) >= 24 && ballsbowled.get(0) <= 29) || (ballsbowled.get(0) >= 54 && ballsbowled.get(0) <= 59) || (ballsbowled.get(0) >= 84 && ballsbowled.get(0) <= 89) || (ballsbowled.get(0) >= 114 && ballsbowled.get(0) <= 119)) {
 
                             team1bowler.get(4).setWicketstaken(team1bowler.get(4).getWicketstaken() + 1);
                             if (!team2batsman.isEmpty()) {
-                                team2batsman.peek().getSalary();
+                                team2batsman.peek().calcSalary();
                                 write(team2batsman.peek().getPlayerName()+" total runs scored is " + team2batsman.peek().getRunsscored());
-                                write(team1bowler.get(0).getPlayerName()+" takes the wicket of "+ team2batsman.peek().getPlayerName());
+                                write(team1bowler.get(4).getPlayerName()+" takes the wicket of "+ team2batsman.peek().getPlayerName());
                                 team2batsman.poll();
                             }
                         }
@@ -506,7 +506,7 @@ public class Simulation {
                         if ((ballsbowled.get(1) < 6) || (ballsbowled.get(1) >= 30 && ballsbowled.get(1) <= 35) || (ballsbowled.get(1) >= 60 && ballsbowled.get(1) <= 65) || (ballsbowled.get(1) >= 90 && ballsbowled.get(1) <= 95)) {
                             team2bowler.get(0).setWicketstaken(team2bowler.get(0).getWicketstaken() + 1);
                             if (!team1batsman.isEmpty()) {
-                                team1batsman.peek().getSalary();
+                                team1batsman.peek().calcSalary();
                                 write(team1batsman.peek().getPlayerName()+" total runs scored is " + team1batsman.peek().getRunsscored());
                                 write(team2bowler.get(0).getPlayerName()+" takes the wicket of "+ team1batsman.peek().getPlayerName());
                                 team1batsman.poll();
@@ -515,7 +515,7 @@ public class Simulation {
 
                             team2bowler.get(1).setWicketstaken(team2bowler.get(1).getWicketstaken() + 1);
                             if (!team1batsman.isEmpty()) {
-                                team1batsman.peek().getSalary();
+                                team1batsman.peek().calcSalary();
                                 write(team1batsman.peek().getPlayerName()+" total runs scored is " + team1batsman.peek().getRunsscored());
                                 write(team2bowler.get(1).getPlayerName()+" takes the wicket of "+ team1batsman.peek().getPlayerName());
                                 team1batsman.poll();
@@ -525,7 +525,7 @@ public class Simulation {
 
                             team2bowler.get(2).setWicketstaken(team2bowler.get(2).getWicketstaken() + 1);
                             if (!team1batsman.isEmpty()) {
-                                team1batsman.peek().getSalary();
+                                team1batsman.peek().calcSalary();
                                 write(team1batsman.peek().getPlayerName()+" total runs scored is " + team1batsman.peek().getRunsscored());
                                 write(team2bowler.get(2).getPlayerName()+" takes the wicket of "+ team1batsman.peek().getPlayerName());
                                 team1batsman.poll();
@@ -535,7 +535,7 @@ public class Simulation {
 
                             team2bowler.get(3).setWicketstaken(team2bowler.get(3).getWicketstaken() + 1);
                             if (!team1batsman.isEmpty()) {
-                                team1batsman.peek().getSalary();
+                                team1batsman.peek().calcSalary();
                                 write(team1batsman.peek().getPlayerName()+" total runs scored is " + team1batsman.peek().getRunsscored());
                                 write(team2bowler.get(3).getPlayerName()+" takes the wicket of "+ team1batsman.peek().getPlayerName());
                                 team1batsman.poll();
@@ -544,7 +544,7 @@ public class Simulation {
 
                             team2bowler.get(4).setWicketstaken(team2bowler.get(4).getWicketstaken() + 1);
                             if (!team1batsman.isEmpty()) {
-                                team1batsman.peek().getSalary();
+                                team1batsman.peek().calcSalary();
                                 write(team1batsman.peek().getPlayerName()+" total runs scored is " + team1batsman.peek().getRunsscored());
                                 write(team2bowler.get(4).getPlayerName()+" takes the wicket of "+ team1batsman.peek().getPlayerName());
                                 team1batsman.poll();
@@ -605,7 +605,7 @@ public class Simulation {
                         if ((ballsbowled.get(0) < 6) || (ballsbowled.get(0) >= 30 && ballsbowled.get(0) <= 35) || (ballsbowled.get(0) >= 60 && ballsbowled.get(0) <= 65) || (ballsbowled.get(0) >= 90 && ballsbowled.get(0) <= 95)) {
                             team1bowler.get(0).setWicketstaken(team1bowler.get(0).getWicketstaken() + 1);
                             if (!team2batsman.isEmpty()) {
-                                team2batsman.peek().getSalary();
+                                team2batsman.peek().calcSalary();
                                 write(team2batsman.peek().getPlayerName()+" total runs scored is " + team2batsman.peek().getRunsscored());
                                 write(team1bowler.get(0).getPlayerName()+" takes the wicket of "+ team2batsman.peek().getPlayerName());
                                 team2batsman.poll();
@@ -614,18 +614,18 @@ public class Simulation {
 
                             team1bowler.get(1).setWicketstaken(team1bowler.get(1).getWicketstaken() + 1);
                             if (!team2batsman.isEmpty()) {
-                                team2batsman.peek().getSalary();
+                                team2batsman.peek().calcSalary();
                                 write(team2batsman.peek().getPlayerName()+" total runs scored is " + team2batsman.peek().getRunsscored());
-                                write(team1bowler.get(0).getPlayerName()+" takes the wicket of "+ team2batsman.peek().getPlayerName());
+                                write(team1bowler.get(1).getPlayerName()+" takes the wicket of "+ team2batsman.peek().getPlayerName());
                                 team2batsman.poll();
                             }
 
                         } else if ((ballsbowled.get(0) >= 12 && ballsbowled.get(0) <= 17) || (ballsbowled.get(0) >= 42 && ballsbowled.get(0) <= 47) || (ballsbowled.get(0) >= 72 && ballsbowled.get(0) <= 77) || (ballsbowled.get(0) >= 102 && ballsbowled.get(0) <= 107)) {
-                            team1bowler.get(2).setWicketstaken(team1bowler.get(1).getWicketstaken() + 1);
+                            team1bowler.get(2).setWicketstaken(team1bowler.get(2).getWicketstaken() + 1);
                             if (!team2batsman.isEmpty()) {
-                                team2batsman.peek().getSalary();
+                                team2batsman.peek().calcSalary();
                                 write(team2batsman.peek().getPlayerName()+" total runs scored is " + team2batsman.peek().getRunsscored());
-                                write(team1bowler.get(0).getPlayerName()+" takes the wicket of "+ team2batsman.peek().getPlayerName());
+                                write(team1bowler.get(2).getPlayerName()+" takes the wicket of "+ team2batsman.peek().getPlayerName());
                                 team2batsman.poll();
                             }
 
@@ -633,18 +633,18 @@ public class Simulation {
 
                             team1bowler.get(3).setWicketstaken(team1bowler.get(3).getWicketstaken() + 1);
                             if (!team2batsman.isEmpty()) {
-                                team2batsman.peek().getSalary();
+                                team2batsman.peek().calcSalary();
                                 write(team2batsman.peek().getPlayerName()+" total runs scored is " + team2batsman.peek().getRunsscored());
-                                write(team1bowler.get(0).getPlayerName()+" takes the wicket of "+ team2batsman.peek().getPlayerName());
+                                write(team1bowler.get(3).getPlayerName()+" takes the wicket of "+ team2batsman.peek().getPlayerName());
                                 team2batsman.poll();
                             }
                         } else if ((ballsbowled.get(0) >= 24 && ballsbowled.get(0) <= 29) || (ballsbowled.get(0) >= 54 && ballsbowled.get(0) <= 59) || (ballsbowled.get(0) >= 84 && ballsbowled.get(0) <= 89) || (ballsbowled.get(0) >= 114 && ballsbowled.get(0) <= 119)) {
 
                             team1bowler.get(4).setWicketstaken(team1bowler.get(4).getWicketstaken() + 1);
                             if (!team2batsman.isEmpty()) {
-                                team2batsman.peek().getSalary();
+                                team2batsman.peek().calcSalary();
                                 write(team2batsman.peek().getPlayerName()+" total runs scored is " + team2batsman.peek().getRunsscored());
-                                write(team1bowler.get(0).getPlayerName()+" takes the wicket of "+ team2batsman.peek().getPlayerName());
+                                write(team1bowler.get(4).getPlayerName()+" takes the wicket of "+ team2batsman.peek().getPlayerName());
                                 team2batsman.poll();
                             }
                         }
@@ -706,7 +706,7 @@ public class Simulation {
                         if ((ballsbowled.get(1) < 6) || (ballsbowled.get(1) >= 30 && ballsbowled.get(1) <= 35) || (ballsbowled.get(1) >= 60 && ballsbowled.get(1) <= 65) || (ballsbowled.get(1) >= 90 && ballsbowled.get(1) <= 95)) {
                             team2bowler.get(0).setWicketstaken(team2bowler.get(0).getWicketstaken() + 1);
                             if (!team1batsman.isEmpty()) {
-                                team1batsman.peek().getSalary();
+                                team1batsman.peek().calcSalary();
                                 write(team1batsman.peek().getPlayerName()+" total runs scored is " + team1batsman.peek().getRunsscored());
                                 write(team2bowler.get(0).getPlayerName()+" takes the wicket of "+ team1batsman.peek().getPlayerName());
                                 team1batsman.poll();
@@ -715,7 +715,7 @@ public class Simulation {
 
                             team2bowler.get(1).setWicketstaken(team2bowler.get(1).getWicketstaken() + 1);
                             if (!team1batsman.isEmpty()) {
-                                team1batsman.peek().getSalary();
+                                team1batsman.peek().calcSalary();
                                 write(team1batsman.peek().getPlayerName()+" total runs scored is " + team1batsman.peek().getRunsscored());
                                 write(team2bowler.get(1).getPlayerName()+" takes the wicket of "+ team1batsman.peek().getPlayerName());
                                 team1batsman.poll();
@@ -725,7 +725,7 @@ public class Simulation {
 
                             team2bowler.get(2).setWicketstaken(team2bowler.get(2).getWicketstaken() + 1);
                             if (!team1batsman.isEmpty()) {
-                                team1batsman.peek().getSalary();
+                                team1batsman.peek().calcSalary();
                                 write(team1batsman.peek().getPlayerName()+" total runs scored is " + team1batsman.peek().getRunsscored());
                                 write(team2bowler.get(2).getPlayerName()+" takes the wicket of "+ team1batsman.peek().getPlayerName());
                                 team1batsman.poll();
@@ -735,7 +735,7 @@ public class Simulation {
 
                             team2bowler.get(3).setWicketstaken(team2bowler.get(3).getWicketstaken() + 1);
                             if (!team1batsman.isEmpty()) {
-                                team1batsman.peek().getSalary();
+                                team1batsman.peek().calcSalary();
                                 write(team1batsman.peek().getPlayerName()+" total runs scored is " + team1batsman.peek().getRunsscored());
                                 write(team2bowler.get(3).getPlayerName()+" takes the wicket of "+ team1batsman.peek().getPlayerName());
                                 team1batsman.poll();
@@ -744,7 +744,7 @@ public class Simulation {
 
                             team2bowler.get(4).setWicketstaken(team2bowler.get(4).getWicketstaken() + 1);
                             if (!team1batsman.isEmpty()) {
-                                team1batsman.peek().getSalary();
+                                team1batsman.peek().calcSalary();
                                 write(team1batsman.peek().getPlayerName()+" total runs scored is " + team1batsman.peek().getRunsscored());
                                 write(team2bowler.get(4).getPlayerName()+" takes the wicket of "+ team1batsman.peek().getPlayerName());
                                 team1batsman.poll();
@@ -804,7 +804,7 @@ public class Simulation {
                         if ((ballsbowled.get(1) < 6) || (ballsbowled.get(1) >= 30 && ballsbowled.get(1) <= 35) || (ballsbowled.get(1) >= 60 && ballsbowled.get(1) <= 65) || (ballsbowled.get(1) >= 90 && ballsbowled.get(1) <= 95)) {
                             team2bowler.get(0).setWicketstaken(team2bowler.get(0).getWicketstaken() + 1);
                             if (!team1batsman.isEmpty()) {
-                                team1batsman.peek().getSalary();
+                                team1batsman.peek().calcSalary();
                                 write(team1batsman.peek().getPlayerName()+" total runs scored is " + team1batsman.peek().getRunsscored());
                                 write(team2bowler.get(0).getPlayerName()+" takes the wicket of "+ team1batsman.peek().getPlayerName());
                                 team1batsman.poll();
@@ -813,7 +813,7 @@ public class Simulation {
 
                             team2bowler.get(1).setWicketstaken(team2bowler.get(1).getWicketstaken() + 1);
                             if (!team1batsman.isEmpty()) {
-                                team1batsman.peek().getSalary();
+                                team1batsman.peek().calcSalary();
                                 write(team1batsman.peek().getPlayerName()+" total runs scored is " + team1batsman.peek().getRunsscored());
                                 write(team2bowler.get(1).getPlayerName()+" takes the wicket of "+ team1batsman.peek().getPlayerName());
                                 team1batsman.poll();
@@ -823,7 +823,7 @@ public class Simulation {
 
                             team2bowler.get(2).setWicketstaken(team2bowler.get(2).getWicketstaken() + 1);
                             if (!team1batsman.isEmpty()) {
-                                team1batsman.peek().getSalary();
+                                team1batsman.peek().calcSalary();
                                 write(team1batsman.peek().getPlayerName()+" total runs scored is " + team1batsman.peek().getRunsscored());
                                 write(team2bowler.get(2).getPlayerName()+" takes the wicket of "+ team1batsman.peek().getPlayerName());
                                 team1batsman.poll();
@@ -833,7 +833,7 @@ public class Simulation {
 
                             team2bowler.get(3).setWicketstaken(team2bowler.get(3).getWicketstaken() + 1);
                             if (!team1batsman.isEmpty()) {
-                                team1batsman.peek().getSalary();
+                                team1batsman.peek().calcSalary();
                                 write(team1batsman.peek().getPlayerName()+" total runs scored is " + team1batsman.peek().getRunsscored());
                                 write(team2bowler.get(3).getPlayerName()+" takes the wicket of "+ team1batsman.peek().getPlayerName());
                                 team1batsman.poll();
@@ -842,7 +842,7 @@ public class Simulation {
 
                             team2bowler.get(4).setWicketstaken(team2bowler.get(4).getWicketstaken() + 1);
                             if (!team1batsman.isEmpty()) {
-                                team1batsman.peek().getSalary();
+                                team1batsman.peek().calcSalary();
                                 write(team1batsman.peek().getPlayerName()+" total runs scored is " + team1batsman.peek().getRunsscored());
                                 write(team2bowler.get(4).getPlayerName()+" takes the wicket of "+ team1batsman.peek().getPlayerName());
                                 team1batsman.poll();
@@ -899,7 +899,7 @@ public class Simulation {
                         if ((ballsbowled.get(0) < 6) || (ballsbowled.get(0) >= 30 && ballsbowled.get(0) <= 35) || (ballsbowled.get(0) >= 60 && ballsbowled.get(0) <= 65) || (ballsbowled.get(0) >= 90 && ballsbowled.get(0) <= 95)) {
                             team1bowler.get(0).setWicketstaken(team1bowler.get(0).getWicketstaken() + 1);
                             if (!team2batsman.isEmpty()) {
-                                team2batsman.peek().getSalary();
+                                team2batsman.peek().calcSalary();
                                 write(team2batsman.peek().getPlayerName()+" total runs scored is " + team2batsman.peek().getRunsscored());
                                 write(team1bowler.get(0).getPlayerName()+" takes the wicket of "+ team2batsman.peek().getPlayerName());
                                 team2batsman.poll();
@@ -908,18 +908,18 @@ public class Simulation {
 
                             team1bowler.get(1).setWicketstaken(team1bowler.get(1).getWicketstaken() + 1);
                             if (!team2batsman.isEmpty()) {
-                                team2batsman.peek().getSalary();
+                                team2batsman.peek().calcSalary();
                                 write(team2batsman.peek().getPlayerName()+" total runs scored is " + team2batsman.peek().getRunsscored());
-                                write(team1bowler.get(0).getPlayerName()+" takes the wicket of "+ team2batsman.peek().getPlayerName());
+                                write(team1bowler.get(1).getPlayerName()+" takes the wicket of "+ team2batsman.peek().getPlayerName());
                                 team2batsman.poll();
                             }
 
                         } else if ((ballsbowled.get(0) >= 12 && ballsbowled.get(0) <= 17) || (ballsbowled.get(0) >= 42 && ballsbowled.get(0) <= 47) || (ballsbowled.get(0) >= 72 && ballsbowled.get(0) <= 77) || (ballsbowled.get(0) >= 102 && ballsbowled.get(0) <= 107)) {
-                            team1bowler.get(2).setWicketstaken(team1bowler.get(1).getWicketstaken() + 1);
+                            team1bowler.get(2).setWicketstaken(team1bowler.get(2).getWicketstaken() + 1);
                             if (!team2batsman.isEmpty()) {
-                                team2batsman.peek().getSalary();
+                                team2batsman.peek().calcSalary();
                                 write(team2batsman.peek().getPlayerName()+" total runs scored is " + team2batsman.peek().getRunsscored());
-                                write(team1bowler.get(0).getPlayerName()+" takes the wicket of "+ team2batsman.peek().getPlayerName());
+                                write(team1bowler.get(2).getPlayerName()+" takes the wicket of "+ team2batsman.peek().getPlayerName());
                                 team2batsman.poll();
                             }
 
@@ -927,18 +927,18 @@ public class Simulation {
 
                             team1bowler.get(3).setWicketstaken(team1bowler.get(3).getWicketstaken() + 1);
                             if (!team2batsman.isEmpty()) {
-                                team2batsman.peek().getSalary();
+                                team2batsman.peek().calcSalary();
                                 write(team2batsman.peek().getPlayerName()+" total runs scored is " + team2batsman.peek().getRunsscored());
-                                write(team1bowler.get(0).getPlayerName()+" takes the wicket of "+ team2batsman.peek().getPlayerName());
+                                write(team1bowler.get(3).getPlayerName()+" takes the wicket of "+ team2batsman.peek().getPlayerName());
                                 team2batsman.poll();
                             }
                         } else if ((ballsbowled.get(0) >= 24 && ballsbowled.get(0) <= 29) || (ballsbowled.get(0) >= 54 && ballsbowled.get(0) <= 59) || (ballsbowled.get(0) >= 84 && ballsbowled.get(0) <= 89) || (ballsbowled.get(0) >= 114 && ballsbowled.get(0) <= 119)) {
 
                             team1bowler.get(4).setWicketstaken(team1bowler.get(4).getWicketstaken() + 1);
                             if (!team2batsman.isEmpty()) {
-                                team2batsman.peek().getSalary();
+                                team2batsman.peek().calcSalary();
                                 write(team2batsman.peek().getPlayerName()+" total runs scored is " + team2batsman.peek().getRunsscored());
-                                write(team1bowler.get(0).getPlayerName()+" takes the wicket of "+ team2batsman.peek().getPlayerName());
+                                write(team1bowler.get(4).getPlayerName()+" takes the wicket of "+ team2batsman.peek().getPlayerName());
                                 team2batsman.poll();
                             }
                         }
@@ -1001,15 +1001,15 @@ public class Simulation {
             teams.add(t2);
             teams.add(t1);
             write(t2.getTeamName().toUpperCase()+" has won the match");
-    }
-    else {
+        }
+        else {
 
             teams.add(t1);
-            teams.add(t1);
+            teams.add(t2);
             write("TIE MATCH");
-    }
-    fileWriter.close();
-    return teams;
+        }
+        fileWriter.close();
+        return teams;
     }
 }
 

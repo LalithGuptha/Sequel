@@ -67,7 +67,7 @@ public class Bowler extends Player implements Salary{
     }
 
     @Override
-    public void getSalary() throws IOException {
+    public void calcSalary() throws IOException {
         salary =  BASIC_PAY+ getRunsconceded()*0.01 + getBallsbowled()/getRunsconceded() + getWicketstaken()*25;
         write();
     }

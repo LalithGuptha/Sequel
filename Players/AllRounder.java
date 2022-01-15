@@ -105,7 +105,7 @@ public class AllRounder extends Player implements Salary{
     }
 
     @Override
-    public void getSalary() throws IOException {
+    public void calcSalary() throws IOException {
 
         salary = BASIC_PAY + getRunsscored()*10 + getNoof6()*6+ getNoof4()*4 + getRunsconceded()*0.01 + getBallsbowled()/getRunsconceded() + getWicketstaken()*25;
         write();

@@ -51,7 +51,7 @@ public class Batsman extends Player implements Salary{
     public void setNoof6(int noof6) {this.noof6 = noof6;}
 
     @Override
-    public void getSalary() throws IOException {
+    public void calcSalary() throws IOException {
 
         salary = BASIC_PAY + getRunsscored()*10 + getNoof6()*6+ getNoof4()*4;
         write();
