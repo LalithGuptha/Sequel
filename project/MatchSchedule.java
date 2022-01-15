@@ -7,7 +7,7 @@ import javax.activation.DataHandler;
 import javax.activation.FileDataSource;
 import javax.mail.*;
 import javax.mail.internet.*;
-import javax.sql.DataSource;
+import javax.activation.DataSource;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -31,8 +31,6 @@ public class MatchSchedule implements sendEmail {
 	public MatchSchedule(int noOfTeams, LocalDate startdate, LocalDate enddate, ArrayList<Team> teams, ArrayList<Venue> venues) {
 		this.noOfTeams = noOfTeams;
 		this.startdate = startdate;
-		System.out.println(startdate);
-		System.out.println(enddate);
 		this.enddate = enddate;
 		this.teams = teams;
 		this.venues = venues;
@@ -67,7 +65,7 @@ public class MatchSchedule implements sendEmail {
 			Duration diff = Duration.between(startdate.atStartOfDay(),enddate.atStartOfDay());
 			long diffdays = diff.toDays()-6;
 			double perday =  Math.ceil((double)(56) / (double) (diffdays) );
-			System.out.println(perday);
+			//System.out.println(perday);
 			if(perday==0)
 				perday++;
 
@@ -121,7 +119,7 @@ public class MatchSchedule implements sendEmail {
 				}
 			}
 			//Entire Schedule Duration
-			System.out.println(diffdays);
+			System.out.println("Duration:"+diffdays+" days");
 	}
 	int matchnonow=57;
 	public void Qualifierschedule(ArrayList<Team> Qualifier)
@@ -157,6 +155,21 @@ public class MatchSchedule implements sendEmail {
 			}
 
 		}
+	public void Qualifierwrite() {
+		try {
+			filewriter = new FileWriter("trial.txt",true);
+			//filewriter.append(FILE_HEADER.toString());
+			ListIterator new_list = (ListIterator) schedule.iterator();
+			while (new_list.hasNext()) {
+				filewriter.append(String.valueOf(new_list.next()));
+				filewriter.append(NEWLINE);
+			}
+			filewriter.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
 
 		public void sendMail() {
 			Properties prop = new Properties();
@@ -182,7 +195,7 @@ public class MatchSchedule implements sendEmail {
 				BodyPart bp = new MimeBodyPart();
 				BodyPart bp1 = new MimeBodyPart();
 				bp1.setText("Checking email");
-				String filename = "C:ExcelFiles\\trial.txt;";
+				String filename = "trial.txt";
 				DataSource src = (DataSource) new FileDataSource(filename);
 				bp.setDataHandler(new DataHandler((javax.activation.DataSource) src));
 				bp.setFileName(filename);
@@ -191,7 +204,7 @@ public class MatchSchedule implements sendEmail {
 				mp.addBodyPart(bp1);
 				message.setContent(mp);
 				Transport.send(message);
-				System.out.println("Done");
+				System.out.println("\nMail Sent");
 
 			} catch (AddressException e) {
 				e.printStackTrace();

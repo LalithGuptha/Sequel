@@ -87,7 +87,7 @@ public class Rebound implements Runnable{
 		Rebound= Rebound /  (this.mass*((double)(2)/(double)(5))*this.radius*this.radius);
 		Rebound=Rebound + (this.horizontalVelocityIn+this.verticalVelocityIn);
 
-		System.out.println("Rebound value:"+ String.format("%.2f",Rebound)+"-("+this.radius+","+this.mass+")");
+		System.out.println("\nRebound value:"+ String.format("%.2f",Rebound)+"-("+this.radius+","+this.mass+")");
 	}
 
 	public void run() {

@@ -59,7 +59,7 @@ public class Sponsor {
 		}
 
 		best.sort(Comparator.comparing(Sponsor::getContribution).reversed().thenComparing(Sponsor::getReputation).reversed());
-		System.out.println(best.get(0));
+		System.out.println("\nOptimal Sponsor:"+best.get(0));
 	};
 
 	public String toString() {

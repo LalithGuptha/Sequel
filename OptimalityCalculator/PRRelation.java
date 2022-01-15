@@ -68,7 +68,7 @@ public class PRRelation {
             }
 
             best.sort(Comparator.comparing(PRRelation::getExperience).reversed().thenComparing(PRRelation::getR).reversed());
-            System.out.println(best.get(0));
+            System.out.println("\nOptimal PR:"+best.get(0));
         }
 
 

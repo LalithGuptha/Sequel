@@ -184,7 +184,8 @@ public class TestDriver extends Thread {
         MatchSchedule matchSchedule = new MatchSchedule(teams.size(), start, end, teams, venues);
         matchSchedule.schedule();
         matchSchedule.write();
-        System.out.println(matchSchedule.getSchedule().size());
+        matchSchedule.sendMail();
+        System.out.println("\nNumber Of Matches to Schedule(before Qualifiers) :"+matchSchedule.getSchedule().size());
 
         //Finding Optimal Sponsor,Equipment,PRRelation
 
@@ -237,7 +238,7 @@ public class TestDriver extends Thread {
         table.add(5, new PointsTable(kkr));
         table.add(6, new PointsTable(kxip));
         table.add(7, new PointsTable(dd));
-        System.out.println(table);
+        System.out.println("\n"+table);
 
 
         //Simulation of Matches
@@ -246,7 +247,7 @@ public class TestDriver extends Thread {
         PointsTable update = new PointsTable();
         ArrayList<Team> winlose = new ArrayList<>();
         while (!matchSchedule.getSchedule().isEmpty()) {
-            System.out.println(i++);
+            System.out.println("\n"+i++);
             simulation = new Simulation(matchSchedule.getSchedule().peek());
             winlose = simulation.play();
             if(winlose.get(0).getTeamName().equals(matchSchedule.getSchedule().peek().getTeams().get(0).getTeamName()) && !(winlose.get(0).equals(winlose.get(1))))
@@ -299,7 +300,8 @@ public class TestDriver extends Thread {
             winlose.remove(0);
             matchSchedule.getSchedule().remove();
         }
-        System.out.println(table);
+        System.out.println("Updated Points Table");
+        System.out.println("\n"+table);
 
         // Scheduling and Simulating Qualifiers
 
@@ -308,8 +310,9 @@ public class TestDriver extends Thread {
         {
             Qualified.add(i,table.get(i).getTeam());
         }
-        System.out.println(Qualified);
+        System.out.println("\nQualified Teams:"+Qualified);
         matchSchedule.Qualifierschedule(Qualified);
+        matchSchedule.Qualifierwrite();
         System.out.println(matchSchedule.getSchedule());
 
         // Scheduling and Simulating Finals
@@ -325,10 +328,13 @@ public class TestDriver extends Thread {
             j++;
         }
 
+        System.out.println("\nFinalists:"+Qualified);
         matchSchedule.Qualifierschedule(Finalist);
+        matchSchedule.Qualifierwrite();
+        System.out.println("\n"+(teams.size()*(teams.size()-1)+3));
         simulation =new Simulation(Finalist.get(0),Finalist.get(1), end.toString());
         winlose= simulation.play();
-        System.out.println("Finalist of "+Event.getEventName()+":"+winlose.get(0).getTeamName());
+        System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t\t\tFinalist of "+Event.getEventName()+":    "+winlose.get(0).getTeamName());
 
     }
 }

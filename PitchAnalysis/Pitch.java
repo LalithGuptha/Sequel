@@ -93,7 +93,7 @@ public class Pitch implements Runnable{
 				}
 			}
 		}
-		System.out.println(this.type+"-("+this.moisture+","+this.grass+")");
+		System.out.println("\n"+this.type+"-("+this.moisture+","+this.grass+")");
 	}
 
 }

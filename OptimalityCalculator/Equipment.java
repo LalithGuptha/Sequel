@@ -83,7 +83,7 @@ public class Equipment {
         }
 
         best.sort(Comparator.comparing(Equipment::getPrice).thenComparing(Equipment::getQualityPercent));
-        System.out.println(best.get(0));
+        System.out.println("\nOptimal Equipment:"+best.get(0));
     }
 
     ;
