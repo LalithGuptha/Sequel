@@ -26,10 +26,7 @@ public class MatchSchedule implements sendEmail {
 	private ArrayList<Venue> venues;
 	private Queue<Match> schedule = new LinkedList<>();
 
-
 	private long nowadd;
-
-
 
 	public MatchSchedule(int noOfTeams, LocalDate startdate, LocalDate enddate, ArrayList<Team> teams, ArrayList<Venue> venues) {
 		this.noOfTeams = noOfTeams;
@@ -42,68 +39,31 @@ public class MatchSchedule implements sendEmail {
 
 	}
 
+	public int getNoOfTeams() {return noOfTeams;}
 
-	public int getNoOfTeams() {
+	public void setNoOfTeams(int noOfTeams) {this.noOfTeams = noOfTeams;}
 
-		return noOfTeams;
-	}
+	public LocalDate getStartdate() {return startdate;}
 
+	public void setStartdate(LocalDate startdate) {this.startdate = startdate;}
 
-	public void setNoOfTeams(int noOfTeams) {
-		this.noOfTeams = noOfTeams;
-	}
+	public LocalDate getEnddate() {return enddate;}
 
+	public void setEnddate(LocalDate enddate) {this.enddate = enddate;}
 
-	public LocalDate getStartdate() {
-		return startdate;
-	}
+	public ArrayList<Team> getTeams() {return teams;}
 
+	public void setTeams(ArrayList<Team> teams) {this.teams = teams;}
 
-	public void setStartdate(LocalDate startdate) {
-		this.startdate = startdate;
-	}
+	public Queue<Match> getSchedule() {return schedule;}
 
+	public void setSchedule(Queue<Match> schedule) {this.schedule = schedule;}
 
-	public LocalDate getEnddate() {
-		return enddate;
-	}
+	public ArrayList<Venue> getVenues() {return venues;}
 
+	public void setVenues(ArrayList<Venue> venues) {this.venues = venues;}
 
-	public void setEnddate(LocalDate enddate) {
-		this.enddate = enddate;
-	}
-
-
-	public ArrayList<Team> getTeams() {
-		return teams;
-	}
-
-
-	public void setTeams(ArrayList<Team> teams) {
-		this.teams = teams;
-	}
-
-
-	public Queue<Match> getSchedule() {
-		return schedule;
-	}
-
-
-	public void setSchedule(Queue<Match> schedule) {
-		this.schedule = schedule;
-	}
-
-	public ArrayList<Venue> getVenues() {
-		return venues;
-	}
-
-	public void setVenues(ArrayList<Venue> venues) {
-		this.venues = venues;
-	}
-
-
-
-		public void schedule () throws FileNotFoundException {
+	public void schedule () throws FileNotFoundException {
 			Duration diff = Duration.between(startdate.atStartOfDay(),enddate.atStartOfDay());
 			long diffdays = diff.toDays()-6;
 			double perday =  Math.ceil((double)(56) / (double) (diffdays) );
@@ -134,7 +94,6 @@ public class MatchSchedule implements sendEmail {
 					if(matchCount%perday==0)
 					add++;
 				}
-				//sch = sch + "..";
 				for (int i = 0; i < 6; i++) {
 					t1 = arr[0][3];
 					t2 = arr[1][0];
@@ -148,7 +107,7 @@ public class MatchSchedule implements sendEmail {
 					arr[1][3] = t1;
 					arr[0][1] = t2;
 					for (int k = 0; k < 4; k++) {
-						//sch = sch + "(" + arr[0][k] + "," + arr[1][k] + ")";
+
 						if (loop % 2 == 0)
 							schedule.add(new Match(matchCount, this.startdate.plusDays(add), this.teams.get(arr[0][k]), this.teams.get(arr[1][k]), this.venues.get(arr[0][k])));
 						else
@@ -159,28 +118,29 @@ public class MatchSchedule implements sendEmail {
 							add++;
 					}
 					nowadd=add;
-
-
 				}
 			}
 			System.out.println(diffdays);
-		/*for (int i = 0; i < 4; i++) {
-			schedule.add(new Match(matchCount, this.startdate.plusDays(add), , null, null));
-			matchCount++;
-			add++;
-		}*/
-
-
+	}
+	int matchnonow=57;
+	public void Qualifierschedule(ArrayList<Team> Qualifier)
+	{
+		nowadd=nowadd+2;
+		for(int i=0;i<=Qualifier.size()/2;i=i+2)
+		{
+			schedule.add(new Match(matchnonow,startdate.plusDays(nowadd),Qualifier.get(i),Qualifier.get(i+1),Qualifier.get(i).getVenue()));
+			matchnonow++;
+			nowadd=nowadd+2;
 		}
+	}
 
-		//Files
-		final String COMMA_DELIMITER = ",";
+	//Writing Match Schedule into the File
+	    final String COMMA_DELIMITER = ",";
 		final String NEWLINE = "\n";
 		final String FILE_HEADER = "MatchNumber, Date, Team1, Team2, Venue";
 		FileWriter filewriter = null;
 
 		public void write() {
-
 			try {
 				filewriter = new FileWriter("trial.txt");
 				filewriter.append(FILE_HEADER.toString());
@@ -194,7 +154,6 @@ public class MatchSchedule implements sendEmail {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-
 
 		}
 
@@ -222,7 +181,7 @@ public class MatchSchedule implements sendEmail {
 				BodyPart bp = new MimeBodyPart();
 				BodyPart bp1 = new MimeBodyPart();
 				bp1.setText("Checking email");
-				String filename = "C:\\Users\\ADMIN\\Sequel\\trial.txt";
+				String filename = "C:ExcelFiles\\trial.txt;";
 				DataSource src = (DataSource) new FileDataSource(filename);
 				bp.setDataHandler(new DataHandler((javax.activation.DataSource) src));
 				bp.setFileName(filename);
@@ -239,20 +198,6 @@ public class MatchSchedule implements sendEmail {
 				e.printStackTrace();
 			}
 		}
-		int matchnonow=57;
-
-		public void Qualifierschedule(ArrayList<Team> Qualifier)
-		{
-			nowadd=nowadd+2;
-			for(int i=0;i<=Qualifier.size()/2;i=i+2)
-			{
-				schedule.add(new Match(matchnonow,startdate.plusDays(nowadd),Qualifier.get(i),Qualifier.get(i+1),Qualifier.get(i).getVenue()));
-				matchnonow++;
-				nowadd=nowadd+2;
-			}
-		}
-
-// sendMail();
 
 
 	}

@@ -15,8 +15,7 @@ public class Sponsor {
 		this.reputation = reputation;
 	}
 
-	public Sponsor() {
-	}
+	public Sponsor() {}
 
 	public String getName() {
 		return name;
@@ -63,17 +62,11 @@ public class Sponsor {
 		System.out.println(best.get(0));
 	};
 
-
-
-
-
-	@Override
 	public String toString() {
 		return
 				"Sponsor name:'" + name + '\'' +
-				", contribution:" + contribution +
-				", reputation:" + reputation;
+				", Contribution:" + contribution +
+				", Reputation:" + reputation;
 	}
 
-	// java archive filerating
 }

@@ -13,37 +13,29 @@ public class Event {
 		this.budget = budget;
 	}
 
-
 	public static String getEventName() {
 		return eventName;
 	}
-
 
 	public static void setEventName(String eventName) {
 		Event.eventName = eventName;
 	}
 
-
 	public String getManager() {
 		return manager;
 	}
-
 
 	public void setManager(String manager) {
 		this.manager = manager;
 	}
 
-
 	public double getBudget() {
 		return budget;
 	}
 
-
 	public void setBudget(double budget) {
 		this.budget = budget;
 	}
-	
-	// Add email func def 
-	
+
 	
 }

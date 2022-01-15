@@ -307,13 +307,7 @@ public class TestDriver extends Thread {
         matchSchedule.Qualifierschedule(Finalist);
         simulation =new Simulation(Finalist.get(0),Finalist.get(1));
         winlose= simulation.play();
-        System.out.println("Final Winner is:"+winlose.get(0).getTeamName());
-
-
-
-
-
-
+        System.out.println("\t\t\t\tFinalist:"+winlose.get(0).getTeamName());
 
     }
 }
