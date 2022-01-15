@@ -246,6 +246,8 @@ public class TestDriver extends Thread {
             matchSchedule.getSchedule().remove();
         }
         System.out.println(table);
+
+
         /*
         //Working...but in comments to avoid clash
         Thread t[] = new Thread[rebound.size()];
