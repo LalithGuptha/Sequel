@@ -1,10 +1,14 @@
 package Simu;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+
 public class PointsTable {
     private Team team;
-    private int position, points, played, won, lost, netRunRate;
+    private int position, points, played, won, lost;
+    private double netRunRate;
 
-    public PointsTable(Team team, int position, int points, int played, int won, int lost, int netRunRate) {
+    public PointsTable(Team team, int position, int points, int played, int won, int lost, double netRunRate) {
         setTeam(team);
         setPosition(position);
         setPlayed(played);
@@ -21,7 +25,7 @@ public class PointsTable {
         setPlayed(0);
         setWon(0);
         setLost(0);
-        setNetRunRate(0);
+        setNetRunRate(0.0);
     }
     public PointsTable()
     {
@@ -76,11 +80,11 @@ public class PointsTable {
         this.points = points;
     }
 
-    public int getNetRunRate() {
+    public double getNetRunRate() {
         return netRunRate;
     }
 
-    public void setNetRunRate(int netRunRate) {
+    public void setNetRunRate(double netRunRate) {
         this.netRunRate = netRunRate;
     }
 
@@ -88,20 +92,27 @@ public class PointsTable {
     public void inclost(){ this.lost++;}
     public void incpoints(){ this.points = this.points+2;}
     public void incplayed(){ this.played++;}
-    public void incnrr(int nrr){ this.netRunRate = this.netRunRate + nrr ;}
-    public void decnrr(int nrr){ this.netRunRate= this.netRunRate- nrr;}
+    public void incnrr(double nrr){ this.netRunRate = this.netRunRate + nrr ;}
+    public void decnrr(double nrr){ this.netRunRate= Math.round(this.netRunRate- nrr);}
+    public void points(ArrayList<PointsTable> table){
+
+        table.sort(Comparator.comparing(PointsTable::getPoints).thenComparing(PointsTable::getNetRunRate).reversed());
+        for(int i=0;i< table.size();i++)
+        {
+            table.get(i).setPosition(i+1);
+        }
+    }
 
 
     @Override
     public String toString() {
-        return "PointsTable{" +
-                "team=" + team +
-                ", position=" + position +
-                ", points=" + points +
-                ", played=" + played +
-                ", won=" + won +
-                ", lost=" + lost +
-                ", netRunRate=" + netRunRate +
-                '}';
+        return "PointsTable:" +
+                "Team:" + team +
+                ", Position=" + position +
+                ", Points=" + points +
+                ", Played=" + played +
+                ", Won=" + won +
+                ", Lost=" + lost +
+                ", NetRunRate=" + String.format("%.2f",netRunRate);
     }
 }

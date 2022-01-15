@@ -210,43 +210,54 @@ public class TestDriver extends Thread {
         System.out.println(table);
 
 
-        int i = 1, index = 0,indexlost=0;
+        int i = 1, index = 0,indexlost,indexlost1=-1,indexwon1=-1;
+        PointsTable update = new PointsTable();
         ArrayList<Team> winlose = new ArrayList<>();
-        //winlose.add(0,csk);
-        //winlose.add(1,mi);
         while (!matchSchedule.getSchedule().isEmpty()) {
             System.out.println(i++);
             simulation = new Simulation(matchSchedule.getSchedule().peek());
             winlose.add(0,simulation.getT1());
             winlose.add(1,simulation.getT2());
             System.out.println(simulation.play().getTeamName());
+            if(simulation.play().getTeamName().equals(winlose.get(0).getTeamName()))
+            {
+                indexlost=1;
+                indexwon1=0;
+            }
+            else {
+                indexlost = 0;
+                indexwon1 = 1;
+            }
             for(int m=0;m<table.size();m++)
             {
                 if (simulation.play().getTeamName().equals(table.get(m).getTeam().getTeamName())) {
                     index = m;
                 }
             }
-            if(simulation.play().getTeamName().equals(winlose.get(0).getTeamName()))
+            for(int m=0;m<table.size();m++)
             {
-                indexlost=1;
+                if (winlose.get(indexlost).getTeamName().equals(table.get(m).getTeam().getTeamName())) {
+                    indexlost1 = m;
+                    break;
+                }
             }
-            else
-                indexlost=0;
 
             table.get(index).incwon();
             table.get(index).incpoints();
             table.get(index).incplayed();
-            table.get(index).incnrr(simulation.getTeam1Score() / simulation.getTeam2Score());
-            table.get(indexlost).inclost();
-            table.get(indexlost).incplayed();
-            table.get(indexlost).decnrr(simulation.getTeam1Score()/simulation.getTeam2Score());
+            table.get(index).incnrr((double)simulation.getTeam1Score()/(double)simulation.getBallsbowled().get(indexwon1) - (double)simulation.getTeam2Score()/(double)simulation.getBallsbowled().get(indexlost));
+            table.get(indexlost1).inclost();
+            table.get(indexlost1).incplayed();
+            table.get(indexlost1).decnrr((double)simulation.getTeam1Score()/(double)simulation.getBallsbowled().get(indexwon1) - (double)simulation.getTeam2Score()/(double)simulation.getBallsbowled().get(indexlost));
+            update.points(table);
             winlose.remove(1);
             winlose.remove(0);
+
 
             matchSchedule.getSchedule().remove();
         }
         System.out.println(table);
-        /*
+
         //Working...but in comments to avoid clash
         Thread t[] = new Thread[rebound.size()];
         Thread k[] = new Thread[pace.size()];
@@ -276,7 +287,9 @@ public class TestDriver extends Thread {
         for (int j = 0; j < pitches.size(); j++) {
             q[j].start();
         }
-        */
+
+
+
 
 
 

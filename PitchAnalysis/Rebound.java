@@ -105,7 +105,7 @@ public class Rebound implements Runnable{
 		Rebound=Rebound + (this.horizontalVelocityIn+this.verticalVelocityIn);
 
 
-		System.out.println("Rebound value:"+Rebound);
+		System.out.println("Rebound value:"+ String.format("%.2f",Rebound));
 	}
 
 
