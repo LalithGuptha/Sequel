@@ -780,7 +780,7 @@ public class Simulation {
     }
     else {
 
-            teams.add(t2);
+            teams.add(t1);
             teams.add(t1);
     }
     return teams;

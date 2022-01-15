@@ -73,7 +73,9 @@ public class Pitch implements Runnable{
 
 	public void run()
 	{
-		find();
+		synchronized (this) {
+			find();
+		}
 	}
 	public void find() {
 		double pitchavg;
@@ -104,7 +106,7 @@ public class Pitch implements Runnable{
 
 
 
-		System.out.println(this.type);
+		System.out.println(this.type+"-("+this.moisture+","+this.grass+")");
 	}
 
 }

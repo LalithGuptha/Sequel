@@ -39,14 +39,16 @@ public class Pace implements Runnable{
 
 	public void run()
 	{
-		find();
+		synchronized (this) {
+			find();
+		}
 	}
 
 	void find()
 	{
 		double pace = 400*this.friction - (this.friction*10 + Math.pow(Math.E,this.restitution))/ this.friction-this.restitution;
 
-		System.out.println("Pace:"+ String.format("%.2f",pace));
+		System.out.println("Pace:"+ String.format("%.2f",pace)+"-("+this.friction+","+this.restitution+")");
 	}
 
 	@Override

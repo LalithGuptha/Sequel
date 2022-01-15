@@ -105,12 +105,14 @@ public class Rebound implements Runnable{
 		Rebound=Rebound + (this.horizontalVelocityIn+this.verticalVelocityIn);
 
 
-		System.out.println("Rebound value:"+ String.format("%.2f",Rebound));
+		System.out.println("Rebound value:"+ String.format("%.2f",Rebound)+"-("+this.radius+","+this.mass+")");
 	}
 
 
 	public void run() {
-		find();
+		synchronized (this) {
+			find();
+		}
 	}
 
 
