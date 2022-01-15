@@ -184,7 +184,7 @@ public class Simulation {
         }
     }
 
-    public Team play() {
+    public ArrayList<Team> play() {
         Toss toss = new Toss(t1, t2);
         Team winning = toss.coinFlip();
         System.out.println(winning.getTeamName() + " " + toss.getChoice());
@@ -769,15 +769,21 @@ public class Simulation {
                 System.out.println(t2.getTeamName() + " score is " + score.get(1));
             }
         }
-    if(score.get(0)> score.get(1)){
-        return t1;
-    }
-    else if(score.get(1)> score.get(0)){
-        return t2;
+        ArrayList<Team> teams = new ArrayList<>();
+        if(score.get(0)> score.get(1)){
+            teams.add(t1);
+            teams.add(t2);
+        }
+        else if(score.get(1)> score.get(0)){
+            teams.add(t2);
+            teams.add(t1);
     }
     else {
-       return null;
+
+            teams.add(t2);
+            teams.add(t1);
     }
+    return teams;
     }
 }
 
