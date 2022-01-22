@@ -341,20 +341,6 @@ public class TestDriver extends Thread {
 
 
 
-        //Abhishek's Part
-        System.out.println("\n\n");
-        Check a = new Check();
-        a.testDriver();
-        test b = new test();
-        b.kasi();
-
-
-        //Siddharth's Part
-        System.out.println("\n\n");
-        User u = new User();
-        u.user();
-
-
     }
 }
 
