@@ -94,8 +94,7 @@ public class Equipment {
                         ", Brand:'" + brand + '\'' +
                         ", Type:'" + type + '\'' +
                         ", Price:" + price +
-                        ", QualityPercent:" + qualityPercent +
-                        '}';
+                        ", QualityPercent:" + qualityPercent;
     }
 
 

@@ -1,5 +1,5 @@
 package PitchAnalysis;
 
-public interface Analysis {
-    public void find();
+public interface Analysis extends Runnable {
+    public void  find();
 }

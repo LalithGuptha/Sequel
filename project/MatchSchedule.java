@@ -4,10 +4,10 @@ import Simu.Match;
 import Simu.Team;
 
 import javax.activation.DataHandler;
+import javax.activation.DataSource;
 import javax.activation.FileDataSource;
 import javax.mail.*;
 import javax.mail.internet.*;
-import javax.activation.DataSource;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -71,7 +71,12 @@ public class MatchSchedule implements sendEmail {
 
 			int matchCount = 1;
 			long add = 0;
-			int[][] arr = {{0, 1, 2, 3}, {4, 5, 6, 7}};
+			int[][] arr =  new int[2][(teams.size()/2)] ;
+			for(int i=0;i<teams.size()/2;i++)
+			{
+				arr[0][i]=i;
+				arr[1][i]=teams.size()-1-i;
+			}
 			String sch = new String();
 			int t1, t2;
 			for (int loop = 0; loop < 2; loop++) {
@@ -81,7 +86,7 @@ public class MatchSchedule implements sendEmail {
 					Collections.swap(teams, 0, x);
 				}
 
-				for (int i = 0; i < 4; i++) {
+				for (int i = 0; i < teams.size()/2; i++) {
 					if (loop % 2 == 0)
 						schedule.add(new Match(matchCount, this.startdate.plusDays(add), this.teams.get(arr[0][i]), this.teams.get(arr[1][i]), this.venues.get(arr[0][i])));
 					else {
@@ -92,19 +97,19 @@ public class MatchSchedule implements sendEmail {
 					if(matchCount%perday==0)
 					add++;
 				}
-				for (int i = 0; i < 6; i++) {
-					t1 = arr[0][3];
+				for (int i = 0; i < teams.size()-2; i++) {
+					t1 = arr[0][(teams.size()/2)-1];
 					t2 = arr[1][0];
-					for (int j = 3; j > 1; j--) {
+					for (int j = (teams.size()/2)-1; j > 1; j--) {
 						arr[0][j] = arr[0][j - 1];
 
 					}
-					for (int n = 0; n < 3; n++) {
+					for (int n = 0; n < (teams.size()/2)-1; n++) {
 						arr[1][n] = arr[1][n + 1];
 					}
-					arr[1][3] = t1;
+					arr[1][(teams.size()/2)-1] = t1;
 					arr[0][1] = t2;
-					for (int k = 0; k < 4; k++) {
+					for (int k = 0; k < teams.size()/2; k++) {
 
 						if (loop % 2 == 0)
 							schedule.add(new Match(matchCount, this.startdate.plusDays(add), this.teams.get(arr[0][k]), this.teams.get(arr[1][k]), this.venues.get(arr[0][k])));
@@ -141,7 +146,7 @@ public class MatchSchedule implements sendEmail {
 
 		public void write() {
 			try {
-				filewriter = new FileWriter("trial.txt");
+				filewriter = new FileWriter("MatchSchedule.txt");
 				filewriter.append(FILE_HEADER.toString());
 				filewriter.append(NEWLINE);
 				ListIterator new_list = (ListIterator) schedule.iterator();
@@ -157,7 +162,7 @@ public class MatchSchedule implements sendEmail {
 		}
 	public void Qualifierwrite() {
 		try {
-			filewriter = new FileWriter("trial.txt",true);
+			filewriter = new FileWriter("MatchSchedule.txt",true);
 			//filewriter.append(FILE_HEADER.toString());
 			ListIterator new_list = (ListIterator) schedule.iterator();
 			while (new_list.hasNext()) {
@@ -194,8 +199,8 @@ public class MatchSchedule implements sendEmail {
 				message.setSubject("Match Schedule");
 				BodyPart bp = new MimeBodyPart();
 				BodyPart bp1 = new MimeBodyPart();
-				bp1.setText("Checking email");
-				String filename = "trial.txt";
+				bp1.setText("Prepared Match Schedule");
+				String filename = "MatchSchedule.txt";
 				DataSource src = (DataSource) new FileDataSource(filename);
 				bp.setDataHandler(new DataHandler((javax.activation.DataSource) src));
 				bp.setFileName(filename);

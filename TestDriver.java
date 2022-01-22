@@ -1,3 +1,4 @@
+import CheckEvent.Check;
 import OptimalityCalculator.Equipment;
 import OptimalityCalculator.PRRelation;
 import OptimalityCalculator.Sponsor;
@@ -8,9 +9,11 @@ import Players.Player;
 import Simu.PointsTable;
 import Simu.Simulation;
 import Simu.Team;
+import oopproj.User;
 import project.Event;
 import project.MatchSchedule;
 import project.Venue;
+import win_predictor.test;
 
 import java.io.File;
 import java.io.IOException;
@@ -179,15 +182,15 @@ public class TestDriver extends Thread {
         start = LocalDate.parse(s1.nextLine());
         end = LocalDate.parse(s1.nextLine());
 
-        //Preparing Match Schedule
+                                                 //Preparing Match Schedule
 
         MatchSchedule matchSchedule = new MatchSchedule(teams.size(), start, end, teams, venues);
         matchSchedule.schedule();
         matchSchedule.write();
-        matchSchedule.sendMail();
         System.out.println("\nNumber Of Matches to Schedule(before Qualifiers) :"+matchSchedule.getSchedule().size());
+        matchSchedule.sendMail();
 
-        //Finding Optimal Sponsor,Equipment,PRRelation
+                                     //Finding Optimal Sponsor,Equipment,PRRelation
 
         Sponsor s = new Sponsor();
         s.opCalc(sp);
@@ -196,7 +199,7 @@ public class TestDriver extends Thread {
         Equipment f = new Equipment();
         f.opCalc(eqb);
 
-        //Pitch Analysis - Pitch Type, Pace, Rebound
+                                    //Pitch Analysis - Pitch Type, Pace, Rebound
 
         Thread t[] = new Thread[rebound.size()];
         Thread k[] = new Thread[pace.size()];
@@ -227,7 +230,7 @@ public class TestDriver extends Thread {
             q[j].start();
         }
 
-        //Points Table
+                                                            //Points Table
         Simulation simulation;
         ArrayList<PointsTable> table = new ArrayList<PointsTable>();
         table.add(0, new PointsTable(csk));
@@ -241,7 +244,7 @@ public class TestDriver extends Thread {
         System.out.println("\n"+table);
 
 
-        //Simulation of Matches
+                                                        //Simulation of Matches
 
         int i = 1, index = 0,indexlost=0,indexlost1=-1,indexwon1=-1;
         PointsTable update = new PointsTable();
@@ -284,7 +287,7 @@ public class TestDriver extends Thread {
                 update.points(table);
 
             }
-            //Updating Points Table after every Match
+                                            //Updating Points Table after every Match
             else {
                 table.get(index).incwon();
                 table.get(index).incpoints(2);
@@ -303,7 +306,7 @@ public class TestDriver extends Thread {
         System.out.println("Updated Points Table");
         System.out.println("\n"+table);
 
-        // Scheduling and Simulating Qualifiers
+                                    // Scheduling and Simulating Qualifiers
 
         ArrayList<Team> Qualified = new ArrayList<>();
         for(i=0;i<4;i++)
@@ -315,7 +318,7 @@ public class TestDriver extends Thread {
         matchSchedule.Qualifierwrite();
         System.out.println(matchSchedule.getSchedule());
 
-        // Scheduling and Simulating Finals
+                                        // Scheduling and Simulating Finals
 
         ArrayList<Team> Finalist =new ArrayList<>();
         int j=1;
@@ -335,6 +338,22 @@ public class TestDriver extends Thread {
         simulation =new Simulation(Finalist.get(0),Finalist.get(1), end.toString());
         winlose= simulation.play();
         System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t\t\tFinalist of "+Event.getEventName()+":    "+winlose.get(0).getTeamName());
+
+
+
+        //Abhishek's Part
+        System.out.println("\n\n");
+        Check a = new Check();
+        a.testDriver();
+        test b = new test();
+        b.kasi();
+
+
+        //Siddharth's Part
+        System.out.println("\n\n");
+        User u = new User();
+        u.user();
+
 
     }
 }
